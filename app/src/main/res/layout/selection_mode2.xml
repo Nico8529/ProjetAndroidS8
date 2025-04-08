@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+    <ImageButton
+                android:id="@+id/btnBack_Lselection_quiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/back_button" />
+
+    <TextView
+            android:id="@+id/title_Lselection_quiz"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Selection du mode de jeu"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack_Lselection_quiz"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp" />
+    <Button
+            android:text="Mode Normal"
+            android:layout_width="323dp"
+            android:layout_height="87dp" android:id="@+id/btnNormal_LSelectMode2" tools:layout_editor_absoluteY="93dp"
+            tools:layout_editor_absoluteX="42dp"/>
+    <Button
+            android:text="Mode Contre la montre"
+            android:layout_width="323dp"
+            android:layout_height="87dp" android:id="@+id/btnMontre_LSelectMode2" tools:layout_editor_absoluteY="557dp"
+            tools:layout_editor_absoluteX="44dp"/>
+    <Button
+            android:text="Mode Le plus rapides a les points"
+            android:layout_width="323dp"
+            android:layout_height="87dp" android:id="@+id/btnFast_LSelectMode2" tools:layout_editor_absoluteY="322dp"
+            tools:layout_editor_absoluteX="42dp"/>
+    <Button
+            android:text="Mode Les 3 meilleurs sur 4"
+            android:layout_width="323dp"
+            android:layout_height="87dp" android:id="@+id/btn3Best_LSelectMode2" tools:layout_editor_absoluteY="210dp"
+            tools:layout_editor_absoluteX="42dp"/>
+    <Button
+            android:text="Mode Répartition des points régressifs"
+            android:layout_width="323dp"
+            android:layout_height="87dp" android:id="@+id/btnDiffPoint_LSelectMode2" tools:layout_editor_absoluteY="440dp"
+            tools:layout_editor_absoluteX="44dp"/>
+    <TextView
+            android:id="@+id/version_LSelectMode2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:text="@string/version_app"
+            android:gravity="center" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

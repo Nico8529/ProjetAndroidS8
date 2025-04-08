@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+    <ImageButton
+            android:id="@+id/btnBack_LParametre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/back_button" />
+
+    <TextView
+            android:id="@+id/title_LParametre"
+            android:layout_width="154dp"
+            android:layout_height="26dp"
+            android:text="Paramètres"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack_LParametre"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.385"/>
+    <TextView
+            android:id="@+id/text1_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Audio"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/title_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <SeekBar
+            android:id="@+id/audio1_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text1_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <TextView
+            android:id="@+id/text2_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Système"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/audio1_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <SeekBar
+            android:id="@+id/audio2_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text2_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <TextView
+            android:id="@+id/text3_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Musique"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/audio2_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <TextView
+            android:id="@+id/text4_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Vidéo"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/text3_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <Switch
+            android:id="@+id/sauvegardeAuto_LParametre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text4_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <TextView
+            android:id="@+id/text5_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sauvegarde Auto"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text4_LParametre"
+            app:layout_constraintStart_toEndOf="@id/sauvegardeAuto_LParametre"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp" />
+
+    <Switch
+            android:id="@+id/bonus_LParametre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text5_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <TextView
+            android:id="@+id/text6_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Bonus"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text5_LParametre"
+            app:layout_constraintStart_toEndOf="@id/bonus_LParametre"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="26dp" />
+
+    <Switch
+            android:id="@+id/div_LParametre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text6_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <TextView
+            android:id="@+id/text8_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Div"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text6_LParametre"
+            app:layout_constraintStart_toEndOf="@id/div_LParametre"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="26dp" />
+
+    <TextView
+            android:id="@+id/text7_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Langue"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/text8_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <Spinner
+            android:id="@+id/selectLanguage_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text7_LParametre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:entries="@array/languages" />
+
+    <TextView
+            android:id="@+id/version_LParametre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:text="@string/version_app"
+            android:gravity="center" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

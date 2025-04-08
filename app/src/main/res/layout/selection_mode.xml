@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:padding="16dp">
+
+    <ImageButton
+            android:id="@+id/btnBack_Lselection_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/back_button" />
+
+    <TextView
+            android:id="@+id/title_Lselection_mode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Selection du mode de jeu"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack_Lselection_mode"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp" />
+
+    <Button
+            android:id="@+id/btnSolo_LSelectMode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Solo"
+            app:layout_constraintTop_toBottomOf="@id/title_Lselection_mode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:padding="16dp"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white" />
+
+    <TextView
+            android:id="@+id/text1_LSelectMode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Multijoueur Local"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@id/btnSolo_LSelectMode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:background="@drawable/textview_background" />
+
+    <LinearLayout
+            android:id="@+id/localMultiplayerButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/text1_LSelectMode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+        <Button
+                android:id="@+id/btnMultiLocalJ1_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J1"
+                android:layout_marginEnd="8dp"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+
+        <Button
+                android:id="@+id/btnMultiLocalJ2_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J2"
+                android:layout_marginEnd="8dp"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+
+        <Button
+                android:id="@+id/btnMultiLocalJ3_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J3"
+                android:layout_marginEnd="8dp"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+
+        <Button
+                android:id="@+id/btnMultiLocalJ4_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J4"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/text2_LSelectMode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Multijoueur en Ligne"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@id/localMultiplayerButtons"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:background="@drawable/textview_background" />
+
+    <LinearLayout
+            android:id="@+id/onlineMultiplayerButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/text2_LSelectMode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+        <Button
+                android:id="@+id/btnMultiOnlineJ1_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J1"
+                android:layout_marginEnd="8dp"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+
+        <Button
+                android:id="@+id/btnMultiOnlineJ2_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J2"
+                android:layout_marginEnd="8dp"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+
+        <Button
+                android:id="@+id/btnMultiOnlineJ3_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J3"
+                android:layout_marginEnd="8dp"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+
+        <Button
+                android:id="@+id/btnMultiOnlineJ4_LSelectMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J4"
+                android:padding="16dp"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/version_LSelectMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:text="@string/version_app"
+            android:gravity="center" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,16 @@
+<resources>
+    <string-array name="languages">
+        <item>Français</item>
+        <item>English</item>
+        <item>Español</item>
+        <item>Deutsch</item>
+        <item>Italiano</item>
+    </string-array>
+    <string-array name="loading_messages">
+            <item>Chargement des assets</item>
+            <item>Initialisation des données</item>
+            <item>Préparation de l\'interface</item>
+            <item>Connexion au serveur</item>
+            <item>Finalisation du chargement</item>
+        </string-array>
+</resources>

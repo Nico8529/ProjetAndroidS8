@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+    <ImageButton
+            android:id="@+id/btnBack_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/back_button" />
+
+    <TextView
+            android:id="@+id/title_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Statistiques"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp" />
+
+    <TextView
+            android:id="@+id/text1_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nbr de parties jouées"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/title_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nbrPartie_LStatistique"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/nbrPartie_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nbrPartieTotal"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/text1_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/text2_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nbr de parties perdues"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text1_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nbrPartiePerdu_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/nbrPartiePerdu_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nbrPartieTotalLose"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/text2_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/text3_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nbr de parties gagnées"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text2_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nbrPartieGagnée_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/nbrPartieGagnée_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nbrPartieTotalWin"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/text3_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/text4_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nbr de parties multijoueur"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text3_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nbrPartieMulti_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/nbrPartieMulti_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nbrPartieTotalMulti"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/text4_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/textScore_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Score"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/text4_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    <TextView
+            android:id="@+id/nameJ1_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bestJ1"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/textScore_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/statJ1_LStatistique"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/statJ1_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statJ1"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/nameJ1_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/nameJ2_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bestJ2"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/nameJ1_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/statJ2_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/statJ2_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statJ2"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/nameJ2_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/nameJ3_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bestJ3"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/nameJ2_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/statJ3_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/statJ3_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statJ3"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/nameJ3_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/nameJ4_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bestJ4"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/nameJ3_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/statJ4_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/statJ4_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statJ4"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/nameJ4_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/nameJ5_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bestJ5"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/nameJ4_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/statJ5_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/statJ5_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statJ5"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/nameJ5_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/nameJ6_LStatistique"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bestJ6"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/nameJ5_LStatistique"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/statJ6_LStatistique"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+            android:id="@+id/statJ6_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statJ6"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/nameJ6_LStatistique"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" />
+
+    <TextView
+            android:id="@+id/version_LStatistique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:text="@string/version_app"
+            android:gravity="center" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

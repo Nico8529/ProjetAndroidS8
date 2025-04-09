@@ -12,9 +12,14 @@ import java.util.List;
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
 
     private List<Quiz> quizList;
+    private OnQuizClickListener listener;
 
-    public QuizAdapter(List<Quiz> quizList) {
+    public QuizAdapter(List<Quiz> quizList, OnQuizClickListener listener) {
         this.quizList = quizList;
+        this.listener = listener;
+    }
+    public interface OnQuizClickListener {
+        void onQuizClick(Quiz quiz);
     }
 
     @NonNull
@@ -35,6 +40,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         } else {
             holder.premiumIcon.setVisibility(View.GONE);
         }
+        holder.itemView.setOnClickListener(v -> {
+            listener.onQuizClick(quiz);
+        });
     }
 
     @Override

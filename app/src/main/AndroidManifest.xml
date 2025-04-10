@@ -20,11 +20,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuDuJeu" />
-        <activity android:name=".SelectionMode" />
+
         <activity android:name=".MenuStatistique" />
         <activity android:name=".MenuSauvegarde" />
         <activity android:name=".MenuParametre" />
+
+        <activity android:name=".SelectionMode" />
         <activity android:name=".SelectionQuiz" />
+        <activity android:name=".SelectionMode2" />
+
+        <activity android:name=".GameQuiz" />
+        <activity android:name=".PalierActivity" />
+        <activity android:name=".MenuQuiz" />
+
 
 
     </application>

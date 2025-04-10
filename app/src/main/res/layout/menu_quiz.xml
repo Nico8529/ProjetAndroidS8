@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp"
+              android:gravity="center">
+
+    <!-- Afficher le titre du menu -->
+    <TextView
+            android:id="@+id/menuTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu Quiz"
+            android:textSize="24sp"
+            android:layout_marginBottom="20dp" />
+
+    <!-- Afficher le score -->
+    <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score : 0"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp" />
+
+    <!-- Afficher l'argent gagné -->
+    <TextView
+            android:id="@+id/moneyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Argent gagné : 0 €"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp" />
+
+    <!-- Afficher le palier -->
+    <TextView
+            android:id="@+id/palierText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Palier actuel : Niveau 1"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp" />
+
+    <!-- Zone de saisie du nom -->
+    <EditText
+            android:id="@+id/playerNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrez votre nom"
+            android:layout_marginBottom="20dp" />
+
+    <!-- Bouton pour sauvegarder le nom -->
+    <Button
+            android:id="@+id/saveNameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sauvegarder Nom"
+            android:layout_marginBottom="20dp" />
+
+    <!-- Bouton pour quitter -->
+    <Button
+            android:id="@+id/quitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quitter"
+            android:layout_marginBottom="10dp" />
+
+    <!-- Bouton pour revenir au quiz -->
+    <Button
+            android:id="@+id/startQuizButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Retour au Quiz" />
+</LinearLayout>

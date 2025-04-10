@@ -3,17 +3,59 @@ package com.example.quiz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SelectionMode2 extends AppCompatActivity {
-    SharedPreferences prefs = getSharedPreferences("QUIZ_DATA", MODE_PRIVATE);
-    int quizId = prefs.getInt("selectedQuizId", -1);
-    String title = prefs.getString("selectedQuizTitle", "Inconnu");
+
+    private int quizId;
+    private String quizTitle;
+    private boolean isPremium;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.selection_mode2);
+
+        // 🔙 Bouton retour
+        ImageButton btnBack = findViewById(R.id.btnBack_LSelection_mode2);
+        btnBack.setOnClickListener(v -> finish());
+
+        // 🧠 Récupérer les données du quiz sélectionné
+        SharedPreferences prefs = getSharedPreferences("QUIZ_DATA", MODE_PRIVATE);
+        quizId = prefs.getInt("selectedQuizId", -1);
+        quizTitle = prefs.getString("selectedQuizTitle", "Quiz inconnu");
+        isPremium = prefs.getBoolean("isPremium", false);
+
+        // 🖋 Affichage du titre dans la page
+        TextView titleText = findViewById(R.id.title_Lselection_mode2);
+        titleText.setText("Mode de jeu pour : " + quizTitle);
+
+        // 🕹 Boutons de mode
+        Button btnNormal = findViewById(R.id.btnNormal_LSelection_mode2);
+        Button btnMontre = findViewById(R.id.btnMontre_LSelection_mode2);
+        Button btnFast = findViewById(R.id.btnFast_LSelection_mode2);
+        Button btn3Best = findViewById(R.id.btn3Best_LSelection_mode2);
+        Button btnDiffPoint = findViewById(R.id.btnDiffPoint_LSelection_mode2);
+
+        // 🧪 Actions des boutons
+        btnNormal.setOnClickListener(v -> launchMode("Normal"));
+        btnMontre.setOnClickListener(v -> launchMode("Contre la montre"));
+        btnFast.setOnClickListener(v -> launchMode("Le plus rapide"));
+        btn3Best.setOnClickListener(v -> launchMode("3 meilleurs sur 4"));
+        btnDiffPoint.setOnClickListener(v -> launchMode("Répartition régressive"));
+    }
+
+    private void launchMode(String modeName) {
+        Intent intent = new Intent(this, GameQuiz.class);
+        intent.putExtra("quizId", quizId);
+        intent.putExtra("mode", modeName);
+        intent.putExtra("quizTitle", quizTitle);
+        startActivity(intent);
+    }
+
 }

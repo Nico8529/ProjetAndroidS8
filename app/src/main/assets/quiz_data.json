@@ -1,0 +1,314 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "title": "Quiz Nature",
+      "questions": [
+        {
+          "question": "Quel est le plus grand arbre ?",
+          "options": ["Séquoia", "Chêne", "Érable", "Sapin"],
+          "correctAnswer": 0
+        },
+        {
+          "question": "Quel gaz les plantes absorbent-elles ?",
+          "options": ["Oxygène", "Azote", "Dioxyde de carbone", "Hydrogène"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Quel est le plus grand désert chaud ?",
+          "options": ["Gobi", "Sahara", "Atacama", "Kalahari"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Où trouve-t-on les récifs coralliens ?",
+          "options": ["En montagne", "Dans les océans", "Dans les forêts", "Dans les lacs"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel est l’animal emblème du WWF ?",
+          "options": ["Tigre", "Panda", "Éléphant", "Ours polaire"],
+          "correctAnswer": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Culture Générale",
+      "questions": [
+        {
+          "question": "Quelle est la capitale du Canada ?",
+          "options": ["Toronto", "Ottawa", "Vancouver", "Montréal"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Qui a peint la Joconde ?",
+          "options": ["Michel-Ange", "Raphaël", "Léonard de Vinci", "Van Gogh"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Combien y a-t-il de continents ?",
+          "options": ["5", "6", "7", "8"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Dans quel pays se trouve la tour de Pise ?",
+          "options": ["Espagne", "France", "Italie", "Grèce"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Quel est le plus long fleuve du monde ?",
+          "options": ["Nil", "Amazone", "Mississippi", "Yangtsé"],
+          "correctAnswer": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Mathématiques",
+      "questions": [
+        {
+          "question": "Combien font 12 x 8 ?",
+          "options": ["96", "84", "108", "88"],
+          "correctAnswer": 0
+        },
+        {
+          "question": "Quelle est la racine carrée de 144 ?",
+          "options": ["10", "11", "12", "13"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Quel est le symbole de Pi ?",
+          "options": ["π", "Ω", "µ", "δ"],
+          "correctAnswer": 0
+        },
+        {
+          "question": "Combien d’angles droits dans un carré ?",
+          "options": ["2", "3", "4", "5"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Que vaut 5² ?",
+          "options": ["10", "15", "20", "25"],
+          "correctAnswer": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Sport",
+      "questions": [
+        {
+          "question": "Combien de joueurs dans une équipe de football ?",
+          "options": ["9", "10", "11", "12"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Qui a gagné la Coupe du Monde 2018 ?",
+          "options": ["Brésil", "France", "Croatie", "Allemagne"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Combien de points pour un panier à 3 points ?",
+          "options": ["1", "2", "3", "4"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Quel sport pratique Serena Williams ?",
+          "options": ["Basket", "Tennis", "Football", "Golf"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel pays a organisé les JO 2020 ?",
+          "options": ["Chine", "Japon", "France", "Grèce"],
+          "correctAnswer": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Cinéma",
+      "questions": [
+        {
+          "question": "Qui joue Iron Man ?",
+          "options": ["Chris Evans", "Robert Downey Jr", "Tom Holland", "Chris Hemsworth"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel film a remporté l’Oscar du meilleur film en 2020 ?",
+          "options": ["Joker", "Parasite", "1917", "Once Upon a Time in Hollywood"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Qui a réalisé 'Inception' ?",
+          "options": ["Spielberg", "Nolan", "Tarantino", "Scorsese"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel est le studio de Toy Story ?",
+          "options": ["DreamWorks", "Pixar", "Sony", "Blue Sky"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel personnage dit 'Je suis ton père' ?",
+          "options": ["Obi-Wan", "Dark Vador", "Yoda", "Luke"],
+          "correctAnswer": 1
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Informatique",
+      "questions": [
+        {
+          "question": "Que veut dire HTML ?",
+          "options": ["HyperText Markup Language", "HighText Main Language", "HyperTool Multi Language", "None"],
+          "correctAnswer": 0
+        },
+        {
+          "question": "Quel langage utilise Android ?",
+          "options": ["Swift", "Kotlin", "Objective-C", "PHP"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel système d’exploitation est libre ?",
+          "options": ["Windows", "macOS", "Linux", "iOS"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Que signifie CPU ?",
+          "options": ["Central Power Unit", "Control Processing Unit", "Central Processing Unit", "Computer Personal Unit"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Quel langage commence souvent par 'print(\"Hello World\")' ?",
+          "options": ["Java", "Python", "C++", "Swift"],
+          "correctAnswer": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Littérature",
+      "questions": [
+        {
+          "question": "Qui a écrit 'Le Petit Prince' ?",
+          "options": ["Molière", "Exupéry", "Hugo", "Zola"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel auteur a créé Sherlock Holmes ?",
+          "options": ["Agatha Christie", "Poe", "Conan Doyle", "Lovecraft"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "De quel pays vient Shakespeare ?",
+          "options": ["France", "USA", "Italie", "Angleterre"],
+          "correctAnswer": 3
+        },
+        {
+          "question": "Quel est le genre de 'Candide' ?",
+          "options": ["Poème", "Théâtre", "Roman", "Essai"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Qui a écrit 'L'Étranger' ?",
+          "options": ["Camus", "Sartre", "Beauvoir", "Hugo"],
+          "correctAnswer": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Sciences",
+      "questions": [
+        {
+          "question": "Quelle est la formule de l’eau ?",
+          "options": ["H2", "O2", "H2O", "CO2"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Qui a découvert la gravité ?",
+          "options": ["Galilée", "Einstein", "Newton", "Tesla"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Combien de planètes dans le système solaire ?",
+          "options": ["7", "8", "9", "10"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel est l’élément chimique O ?",
+          "options": ["Oxygène", "Or", "Osmium", "Oxonium"],
+          "correctAnswer": 0
+        },
+        {
+          "question": "À quelle vitesse va la lumière ?",
+          "options": ["300 000 km/s", "150 000 km/s", "1 000 km/s", "10 000 km/s"],
+          "correctAnswer": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Musique",
+      "questions": [
+        {
+          "question": "Combien y a-t-il de notes dans une gamme ?",
+          "options": ["5", "6", "7", "8"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Qui chante 'Thriller' ?",
+          "options": ["Elvis", "Prince", "Michael Jackson", "Usher"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Quel instrument a des touches noires et blanches ?",
+          "options": ["Guitare", "Batterie", "Piano", "Violoncelle"],
+          "correctAnswer": 2
+        },
+        {
+          "question": "Comment s’appelle un orchestre sans chanteur ?",
+          "options": ["Quatuor", "Instrumental", "Chorale", "Solo"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel est le symbole de la clé de sol ?",
+          "options": ["𝄞", "♭", "𝄫", "𝄐"],
+          "correctAnswer": 0
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Gastronomie",
+      "questions": [
+        {
+          "question": "Quel ingrédient est principal dans le guacamole ?",
+          "options": ["Poivron", "Avocat", "Tomate", "Concombre"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel pays est connu pour les sushis ?",
+          "options": ["Chine", "Japon", "Corée", "Thaïlande"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Que veut dire 'al dente' ?",
+          "options": ["Très cuit", "Bien assaisonné", "Croquant", "Légèrement ferme"],
+          "correctAnswer": 3
+        },
+        {
+          "question": "Quel fromage est dans une pizza Margherita ?",
+          "options": ["Brie", "Mozzarella", "Camembert", "Chèvre"],
+          "correctAnswer": 1
+        },
+        {
+          "question": "Quel dessert est fait de blancs d’œufs et sucre ?",
+          "options": ["Tarte", "Meringue", "Crème brûlée", "Mousse"],
+          "correctAnswer": 1
+        }
+      ]
+    }
+  ]
+}

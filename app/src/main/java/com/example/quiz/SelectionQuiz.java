@@ -25,7 +25,7 @@ public class SelectionQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_quiz);
-        findViewById(R.id.btnBack_Lselection_quiz).setOnClickListener(v -> finish());
+        findViewById(R.id.btnBack_LSelection_Quiz).setOnClickListener(v -> finish());
 
         recyclerView = findViewById(R.id.recyclerView_SelectionQuiz);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

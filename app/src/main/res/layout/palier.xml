@@ -1,9 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity"/>
+<!-- palier.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:padding="20dp">
+
+    <TextView
+            android:id="@+id/palierTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Palier actuel"
+            android:textSize="24sp"
+            android:layout_marginBottom="20dp"/>
+
+    <!-- Montant du palier -->
+    <TextView
+            android:id="@+id/palierAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 €"
+            android:textSize="32sp"
+            android:textColor="#4CAF50"
+            android:layout_marginBottom="40dp"/>
+
+    <!-- Bouton pour revenir à la question -->
+    <Button
+            android:id="@+id/nextQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suivant"
+            android:visibility="gone"/>
+</LinearLayout>

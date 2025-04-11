@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string-array name="languages">
         <item>Français</item>
         <item>English</item>
@@ -14,4 +14,11 @@
             <item>Connexion au serveur</item>
             <item>Finalisation du chargement</item>
         </string-array>
+    <string-array name="motivational_quotes">
+        <item>« La réussite appartient à ceux qui se lèvent tôt. »</item>
+        <item>« Ne rêve pas ta vie, vis tes rêves. »</item>
+        <item>« Chaque clic te rapproche de la victoire. »</item>
+        <item>« Rien n\'est impossible pour un esprit motivé. »</item>
+    </string-array>
+
 </resources>

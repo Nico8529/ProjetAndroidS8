@@ -6,13 +6,15 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 public class PalierActivity extends Activity {
 
     private TextView palierAmountText;
     private Button nextQuestionButton;
     private int montantGagne;
     private int currentLevel;
+
+    // Enlever la déclaration et l'initialisation de TextToSpeech ici, car vous ne souhaitez pas qu'il parle sur cette page.
+    // private TextToSpeech textToSpeech; (à ne pas inclure ici)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,4 +52,7 @@ public class PalierActivity extends Activity {
         // Cette action dépend de la structure de votre jeu. Par exemple :
         finish();  // Cette méthode fermera l'activité de palier et retournera à l'activité principale du quiz.
     }
+
+    // Si vous avez une logique dans d'autres activités où le TTS est activé, vérifiez si vous voulez l'exclure ici
+    // Si vous souhaitez désactiver TTS, assurez-vous de ne pas initialiser ou appeler `textToSpeech.speak()` ici
 }

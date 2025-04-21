@@ -1,0 +1,15 @@
+{
+  "totalPlayed": 42,
+  "totalWon": 18,
+  "totalLost": 24,
+  "totalMultiplayer": 10,
+  "scores": [
+    {"name": "Diana", "score": 95},
+    {"name": "Bob", "score": 92},
+    {"name": "George", "score": 91},
+    {"name": "Frank", "score": 88},
+    {"name": "Alice", "score": 85},
+    {"name": "Charlie", "score": 78},
+    {"name": "Eva", "score": 70}
+  ]
+}

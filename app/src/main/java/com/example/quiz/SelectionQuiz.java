@@ -39,6 +39,7 @@ public class SelectionQuiz extends AppCompatActivity {
             startActivity(intent);
         });
         recyclerView.setAdapter(quizAdapter);
+
         EditText searchBar = findViewById(R.id.searchBarre_LSelection_Quiz);
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -53,6 +54,7 @@ public class SelectionQuiz extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
     }
+
     private void loadQuizData() {
         String jsonData = "[{\"id\":1,\"title\":\"Quiz Nature\",\"score\":85,\"isPremium\":true,\"keywords\":\"nature environnement arbre\"}," +
                 "{\"id\":2,\"title\":\"Culture Générale\",\"score\":70,\"isPremium\":false,\"keywords\":\"histoire géographie culture\"}," +
@@ -64,7 +66,6 @@ public class SelectionQuiz extends AppCompatActivity {
                 "{\"id\":8,\"title\":\"Sciences\",\"score\":92,\"isPremium\":true,\"keywords\":\"sciences physique chimie\"}," +
                 "{\"id\":9,\"title\":\"Musique\",\"score\":80,\"isPremium\":false,\"keywords\":\"musique instruments notes\"}," +
                 "{\"id\":10,\"title\":\"Gastronomie\",\"score\":78,\"isPremium\":false,\"keywords\":\"cuisine plats chefs\"}]";
-
 
         try {
             JSONArray jsonArray = new JSONArray(jsonData);
@@ -84,6 +85,7 @@ public class SelectionQuiz extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     private void saveSelectedQuiz(Quiz quiz) {
         SharedPreferences prefs = getSharedPreferences("QUIZ_DATA", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -93,6 +95,7 @@ public class SelectionQuiz extends AppCompatActivity {
         editor.putBoolean("isPremium", quiz.isPremium());
         editor.apply();
     }
+
     private void filterQuiz(String text) {
         List<Quiz> filteredList = new ArrayList<>();
         for (Quiz quiz : quizList) {
@@ -107,6 +110,4 @@ public class SelectionQuiz extends AppCompatActivity {
         });
         recyclerView.setAdapter(quizAdapter);
     }
-
-
 }

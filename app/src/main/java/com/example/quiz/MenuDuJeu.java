@@ -26,7 +26,7 @@ public class MenuDuJeu extends AppCompatActivity {
         // Démarrer la musique de fond quand le menu est chargé
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.surprise);  // Remplace par le nom de ton fichier audio
         mediaPlayer.setLooping(true);  // Optionnel : pour que la musique se répète en boucle
-        mediaPlayer.start();  // Lancer la musique immédiatement
+        //mediaPlayer.start();  // Lancer la musique immédiatement
 
         // Configuration des écouteurs pour chaque bouton
         btnContinue.setOnClickListener(v -> startActivity(new Intent(MenuDuJeu.this, SelectionMode.class)));

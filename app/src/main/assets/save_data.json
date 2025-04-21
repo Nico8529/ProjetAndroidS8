@@ -1,0 +1,86 @@
+{
+  "saves": [
+    {
+      "slot": 1,
+      "playerName": "Alice",
+      "mode": "Solo",
+      "quizTitle": "Mathématiques",
+      "quizId": 2,
+      "currentQuestionIndex": 5,
+      "score": 10000,
+      "lives": 1,
+      "isJoker5050Used": true,
+      "isJokerSkipUsed": false,
+      "isJokerAudienceUsed": false
+    },
+    {
+      "slot": 2,
+      "playerName": "Bob",
+      "mode": "Multi LAN",
+      "quizTitle": "Nature",
+      "quizId": 1,
+      "currentQuestionIndex": 2,
+      "score": 1000,
+      "lives": 1,
+      "isJoker5050Used": false,
+      "isJokerSkipUsed": false,
+      "isJokerAudienceUsed": false
+    }
+  ,
+    {
+      "slot": 3,
+      "playerName": "Minouche",
+      "mode": "Multi LAN",
+      "quizTitle": "Nature",
+      "quizId": 1,
+      "currentQuestionIndex": 2,
+      "score": 1000,
+      "lives": 1,
+      "isJoker5050Used": false,
+      "isJokerSkipUsed": false,
+      "isJokerAudienceUsed": false
+    }
+  ,
+    {
+      "slot": 4,
+      "playerName": "Léa",
+      "mode": "Multi LAN",
+      "quizTitle": "Nature",
+      "quizId": 1,
+      "currentQuestionIndex": 2,
+      "score": 1000,
+      "lives": 1,
+      "isJoker5050Used": false,
+      "isJokerSkipUsed": false,
+      "isJokerAudienceUsed": false
+    }
+  ,
+    {
+      "slot": 5,
+      "playerName": "Max",
+      "mode": "Multi LAN",
+      "quizTitle": "Nature",
+      "quizId": 1,
+      "currentQuestionIndex": 2,
+      "score": 1000,
+      "lives": 1,
+      "isJoker5050Used": false,
+      "isJokerSkipUsed": false,
+      "isJokerAudienceUsed": false
+    }
+  ,
+    {
+      "slot": 6,
+      "playerName": "Eloise",
+      "mode": "Multi LAN",
+      "quizTitle": "Nature",
+      "quizId": 1,
+      "currentQuestionIndex": 2,
+      "score": 1000,
+      "lives": 1,
+      "isJoker5050Used": false,
+      "isJokerSkipUsed": false,
+      "isJokerAudienceUsed": false
+    }
+  ]
+}

@@ -16,7 +16,6 @@ public class Chargement extends AppCompatActivity {
     private int progress = 0;
     private Handler handler = new Handler();
 
-    // Étapes à simuler (modifiable selon ton app)
     private final String[] loadingSteps = {
             "Chargement des données...",
             "Initialisation des paramètres...",
@@ -32,24 +31,25 @@ public class Chargement extends AppCompatActivity {
         loadingText = findViewById(R.id.text_LChargement);
         progressBar = findViewById(R.id.title_LChargement);
 
-        // Préparer le MediaPlayer et le jouer
+        // Préparer et jouer le MediaPlayer immédiatement avec listener
         final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.amen);
         if (mediaPlayer != null) {
-            mediaPlayer.start();  // Lancer le son immédiatement
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release(); // libérer la mémoire après lecture
+                navigateToNextActivity(); // Passer à l'activité suivante seulement après que le son ait fini
+            });
+            mediaPlayer.start();  // Lancer le son après avoir attaché le listener
         }
 
-        // Lancement de la séquence de chargement
+        // Lancer la séquence de chargement
         startLoadingSequence();
 
-        // Une fois le chargement terminé, passer à l'activité suivante après la fin du son
+        // Fallback : forcer la navigation si le son ne se joue pas correctement
         handler.postDelayed(() -> {
-            if (mediaPlayer != null) {
-                mediaPlayer.setOnCompletionListener(mp -> {
-                    mp.release(); // libérer la mémoire après lecture
-                    navigateToNextActivity(); // Passer à l'activité suivante seulement après que le son ait fini
-                });
+            if (mediaPlayer == null || !mediaPlayer.isPlaying()) {
+                navigateToNextActivity();
             }
-        }, 1000); // Délai de 1 seconde avant de mettre le listener (donne le temps au MediaPlayer de se charger)
+        }, 5000); // 5 secondes max d'attente
     }
 
     private void startLoadingSequence() {
@@ -61,21 +61,15 @@ public class Chargement extends AppCompatActivity {
         if (stepIndex < loadingSteps.length) {
             loadingText.setText(loadingSteps[stepIndex]);
             progress += 100 / loadingSteps.length;
-
-            // Mise à jour de la barre de progression
             progressBar.setProgress(progress);
 
-            // Attendre 1 seconde avant de passer à l'étape suivante
             handler.postDelayed(() -> simulateLoadingStep(stepIndex + 1), 1000);
-        } else {
-            // Si les étapes sont terminées et que le son n'est pas encore joué, on s'assure de passer à l'activité
         }
     }
 
     private void navigateToNextActivity() {
-        // Lancer l'activité MenuDuJeu après le chargement
-        Intent intent = new Intent(Chargement.this, MenuDuJeu.class); // Remplacer par ton activité de jeu
+        Intent intent = new Intent(Chargement.this, MenuDuJeu.class);
         startActivity(intent);
-        finish(); // Fermer l'activité de chargement pour qu'elle ne reste pas dans la pile
+        finish();
     }
 }

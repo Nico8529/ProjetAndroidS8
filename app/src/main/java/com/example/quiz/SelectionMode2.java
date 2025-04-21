@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,10 +29,21 @@ public class SelectionMode2 extends AppCompatActivity {
         quizId = prefs.getInt("selectedQuizId", -1);
         quizTitle = prefs.getString("selectedQuizTitle", "Quiz inconnu");
         isPremium = prefs.getBoolean("isPremium", false);
+        int score = prefs.getInt("selectedQuizScore", -1);
 
-        // 🖋 Affichage du titre dans la page
+        // 🖋 Affichage du titre et score du quiz
         TextView titleText = findViewById(R.id.title_Lselection_mode2);
         titleText.setText("Mode de jeu pour : " + quizTitle);
+
+        TextView quizTitleText = findViewById(R.id.selectedQuizTitleText);
+        quizTitleText.setText("Titre du quiz : " + quizTitle);
+
+        TextView quizScoreText = findViewById(R.id.selectedQuizScoreText);
+        if (score != -1) {
+            quizScoreText.setText("Score : " + score);
+        } else {
+            quizScoreText.setText("Score : Aucun score disponible.");
+        }
 
         // 🕹 Boutons de mode
         Button btnNormal = findViewById(R.id.btnNormal_LSelection_mode2);
@@ -57,5 +67,4 @@ public class SelectionMode2 extends AppCompatActivity {
         intent.putExtra("quizTitle", quizTitle);
         startActivity(intent);
     }
-
 }

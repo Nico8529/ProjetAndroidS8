@@ -86,12 +86,12 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/text2_LStatistique"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/nbrPartieGagnée_LStatistique"
+            app:layout_constraintEnd_toStartOf="@id/nbrPartieGagnee_LStatistique"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp" />
 
     <TextView
-            android:id="@+id/nbrPartieGagnée_LStatistique"
+            android:id="@+id/nbrPartieGagnee_LStatistique"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nbrPartieTotalWin"

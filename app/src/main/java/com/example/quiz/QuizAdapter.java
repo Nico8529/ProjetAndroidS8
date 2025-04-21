@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
+import java.util.Objects;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
 
@@ -34,8 +35,10 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
         Quiz quiz = quizList.get(position);
         holder.quizTitle.setText(quiz.getTitle());
-        holder.quizScore.setText("Score: " + quiz.getScore());
-        if (quiz.isPremium()) {
+        holder.quizDescription.setText(quiz.quizDescription());
+        holder.nombreQuestion.setText("Questions : " + quiz.nombreQuestion());
+        holder.quizScore.setText("Score Max : " + quiz.getScore());
+        if (Objects.equals(quiz.premium(), "yes")) {
             holder.premiumIcon.setVisibility(View.VISIBLE);
         } else {
             holder.premiumIcon.setVisibility(View.GONE);
@@ -53,13 +56,17 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     public static class QuizViewHolder extends RecyclerView.ViewHolder {
         TextView quizTitle;
         TextView quizScore;
+        TextView nombreQuestion;
+        TextView quizDescription;
         ImageView premiumIcon;
 
         public QuizViewHolder(@NonNull View itemView) {
             super(itemView);
             quizTitle = itemView.findViewById(R.id.quizTitle);
-            quizScore = itemView.findViewById(R.id.quizScore);
-            premiumIcon = itemView.findViewById(R.id.premiumIcon);
+            quizScore = itemView.findViewById(R.id.quizscore);
+            nombreQuestion = itemView.findViewById(R.id.nombreQuestion);
+            quizDescription = itemView.findViewById(R.id.quizDescription);
+            premiumIcon = itemView.findViewById(R.id.premiumicon);
         }
     }
 }

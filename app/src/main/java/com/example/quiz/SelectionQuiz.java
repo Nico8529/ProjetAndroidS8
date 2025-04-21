@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +42,7 @@ public class SelectionQuiz extends AppCompatActivity {
             startActivity(intent);
         });
         recyclerView.setAdapter(quizAdapter);
+        android.util.Log.d("QUIZ_DEBUG", "Adapter assigné au RecyclerView !");
 
         EditText searchBar = findViewById(R.id.searchBarre_LSelection_Quiz);
         searchBar.addTextChangedListener(new TextWatcher() {
@@ -56,34 +60,54 @@ public class SelectionQuiz extends AppCompatActivity {
     }
 
     private void loadQuizData() {
-        String jsonData = "[{\"id\":1,\"title\":\"Quiz Nature\",\"score\":85,\"isPremium\":true,\"keywords\":\"nature environnement arbre\"}," +
-                "{\"id\":2,\"title\":\"Culture Générale\",\"score\":70,\"isPremium\":false,\"keywords\":\"histoire géographie culture\"}," +
-                "{\"id\":3,\"title\":\"Mathématiques\",\"score\":90,\"isPremium\":true,\"keywords\":\"maths calcul logique\"}," +
-                "{\"id\":4,\"title\":\"Sport\",\"score\":60,\"isPremium\":false,\"keywords\":\"sport football basket\"}," +
-                "{\"id\":5,\"title\":\"Cinéma\",\"score\":75,\"isPremium\":false,\"keywords\":\"films cinéma acteurs\"}," +
-                "{\"id\":6,\"title\":\"Informatique\",\"score\":95,\"isPremium\":true,\"keywords\":\"informatique code programmation\"}," +
-                "{\"id\":7,\"title\":\"Littérature\",\"score\":88,\"isPremium\":false,\"keywords\":\"livres écrivains poésie\"}," +
-                "{\"id\":8,\"title\":\"Sciences\",\"score\":92,\"isPremium\":true,\"keywords\":\"sciences physique chimie\"}," +
-                "{\"id\":9,\"title\":\"Musique\",\"score\":80,\"isPremium\":false,\"keywords\":\"musique instruments notes\"}," +
-                "{\"id\":10,\"title\":\"Gastronomie\",\"score\":78,\"isPremium\":false,\"keywords\":\"cuisine plats chefs\"}]";
+        String jsonData = loadJSONFromAsset();
 
         try {
-            JSONArray jsonArray = new JSONArray(jsonData);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                Quiz quiz = new Quiz(
-                        jsonObject.getInt("id"),
-                        jsonObject.getString("title"),
-                        jsonObject.getInt("score"),
-                        jsonObject.getBoolean("isPremium"),
-                        jsonObject.getString("keywords")
-                );
+            JSONObject root = new JSONObject(jsonData);
+            JSONArray quizzesArray = root.getJSONArray("quizzes");
+
+            for (int i = 0; i < quizzesArray.length(); i++) {
+                JSONObject quizObject = quizzesArray.getJSONObject(i);
+                if (jsonData == null) {
+                    android.util.Log.e("QUIZ_DEBUG", "Fichier JSON non chargé !");
+                    return;
+                } else {
+                    android.util.Log.d("QUIZ_DEBUG", "JSON chargé !");
+                }
+
+                int id = quizObject.getInt("id");
+                String title = quizObject.getString("title");
+                int scoreMax = quizObject.getInt("scoreMax");
+                String premium = quizObject.getString("premium");
+                String keywords = quizObject.getString("keywords");
+                String quizDescription = quizObject.getString("quizDescription");
+                int nombreQuestion = quizObject.getInt("nombreQuestion");
+                // Crée ton objet Quiz (adapté à ta classe)
+                Quiz quiz = new Quiz(id, title, scoreMax, premium, keywords,quizDescription,nombreQuestion);
 
                 quizList.add(quiz);
             }
+            android.util.Log.d("QUIZ_DEBUG", "Nombre de quizzes chargés : " + quizList.size());
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    private String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("quiz_data.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 
     private void saveSelectedQuiz(Quiz quiz) {
@@ -92,7 +116,9 @@ public class SelectionQuiz extends AppCompatActivity {
         editor.putInt("selectedQuizId", quiz.getId());
         editor.putString("selectedQuizTitle", quiz.getTitle());
         editor.putInt("selectedQuizScore", quiz.getScore());
-        editor.putBoolean("isPremium", quiz.isPremium());
+        editor.putString("premium", quiz.premium());
+        editor.putString("quizDescription", quiz.quizDescription());
+        editor.putInt("nombreQuestion", quiz.nombreQuestion());
         editor.apply();
     }
 

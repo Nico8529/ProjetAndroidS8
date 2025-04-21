@@ -1,44 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="2dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="16dp"
+              android:background="@drawable/quiz_background"
+              android:layout_margin="8dp"
+              android:elevation="4dp"
+              android:layout_gravity="center">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Nom du quiz -->
+    <TextView
+            android:id="@+id/quizTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:text="Quiz Title"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
 
-        <ImageView
-                android:id="@+id/premiumIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone" />
+    <!-- Description du quiz -->
+    <TextView
+            android:id="@+id/quizDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description du quiz"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
-        <TextView
-                android:id="@+id/quizTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Nom du Quiz"
-                android:textSize="18sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/premiumIcon"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="8dp" />
+    <!-- Nombre de questions -->
+    <TextView
+            android:id="@+id/nombreQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Questions: 0"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
 
-        <TextView
-                android:id="@+id/quizScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Score: 0"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+    <!-- Score Max -->
+    <TextView
+            android:id="@+id/quizscore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score Max: 0"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp"/>
+
+    <!-- Icône Premium (visible seulement si applicable) -->
+    <ImageView
+            android:id="@+id/premiumicon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_premium"
+            android:visibility="gone"
+            android:layout_gravity="end"/>
+
+</LinearLayout>

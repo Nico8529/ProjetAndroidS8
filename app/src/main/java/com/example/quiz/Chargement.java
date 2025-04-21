@@ -20,8 +20,19 @@ public class Chargement extends AppCompatActivity {
             "Chargement des données...",
             "Initialisation des paramètres...",
             "Récupération des scores...",
-            "Optimisation finale..."
+            "Optimisation finale...",
+            "Vérification de la connexion réseau...",
+            "Mise à jour des ressources...",
+            "Chargement des images et icônes...",
+            "Préparation de l'interface utilisateur...",
+            "Chargement des utilisateurs récents...",
+            "Initialisation des fonctionnalités avancées...",
+            "Récupération des paramètres de l'utilisateur...",
+            "Préparation des animations...",
+            "Synchronisation des sauvegardes...",
+            "Finalisation de l'application..."
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +74,7 @@ public class Chargement extends AppCompatActivity {
             progress += 100 / loadingSteps.length;
             progressBar.setProgress(progress);
 
-            handler.postDelayed(() -> simulateLoadingStep(stepIndex + 1), 1000);
+            handler.postDelayed(() -> simulateLoadingStep(stepIndex + 1), 400);
         }
     }
 

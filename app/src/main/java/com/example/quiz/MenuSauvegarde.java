@@ -1,582 +1,188 @@
 package com.example.quiz;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import android.widget.TextView;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.json.JSONException;
-
-import java.io.InputStreamReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuSauvegarde extends AppCompatActivity {
 
-    private CardView cardSave1, cardSave2, cardSave3, cardSave4, cardSave5, cardSave6;
-    private TextView playerName1, quizName1, gameMode1, score1;
-    private TextView playerName2, quizName2, gameMode2, score2;
-    private TextView playerName3, quizName3, gameMode3, score3;
-    private TextView playerName4, quizName4, gameMode4, score4;
-    private TextView playerName5, quizName5, gameMode5, score5;
-    private TextView playerName6, quizName6, gameMode6, score6;
-    private ImageButton btnLoad1, btnDelete1, btnLoad2, btnDelete2, btnLoad3, btnDelete3, btnLoad4, btnDelete4, btnLoad5, btnDelete5, btnLoad6, btnDelete6;
+    // Déclaration des vues (boutons et textViews)
+    ImageButton btnLoad1, btnLoad2, btnLoad3, btnLoad4, btnLoad5, btnLoad6;
+    ImageButton btnDelete1, btnDelete2, btnDelete3, btnDelete4, btnDelete5, btnDelete6;
+    TextView playerName1, playerName2, playerName3, playerName4, playerName5, playerName6;
+    TextView quizName1, quizName2, quizName3, quizName4, quizName5, quizName6;
+    TextView gameMode1, gameMode2, gameMode3, gameMode4, gameMode5, gameMode6;
+    TextView score1, score2, score3, score4, score5, score6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_sauvegarde);
+        findViewById(R.id.btnBack_LSauvegarde).setOnClickListener(v -> finish());
+        // Initialiser les vues
+        initializeViews();
 
-        cardSave1 = findViewById(R.id.cardSave1);
-        cardSave2 = findViewById(R.id.cardSave2);
-        cardSave3 = findViewById(R.id.cardSave3);
-        cardSave4 = findViewById(R.id.cardSave4);
-        cardSave5 = findViewById(R.id.cardSave5);
-        cardSave6 = findViewById(R.id.cardSave6);
+        // Charger les données de sauvegarde et configurer les actions des boutons
+        loadSaveData();
+    }
 
-        playerName1 = findViewById(R.id.playerName1);
-        quizName1 = findViewById(R.id.quizName1);
-        gameMode1 = findViewById(R.id.gameMode1);
-        score1 = findViewById(R.id.score1);
-
-        playerName2 = findViewById(R.id.playerName2);
-        quizName2 = findViewById(R.id.quizName2);
-        gameMode2 = findViewById(R.id.gameMode2);
-        score2 = findViewById(R.id.score2);
-
-        playerName3 = findViewById(R.id.playerName3);
-        quizName3 = findViewById(R.id.quizName3);
-        gameMode3 = findViewById(R.id.gameMode3);
-        score3 = findViewById(R.id.score3);
-
-        playerName4 = findViewById(R.id.playerName4);
-        quizName4 = findViewById(R.id.quizName4);
-        gameMode4 = findViewById(R.id.gameMode4);
-        score4 = findViewById(R.id.score4);
-
-        playerName5 = findViewById(R.id.playerName5);
-        quizName5 = findViewById(R.id.quizName5);
-        gameMode5 = findViewById(R.id.gameMode5);
-        score5 = findViewById(R.id.score5);
-
-        playerName6 = findViewById(R.id.playerName6);
-        quizName6 = findViewById(R.id.quizName6);
-        gameMode6 = findViewById(R.id.gameMode6);
-        score6 = findViewById(R.id.score6);
-
-        // Boutons de chargement et suppression pour les sauvegardes
+    private void initializeViews() {
         btnLoad1 = findViewById(R.id.btnLoad1);
-        btnDelete1 = findViewById(R.id.btnDelete1);
-
         btnLoad2 = findViewById(R.id.btnLoad2);
-        btnDelete2 = findViewById(R.id.btnDelete2);
-
         btnLoad3 = findViewById(R.id.btnLoad3);
-        btnDelete3 = findViewById(R.id.btnDelete3);
-
         btnLoad4 = findViewById(R.id.btnLoad4);
-        btnDelete4 = findViewById(R.id.btnDelete4);
-
         btnLoad5 = findViewById(R.id.btnLoad5);
-        btnDelete5 = findViewById(R.id.btnDelete5);
-
         btnLoad6 = findViewById(R.id.btnLoad6);
+
+        btnDelete1 = findViewById(R.id.btnDelete1);
+        btnDelete2 = findViewById(R.id.btnDelete2);
+        btnDelete3 = findViewById(R.id.btnDelete3);
+        btnDelete4 = findViewById(R.id.btnDelete4);
+        btnDelete5 = findViewById(R.id.btnDelete5);
         btnDelete6 = findViewById(R.id.btnDelete6);
 
+        // Initialisation des TextViews pour les données de sauvegarde
+        playerName1 = findViewById(R.id.playerName1);
+        playerName2 = findViewById(R.id.playerName2);
+        playerName3 = findViewById(R.id.playerName3);
+        playerName4 = findViewById(R.id.playerName4);
+        playerName5 = findViewById(R.id.playerName5);
+        playerName6 = findViewById(R.id.playerName6);
 
-        // Charger les données depuis le fichier JSON
-        loadSaveData();
+        quizName1 = findViewById(R.id.quizName1);
+        quizName2 = findViewById(R.id.quizName2);
+        quizName3 = findViewById(R.id.quizName3);
+        quizName4 = findViewById(R.id.quizName4);
+        quizName5 = findViewById(R.id.quizName5);
+        quizName6 = findViewById(R.id.quizName6);
 
-        findViewById(R.id.btnRetour_LSauvegarde).setOnClickListener(v -> finish());
+        gameMode1 = findViewById(R.id.gameMode1);
+        gameMode2 = findViewById(R.id.gameMode2);
+        gameMode3 = findViewById(R.id.gameMode3);
+        gameMode4 = findViewById(R.id.gameMode4);
+        gameMode5 = findViewById(R.id.gameMode5);
+        gameMode6 = findViewById(R.id.gameMode6);
 
-        // Clic sur la carte de sauvegarde 1
-        cardSave1.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 sélectionnée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur la carte de sauvegarde 2
-        cardSave2.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 2 sélectionnée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur le bouton "Charger" pour la sauvegarde &
-        btnLoad1.setOnClickListener(v -> {
-            try {
-                // Charger le fichier JSON
-                InputStream inputStream = getAssets().open("save_data.json");
-                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
-
-                // Utiliser Gson pour convertir le JSON en objet SaveData
-                Gson gson = new Gson();
-                SaveData saveData = gson.fromJson(json, SaveData.class);
-
-                // Trouver la sauvegarde du slot
-                SaveData.Save save = null;
-                for (SaveData.Save s : saveData.getSaves()) {
-                    if (s.getSlot() == 1) {
-                        save = s;
-                        break;
-                    }
-                }
-
-                // Vérifier si la sauvegarde existe
-                if (save != null) {
-                    // Extraire les données de la sauvegarde
-                    int quizId = save.getQuizId();
-                    String mode = save.getMode();
-                    String quizTitle = save.getQuizTitle();
-                    int currentQuestionIndex = save.getCurrentQuestionIndex();
-                    int score = save.getScore();
-                    int lives = save.getLives();
-                    boolean isJoker5050Used = save.isJoker5050Used();
-                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
-                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
-
-                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
-                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
-                    intent.putExtra("quizId", quizId);
-                    intent.putExtra("mode", mode);
-                    intent.putExtra("quizTitle", quizTitle);
-                    intent.putExtra("score", score);
-                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
-                    intent.putExtra("lives", lives);
-                    intent.putExtra("isJoker5050Used", isJoker5050Used);
-                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
-                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
-
-                    // Démarrer l'activité GameQuiz
-                    startActivity(intent);
-                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Clic sur le bouton "Supprimer" pour la sauvegarde 1
-        btnDelete1.setOnClickListener(v -> {
-            // Implémenter la logique pour supprimer la sauvegarde 1
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 supprimée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur le bouton "Charger" pour la sauvegarde 2
-        btnLoad2.setOnClickListener(v -> {
-            try {
-                // Charger le fichier JSON
-                InputStream inputStream = getAssets().open("save_data.json");
-                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
-
-                // Utiliser Gson pour convertir le JSON en objet SaveData
-                Gson gson = new Gson();
-                SaveData saveData = gson.fromJson(json, SaveData.class);
-
-                // Trouver la sauvegarde du slot
-                SaveData.Save save = null;
-                for (SaveData.Save s : saveData.getSaves()) {
-                    if (s.getSlot() == 2) {
-                        save = s;
-                        break;
-                    }
-                }
-
-                // Vérifier si la sauvegarde existe
-                if (save != null) {
-                    // Extraire les données de la sauvegarde
-                    int quizId = save.getQuizId();
-                    String mode = save.getMode();
-                    String quizTitle = save.getQuizTitle();
-                    int currentQuestionIndex = save.getCurrentQuestionIndex();
-                    int score = save.getScore();
-                    int lives = save.getLives();
-                    boolean isJoker5050Used = save.isJoker5050Used();
-                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
-                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
-
-                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
-                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
-                    intent.putExtra("quizId", quizId);
-                    intent.putExtra("mode", mode);
-                    intent.putExtra("quizTitle", quizTitle);
-                    intent.putExtra("score", score);
-                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
-                    intent.putExtra("lives", lives);
-                    intent.putExtra("isJoker5050Used", isJoker5050Used);
-                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
-                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
-
-                    // Démarrer l'activité GameQuiz
-                    startActivity(intent);
-                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Clic sur le bouton "Supprimer" pour la sauvegarde 2
-        btnDelete2.setOnClickListener(v -> {
-            // Implémenter la logique pour supprimer la sauvegarde 2
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 2 supprimée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur la carte de sauvegarde 3
-        cardSave3.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 3 sélectionnée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur la carte de sauvegarde 4
-        cardSave4.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 4 sélectionnée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur la carte de sauvegarde 5
-        cardSave5.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 5 sélectionnée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur la carte de sauvegarde 6
-        cardSave6.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 6 sélectionnée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur le bouton "Charger" pour la sauvegarde 3
-        btnLoad3.setOnClickListener(v -> {
-            try {
-                // Charger le fichier JSON
-                InputStream inputStream = getAssets().open("save_data.json");
-                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
-
-                // Utiliser Gson pour convertir le JSON en objet SaveData
-                Gson gson = new Gson();
-                SaveData saveData = gson.fromJson(json, SaveData.class);
-
-                // Trouver la sauvegarde du slot
-                SaveData.Save save = null;
-                for (SaveData.Save s : saveData.getSaves()) {
-                    if (s.getSlot() == 3) {
-                        save = s;
-                        break;
-                    }
-                }
-
-                // Vérifier si la sauvegarde existe
-                if (save != null) {
-                    // Extraire les données de la sauvegarde
-                    int quizId = save.getQuizId();
-                    String mode = save.getMode();
-                    String quizTitle = save.getQuizTitle();
-                    int currentQuestionIndex = save.getCurrentQuestionIndex();
-                    int score = save.getScore();
-                    int lives = save.getLives();
-                    boolean isJoker5050Used = save.isJoker5050Used();
-                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
-                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
-
-                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
-                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
-                    intent.putExtra("quizId", quizId);
-                    intent.putExtra("mode", mode);
-                    intent.putExtra("quizTitle", quizTitle);
-                    intent.putExtra("score", score);
-                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
-                    intent.putExtra("lives", lives);
-                    intent.putExtra("isJoker5050Used", isJoker5050Used);
-                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
-                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
-
-                    // Démarrer l'activité GameQuiz
-                    startActivity(intent);
-                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Clic sur le bouton "Supprimer" pour la sauvegarde 3
-        btnDelete3.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 3 supprimée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur le bouton "Charger" pour la sauvegarde 4
-        btnLoad4.setOnClickListener(v -> {
-            try {
-                // Charger le fichier JSON
-                InputStream inputStream = getAssets().open("save_data.json");
-                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
-
-                // Utiliser Gson pour convertir le JSON en objet SaveData
-                Gson gson = new Gson();
-                SaveData saveData = gson.fromJson(json, SaveData.class);
-
-                // Trouver la sauvegarde du slot
-                SaveData.Save save = null;
-                for (SaveData.Save s : saveData.getSaves()) {
-                    if (s.getSlot() == 4) {
-                        save = s;
-                        break;
-                    }
-                }
-
-                // Vérifier si la sauvegarde existe
-                if (save != null) {
-                    // Extraire les données de la sauvegarde
-                    int quizId = save.getQuizId();
-                    String mode = save.getMode();
-                    String quizTitle = save.getQuizTitle();
-                    int currentQuestionIndex = save.getCurrentQuestionIndex();
-                    int score = save.getScore();
-                    int lives = save.getLives();
-                    boolean isJoker5050Used = save.isJoker5050Used();
-                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
-                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
-
-                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
-                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
-                    intent.putExtra("quizId", quizId);
-                    intent.putExtra("mode", mode);
-                    intent.putExtra("quizTitle", quizTitle);
-                    intent.putExtra("score", score);
-                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
-                    intent.putExtra("lives", lives);
-                    intent.putExtra("isJoker5050Used", isJoker5050Used);
-                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
-                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
-
-                    // Démarrer l'activité GameQuiz
-                    startActivity(intent);
-                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Clic sur le bouton "Supprimer" pour la sauvegarde 4
-        btnDelete4.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 4 supprimée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur le bouton "Charger" pour la sauvegarde 5
-        btnLoad5.setOnClickListener(v -> {
-            try {
-                // Charger le fichier JSON
-                InputStream inputStream = getAssets().open("save_data.json");
-                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
-
-                // Utiliser Gson pour convertir le JSON en objet SaveData
-                Gson gson = new Gson();
-                SaveData saveData = gson.fromJson(json, SaveData.class);
-
-                // Trouver la sauvegarde du slot
-                SaveData.Save save = null;
-                for (SaveData.Save s : saveData.getSaves()) {
-                    if (s.getSlot() == 5) {
-                        save = s;
-                        break;
-                    }
-                }
-
-                // Vérifier si la sauvegarde existe
-                if (save != null) {
-                    // Extraire les données de la sauvegarde
-                    int quizId = save.getQuizId();
-                    String mode = save.getMode();
-                    String quizTitle = save.getQuizTitle();
-                    int currentQuestionIndex = save.getCurrentQuestionIndex();
-                    int score = save.getScore();
-                    int lives = save.getLives();
-                    boolean isJoker5050Used = save.isJoker5050Used();
-                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
-                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
-
-                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
-                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
-                    intent.putExtra("quizId", quizId);
-                    intent.putExtra("mode", mode);
-                    intent.putExtra("quizTitle", quizTitle);
-                    intent.putExtra("score", score);
-                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
-                    intent.putExtra("lives", lives);
-                    intent.putExtra("isJoker5050Used", isJoker5050Used);
-                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
-                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
-
-                    // Démarrer l'activité GameQuiz
-                    startActivity(intent);
-                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Clic sur le bouton "Supprimer" pour la sauvegarde 5
-        btnDelete5.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 5 supprimée", Toast.LENGTH_SHORT).show();
-        });
-
-        // Clic sur le bouton "Charger" pour la sauvegarde 6
-        btnLoad6.setOnClickListener(v -> {
-            try {
-                // Charger le fichier JSON
-                InputStream inputStream = getAssets().open("save_data.json");
-                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
-
-                // Utiliser Gson pour convertir le JSON en objet SaveData
-                Gson gson = new Gson();
-                SaveData saveData = gson.fromJson(json, SaveData.class);
-
-                // Trouver la sauvegarde du slot
-                SaveData.Save save = null;
-                for (SaveData.Save s : saveData.getSaves()) {
-                    if (s.getSlot() == 6) {
-                        save = s;
-                        break;
-                    }
-                }
-
-                // Vérifier si la sauvegarde existe
-                if (save != null) {
-                    // Extraire les données de la sauvegarde
-                    int quizId = save.getQuizId();
-                    String mode = save.getMode();
-                    String quizTitle = save.getQuizTitle();
-                    int currentQuestionIndex = save.getCurrentQuestionIndex();
-                    int score = save.getScore();
-                    int lives = save.getLives();
-                    boolean isJoker5050Used = save.isJoker5050Used();
-                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
-                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
-
-                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
-                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
-                    intent.putExtra("quizId", quizId);
-                    intent.putExtra("mode", mode);
-                    intent.putExtra("quizTitle", quizTitle);
-                    intent.putExtra("score", score);
-                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
-                    intent.putExtra("lives", lives);
-                    intent.putExtra("isJoker5050Used", isJoker5050Used);
-                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
-                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
-
-                    // Démarrer l'activité GameQuiz
-                    startActivity(intent);
-                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Clic sur le bouton "Supprimer" pour la sauvegarde 6
-        btnDelete6.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 6 supprimée", Toast.LENGTH_SHORT).show();
-        });
-
-
+        score1 = findViewById(R.id.score1);
+        score2 = findViewById(R.id.score2);
+        score3 = findViewById(R.id.score3);
+        score4 = findViewById(R.id.score4);
+        score5 = findViewById(R.id.score5);
+        score6 = findViewById(R.id.score6);
     }
-    // Méthode pour convertir InputStream en String
-    private String convertStreamToString(InputStream is) {
-        Scanner scanner = new Scanner(is, "UTF-8");
-        StringBuilder stringBuilder = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            stringBuilder.append(scanner.nextLine()).append("\n");
-        }
-        scanner.close();
-        return stringBuilder.toString();
-    }
+
     private void loadSaveData() {
         try {
-            // Charger le fichier JSON
+            // Charger le fichier JSON des sauvegardes depuis les assets
             InputStream inputStream = getAssets().open("save_data.json");
-            InputStreamReader reader = new InputStreamReader(inputStream);
-            Type saveDataType = new TypeToken<SaveData>() {}.getType();
+            String json = convertStreamToString(inputStream);
             Gson gson = new Gson();
-
-            // Parser les données JSON dans l'objet SaveData
-            SaveData saveData = gson.fromJson(reader, saveDataType);
+            SaveData saveData = gson.fromJson(json, SaveData.class);
             List<SaveData.Save> saves = saveData.getSaves();
 
-            // Remplir les vues avec les données des sauvegardes
-            if (saves.size() > 0) {
-                SaveData.Save save1 = saves.get(0);
-                playerName1.setText(save1.getPlayerName());
-                quizName1.setText(save1.getQuizTitle());
-                gameMode1.setText(save1.getMode());
-                score1.setText("Score: " + save1.getScore());
-            }
+            for (int i = 0; i < saves.size(); i++) {
+                SaveData.Save save = saves.get(i);
 
-            if (saves.size() > 1) {
-                SaveData.Save save2 = saves.get(1);
-                playerName2.setText(save2.getPlayerName());
-                quizName2.setText(save2.getQuizTitle());
-                gameMode2.setText(save2.getMode());
-                score2.setText("Score: " + save2.getScore());
-            }
+                // Mettre à jour les TextViews avec les informations des sauvegardes
+                setTextViewData(i + 1, save);
 
-            if (saves.size() > 2) {
-                SaveData.Save save3 = saves.get(2);
-                playerName3.setText(save3.getPlayerName());
-                quizName3.setText(save3.getQuizTitle());
-                gameMode3.setText(save3.getMode());
-                score3.setText("Score: " + save3.getScore());
-            }
-
-            if (saves.size() > 3) {
-                SaveData.Save save4 = saves.get(3);
-                playerName4.setText(save4.getPlayerName());
-                quizName4.setText(save4.getQuizTitle());
-                gameMode4.setText(save4.getMode());
-                score4.setText("Score: " + save4.getScore());
-            }
-
-            if (saves.size() > 4) {
-                SaveData.Save save5 = saves.get(4);
-                playerName5.setText(save5.getPlayerName());
-                quizName5.setText(save5.getQuizTitle());
-                gameMode5.setText(save5.getMode());
-                score5.setText("Score: " + save5.getScore());
-            }
-
-            if (saves.size() > 5) {
-                SaveData.Save save6 = saves.get(5);
-                playerName6.setText(save6.getPlayerName());
-                quizName6.setText(save6.getQuizTitle());
-                gameMode6.setText(save6.getMode());
-                score6.setText("Score: " + save6.getScore());
+                // Définir les actions des boutons de chargement et de suppression
+                setLoadButtonAction(i + 1, save);
+                setDeleteButtonAction(i + 1, save);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Erreur de chargement des sauvegardes", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void setTextViewData(int slot, SaveData.Save save) {
+        TextView playerName = findViewById(getResources().getIdentifier("playerName" + slot, "id", getPackageName()));
+        TextView quizName = findViewById(getResources().getIdentifier("quizName" + slot, "id", getPackageName()));
+        TextView gameMode = findViewById(getResources().getIdentifier("gameMode" + slot, "id", getPackageName()));
+        TextView score = findViewById(getResources().getIdentifier("score" + slot, "id", getPackageName()));
+
+        playerName.setText(save.getPlayerName());
+        quizName.setText(save.getQuizTitle());
+        gameMode.setText(save.getMode());
+        score.setText("Score: " + save.getScore());
+    }
+
+    private void setLoadButtonAction(int slot, SaveData.Save save) {
+        ImageButton btnLoad = findViewById(getResources().getIdentifier("btnLoad" + slot, "id", getPackageName()));
+        btnLoad.setOnClickListener(v -> loadSave(slot, save));
+    }
+
+    private void setDeleteButtonAction(int slot, SaveData.Save save) {
+        ImageButton btnDelete = findViewById(getResources().getIdentifier("btnDelete" + slot, "id", getPackageName()));
+        btnDelete.setOnClickListener(v -> deleteSave(slot, save));
+    }
+
+    private void loadSave(int slot, SaveData.Save save) {
+        if (save.getPlayerName().isEmpty() || save.getQuizTitle().isEmpty() || save.getMode().isEmpty()) {
+            Toast.makeText(this, "Sauvegarde vide détectée, impossible de charger", Toast.LENGTH_SHORT).show();
+        } else {
+            // Créer l'intention pour charger l'activité GameQuiz
+            Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+            intent.putExtra("quizId", save.getQuizId());
+            intent.putExtra("mode", save.getMode());
+            intent.putExtra("quizTitle", save.getQuizTitle());
+            intent.putExtra("score", save.getScore());
+            intent.putExtra("currentQuestionIndex", save.getCurrentQuestionIndex());
+            intent.putExtra("lives", save.getLives());
+            intent.putExtra("isJoker5050Used", save.isJoker5050Used());
+            intent.putExtra("isJokerSkipUsed", save.isJokerSkipUsed());
+            intent.putExtra("isJokerAudienceUsed", save.isJokerAudienceUsed());
+
+            startActivity(intent);
+            Toast.makeText(this, "Sauvegarde " + slot + " chargée", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void deleteSave(int slot, SaveData.Save save) {
+        try {
+            // Charger le fichier JSON des sauvegardes depuis les assets
+            InputStream inputStream = getAssets().open("save_data.json");
+            String json = convertStreamToString(inputStream);
+            Gson gson = new Gson();
+            SaveData saveData = gson.fromJson(json, SaveData.class);
+            List<SaveData.Save> saves = saveData.getSaves();
+
+            // Réinitialiser la sauvegarde
+            save.reset();
+
+            // Réécrire le fichier JSON avec les nouvelles données
+            String updatedJson = gson.toJson(saveData);
+
+            // Écrire le fichier JSON mis à jour dans un fichier interne
+            FileOutputStream fos = openFileOutput("save_data.json", MODE_PRIVATE);
+            fos.write(updatedJson.getBytes());
+            fos.close();
+
+            // Afficher un message de confirmation
+            Toast.makeText(this, "Sauvegarde " + slot + " réinitialisée", Toast.LENGTH_SHORT).show();
+            loadSaveData();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Erreur lors de la suppression de la sauvegarde", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private String convertStreamToString(InputStream inputStream) {
+        Scanner scanner = new Scanner(inputStream, "UTF-8");
+        String result = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+        scanner.close();
+        return result;
     }
 }

@@ -25,8 +25,24 @@ public class SaveData {
         private boolean isJoker5050Used;
         private boolean isJokerSkipUsed;
         private boolean isJokerAudienceUsed;
+        private String timestamp; // ✅ AJOUT
 
-        // Getters and Setters
+        // ✅ MÉTHODE POUR RÉINITIALISER LA SAUVEGARDE
+        public void reset() {
+            this.playerName = "Sauvegarde Libre";
+            this.mode = "";
+            this.quizTitle = "";
+            this.quizId = 0;
+            this.currentQuestionIndex = 0;
+            this.score = 0;
+            this.lives = 0;
+            this.isJoker5050Used = false;
+            this.isJokerSkipUsed = false;
+            this.isJokerAudienceUsed = false;
+            this.timestamp = "";
+        }
+
+        // Getters & Setters
         public int getSlot() {
             return slot;
         }
@@ -113,6 +129,14 @@ public class SaveData {
 
         public void setJokerAudienceUsed(boolean jokerAudienceUsed) {
             isJokerAudienceUsed = jokerAudienceUsed;
+        }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(String timestamp) {
+            this.timestamp = timestamp;
         }
     }
 }

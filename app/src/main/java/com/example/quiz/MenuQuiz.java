@@ -38,9 +38,9 @@ public class MenuQuiz extends AppCompatActivity {
         palierText = findViewById(R.id.palierText);
 
         // Initialiser avec des données fictives ou passer des valeurs depuis l'activité précédente
-        score = 1000;  // Exemple de score
-        money = 500;   // Exemple d'argent gagné
-        currentPalier = 3;  // Exemple de palier actuel
+        score = 0;  // Exemple de score
+        money = 0;   // Exemple d'argent gagné
+        currentPalier = 0;  // Exemple de palier actuel
 
         // Mettre à jour les vues avec les données actuelles
         scoreText.setText("Score : " + score);

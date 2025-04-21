@@ -16,7 +16,7 @@
 
     <!-- Bouton de retour -->
     <ImageButton
-            android:id="@+id/btnRetour_LSauvegarde"
+            android:id="@+id/btnBack_LSauvegarde"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
@@ -33,7 +33,7 @@
             android:textSize="24sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnRetour_LSauvegarde"
+            app:layout_constraintStart_toEndOf="@id/btnBack_LSauvegarde"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp" />

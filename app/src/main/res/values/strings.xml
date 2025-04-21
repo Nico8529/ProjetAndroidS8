@@ -14,6 +14,7 @@
     <string name="system_progress">Système : %1$d</string>
     <string name="toast_saved">Paramètres sauvegardés !</string>
     <string name="toast_reset">Paramètres réinitialisés !</string>
+    <string name="score_placeholder">Score: %1$d</string>
 
     <string name="statJ1">1150</string>
     <string name="statJ2">1023</string>

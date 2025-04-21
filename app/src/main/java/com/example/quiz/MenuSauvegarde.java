@@ -12,23 +12,31 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
+import android.util.Log;
 
 public class MenuSauvegarde extends AppCompatActivity {
 
     // Déclaration des vues (boutons et textViews)
-    ImageButton btnLoad1, btnLoad2, btnLoad3, btnLoad4, btnLoad5, btnLoad6;
-    ImageButton btnDelete1, btnDelete2, btnDelete3, btnDelete4, btnDelete5, btnDelete6;
-    TextView playerName1, playerName2, playerName3, playerName4, playerName5, playerName6;
-    TextView quizName1, quizName2, quizName3, quizName4, quizName5, quizName6;
-    TextView gameMode1, gameMode2, gameMode3, gameMode4, gameMode5, gameMode6;
-    TextView gameMode2_1, gameMode2_2, gameMode2_3, gameMode2_4, gameMode2_5, gameMode2_6;
-    TextView score1, score2, score3, score4, score5, score6;
+    private static final String TAG = "MenuSauvegarde";  // Utilisation d'un TAG pour Logcat
+    private final ImageButton[] btnLoadButtons = new ImageButton[6];
+    private final ImageButton[] btnDeleteButtons = new ImageButton[6];
+    private final TextView[] playerNames = new TextView[6];
+    private final TextView[] quizNames = new TextView[6];
+    private final TextView[] gameModes = new TextView[6];
+    private final TextView[] gameModes2 = new TextView[6];
+    private final TextView[] scores = new TextView[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_sauvegarde);
-        findViewById(R.id.btnBack_LSauvegarde).setOnClickListener(v -> finish());
+        Log.d(TAG, "onCreate: Initialisation de l'activité MenuSauvegarde");
+
+        // Définir l'action du bouton de retour
+        findViewById(R.id.btnBack_LSauvegarde).setOnClickListener(v -> {
+            Log.d(TAG, "onClick: Retour à l'écran précédent");
+            finish();
+        });
 
         // Initialiser les vues
         initializeViews();
@@ -37,118 +45,124 @@ public class MenuSauvegarde extends AppCompatActivity {
         loadSaveData();
     }
 
+    // Initialisation des vues
     private void initializeViews() {
-        btnLoad1 = findViewById(R.id.btnLoad1);
-        btnLoad2 = findViewById(R.id.btnLoad2);
-        btnLoad3 = findViewById(R.id.btnLoad3);
-        btnLoad4 = findViewById(R.id.btnLoad4);
-        btnLoad5 = findViewById(R.id.btnLoad5);
-        btnLoad6 = findViewById(R.id.btnLoad6);
+        Log.d(TAG, "initializeViews: Initialisation des vues");
 
-        btnDelete1 = findViewById(R.id.btnDelete1);
-        btnDelete2 = findViewById(R.id.btnDelete2);
-        btnDelete3 = findViewById(R.id.btnDelete3);
-        btnDelete4 = findViewById(R.id.btnDelete4);
-        btnDelete5 = findViewById(R.id.btnDelete5);
-        btnDelete6 = findViewById(R.id.btnDelete6);
+        // Initialiser les boutons de chargement et de suppression
+        btnLoadButtons[0] = findViewById(R.id.btnLoad1);
+        btnLoadButtons[1] = findViewById(R.id.btnLoad2);
+        btnLoadButtons[2] = findViewById(R.id.btnLoad3);
+        btnLoadButtons[3] = findViewById(R.id.btnLoad4);
+        btnLoadButtons[4] = findViewById(R.id.btnLoad5);
+        btnLoadButtons[5] = findViewById(R.id.btnLoad6);
+
+        btnDeleteButtons[0] = findViewById(R.id.btnDelete1);
+        btnDeleteButtons[1] = findViewById(R.id.btnDelete2);
+        btnDeleteButtons[2] = findViewById(R.id.btnDelete3);
+        btnDeleteButtons[3] = findViewById(R.id.btnDelete4);
+        btnDeleteButtons[4] = findViewById(R.id.btnDelete5);
+        btnDeleteButtons[5] = findViewById(R.id.btnDelete6);
 
         // Initialisation des TextViews pour les données de sauvegarde
-        playerName1 = findViewById(R.id.playerName1);
-        playerName2 = findViewById(R.id.playerName2);
-        playerName3 = findViewById(R.id.playerName3);
-        playerName4 = findViewById(R.id.playerName4);
-        playerName5 = findViewById(R.id.playerName5);
-        playerName6 = findViewById(R.id.playerName6);
+        playerNames[0] = findViewById(R.id.playerName1);
+        playerNames[1] = findViewById(R.id.playerName2);
+        playerNames[2] = findViewById(R.id.playerName3);
+        playerNames[3] = findViewById(R.id.playerName4);
+        playerNames[4] = findViewById(R.id.playerName5);
+        playerNames[5] = findViewById(R.id.playerName6);
 
-        quizName1 = findViewById(R.id.quizName1);
-        quizName2 = findViewById(R.id.quizName2);
-        quizName3 = findViewById(R.id.quizName3);
-        quizName4 = findViewById(R.id.quizName4);
-        quizName5 = findViewById(R.id.quizName5);
-        quizName6 = findViewById(R.id.quizName6);
+        quizNames[0] = findViewById(R.id.quizName1);
+        quizNames[1] = findViewById(R.id.quizName2);
+        quizNames[2] = findViewById(R.id.quizName3);
+        quizNames[3] = findViewById(R.id.quizName4);
+        quizNames[4] = findViewById(R.id.quizName5);
+        quizNames[5] = findViewById(R.id.quizName6);
 
-        gameMode1 = findViewById(R.id.gameMode1);
-        gameMode2 = findViewById(R.id.gameMode2);
-        gameMode3 = findViewById(R.id.gameMode3);
-        gameMode4 = findViewById(R.id.gameMode4);
-        gameMode5 = findViewById(R.id.gameMode5);
-        gameMode6 = findViewById(R.id.gameMode6);
+        gameModes[0] = findViewById(R.id.gameMode1);
+        gameModes[1] = findViewById(R.id.gameMode2);
+        gameModes[2] = findViewById(R.id.gameMode3);
+        gameModes[3] = findViewById(R.id.gameMode4);
+        gameModes[4] = findViewById(R.id.gameMode5);
+        gameModes[5] = findViewById(R.id.gameMode6);
 
-        gameMode2_1 = findViewById(R.id.gameMode2_1);
-        gameMode2_2 = findViewById(R.id.gameMode2_2);
-        gameMode2_3 = findViewById(R.id.gameMode2_3);
-        gameMode2_4 = findViewById(R.id.gameMode2_4);
-        gameMode2_5 = findViewById(R.id.gameMode2_5);
-        gameMode2_6 = findViewById(R.id.gameMode2_6);
+        gameModes2[0] = findViewById(R.id.gameMode2_1);
+        gameModes2[1] = findViewById(R.id.gameMode2_2);
+        gameModes2[2] = findViewById(R.id.gameMode2_3);
+        gameModes2[3] = findViewById(R.id.gameMode2_4);
+        gameModes2[4] = findViewById(R.id.gameMode2_5);
+        gameModes2[5] = findViewById(R.id.gameMode2_6);
 
-        score1 = findViewById(R.id.score1);
-        score2 = findViewById(R.id.score2);
-        score3 = findViewById(R.id.score3);
-        score4 = findViewById(R.id.score4);
-        score5 = findViewById(R.id.score5);
-        score6 = findViewById(R.id.score6);
+        scores[0] = findViewById(R.id.score1);
+        scores[1] = findViewById(R.id.score2);
+        scores[2] = findViewById(R.id.score3);
+        scores[3] = findViewById(R.id.score4);
+        scores[4] = findViewById(R.id.score5);
+        scores[5] = findViewById(R.id.score6);
     }
 
+    // Chargement des données de sauvegarde depuis le fichier JSON
     private void loadSaveData() {
+        Log.d(TAG, "loadSaveData: Tentative de chargement des données de sauvegarde");
+
         try {
             // Charger le fichier JSON des sauvegardes depuis les assets
             InputStream inputStream = getAssets().open("save_data.json");
             String json = convertStreamToString(inputStream);
             Gson gson = new Gson();
             SaveData saveData = gson.fromJson(json, SaveData.class);
-            List<SaveData.Save> saves = saveData.getSaves();
 
+            // Vérification si des sauvegardes existent
+            List<SaveData.Save> saves = saveData.getSaves();
+            if (saves.isEmpty()) {
+                Log.d(TAG, "loadSaveData: Aucune sauvegarde disponible");
+            }
+
+            // Mise à jour de l'interface pour chaque sauvegarde
             for (int i = 0; i < saves.size(); i++) {
                 SaveData.Save save = saves.get(i);
-
-                // Mettre à jour les TextViews avec les informations des sauvegardes
                 setTextViewData(i + 1, save);
-
-                // Définir les actions des boutons de chargement et de suppression
                 setLoadButtonAction(i + 1, save);
                 setDeleteButtonAction(i + 1, save);
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "loadSaveData: Erreur lors du chargement des sauvegardes", e);
             Toast.makeText(this, "Erreur de chargement des sauvegardes", Toast.LENGTH_SHORT).show();
         }
     }
 
+    // Mise à jour des TextViews avec les informations des sauvegardes
     private void setTextViewData(int slot, SaveData.Save save) {
-        TextView playerName = findViewById(getResources().getIdentifier("playerName" + slot, "id", getPackageName()));
-        TextView quizName = findViewById(getResources().getIdentifier("quizName" + slot, "id", getPackageName()));
-        TextView gameMode = findViewById(getResources().getIdentifier("gameMode" + slot, "id", getPackageName()));
-        TextView gameMode2 = findViewById(getResources().getIdentifier("gameMode2" + slot, "id", getPackageName()));
-        TextView score = findViewById(getResources().getIdentifier("score" + slot, "id", getPackageName()));
+        Log.d(TAG, "setTextViewData: Mise à jour des TextViews pour la sauvegarde dans le slot " + slot);
 
-        // Vérification que les vues ne sont pas nulles avant d'appeler setText
-        if (playerName != null) playerName.setText(save.getPlayerName());
-        if (quizName != null) quizName.setText(save.getQuizTitle());
-        if (gameMode != null) gameMode.setText(save.getMode());
-        if (gameMode2 != null) gameMode2.setText(save.getMode2());
-        if (score != null) score.setText("Score: " + save.getScore());
+        // Mise à jour des TextViews avec les informations spécifiques à chaque sauvegarde
+        playerNames[slot - 1].setText(save.getPlayerName());
+        quizNames[slot - 1].setText(save.getQuizTitle());
+        gameModes[slot - 1].setText(save.getMode());
+        gameModes2[slot - 1].setText(save.getMode2());
+        scores[slot - 1].setText(getString(R.string.score_placeholder, save.getScore()));
     }
 
+    // Définir les actions des boutons de chargement
     private void setLoadButtonAction(int slot, SaveData.Save save) {
-        ImageButton btnLoad = findViewById(getResources().getIdentifier("btnLoad" + slot, "id", getPackageName()));
-        if (btnLoad != null) {
-            btnLoad.setOnClickListener(v -> loadSave(slot, save));
-        }
+        Log.d(TAG, "setLoadButtonAction: Définition de l'action du bouton de chargement pour le slot " + slot);
+        btnLoadButtons[slot - 1].setOnClickListener(v -> loadSave(slot, save));
     }
 
+    // Définir les actions des boutons de suppression
     private void setDeleteButtonAction(int slot, SaveData.Save save) {
-        ImageButton btnDelete = findViewById(getResources().getIdentifier("btnDelete" + slot, "id", getPackageName()));
-        if (btnDelete != null) {
-            btnDelete.setOnClickListener(v -> deleteSave(slot, save));
-        }
+        Log.d(TAG, "setDeleteButtonAction: Définition de l'action du bouton de suppression pour le slot " + slot);
+        btnDeleteButtons[slot - 1].setOnClickListener(v -> deleteSave(slot, save));
     }
 
+    // Charger une sauvegarde dans l'activité GameQuiz
     private void loadSave(int slot, SaveData.Save save) {
+        Log.d(TAG, "loadSave: Chargement de la sauvegarde dans le slot " + slot);
         if (save.getPlayerName().isEmpty() || save.getQuizTitle().isEmpty() || save.getMode().isEmpty()) {
             Toast.makeText(this, "Sauvegarde vide détectée, impossible de charger", Toast.LENGTH_SHORT).show();
         } else {
-            // Créer l'intention pour charger l'activité GameQuiz
+            // Créer l'intention pour charger l'activité GameQuiz avec les données de sauvegarde
             Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
             intent.putExtra("quizId", save.getQuizId());
             intent.putExtra("mode", save.getMode());
@@ -166,14 +180,15 @@ public class MenuSauvegarde extends AppCompatActivity {
         }
     }
 
+    // Supprimer une sauvegarde
     private void deleteSave(int slot, SaveData.Save save) {
+        Log.d(TAG, "deleteSave: Suppression de la sauvegarde dans le slot " + slot);
         try {
             // Charger le fichier JSON des sauvegardes depuis les assets
             InputStream inputStream = getAssets().open("save_data.json");
             String json = convertStreamToString(inputStream);
             Gson gson = new Gson();
             SaveData saveData = gson.fromJson(json, SaveData.class);
-            List<SaveData.Save> saves = saveData.getSaves();
 
             // Réinitialiser la sauvegarde
             save.reset();
@@ -182,24 +197,26 @@ public class MenuSauvegarde extends AppCompatActivity {
             String updatedJson = gson.toJson(saveData);
 
             // Écrire le fichier JSON mis à jour dans un fichier interne
-            FileOutputStream fos = openFileOutput("save_data.json", MODE_PRIVATE);
-            fos.write(updatedJson.getBytes());
-            fos.close();
+            try (FileOutputStream fos = openFileOutput("save_data.json", MODE_PRIVATE)) {
+                fos.write(updatedJson.getBytes());
+            }
 
             // Afficher un message de confirmation
             Toast.makeText(this, "Sauvegarde " + slot + " réinitialisée", Toast.LENGTH_SHORT).show();
-            loadSaveData();
+            loadSaveData(); // Recharger les données après la suppression
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "deleteSave: Erreur lors de la suppression de la sauvegarde", e);
             Toast.makeText(this, "Erreur lors de la suppression de la sauvegarde", Toast.LENGTH_SHORT).show();
         }
     }
 
+    // Convertir le flux d'entrée en chaîne de caractères
     private String convertStreamToString(InputStream inputStream) {
-        Scanner scanner = new Scanner(inputStream, "UTF-8");
-        String result = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-        scanner.close();
-        return result;
+        Log.d(TAG, "convertStreamToString: Conversion du flux d'entrée en chaîne de caractères");
+        try (Scanner scanner = new Scanner(inputStream)) {
+            scanner.useDelimiter("\\A");
+            return scanner.hasNext() ? scanner.next() : "";
+        }
     }
 }

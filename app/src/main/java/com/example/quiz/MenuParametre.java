@@ -2,14 +2,15 @@ package com.example.quiz;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONObject;
 import java.io.*;
 
 public class MenuParametre extends AppCompatActivity {
+
+    private static final String TAG = "MenuParametre"; // Tag pour Logcat
 
     private SeekBar audioSeekBar, systemSeekBar;
     private Switch autoSaveSwitch, bonusSwitch, divSwitch;
@@ -22,8 +23,9 @@ public class MenuParametre extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_parametre);
+        Log.d(TAG, "onCreate: MenuParametre initialisé");
 
-        // Liaison des vues
+        // Liaison des vues avec le layout
         audioSeekBar = findViewById(R.id.audio1_LParametre);
         systemSeekBar = findViewById(R.id.audio2_LParametre);
         autoSaveSwitch = findViewById(R.id.sauvegardeAuto_LParametre);
@@ -33,43 +35,50 @@ public class MenuParametre extends AppCompatActivity {
         audioValue = findViewById(R.id.text1_LParametre);
         systemValue = findViewById(R.id.text2_LParametre);
 
-        // Affichage initial des valeurs SeekBar
+        // Affichage dynamique de la valeur des SeekBar
         audioSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                audioValue.setText("Audio: " + progress);
+                audioValue.setText(getString(R.string.audio_progress, progress));
+                Log.d(TAG, "audioSeekBar progress: " + progress);
             }
-
             public void onStartTrackingTouch(SeekBar seekBar) {}
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
         systemSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                systemValue.setText("Système: " + progress);
+                systemValue.setText(getString(R.string.system_progress, progress));
+                Log.d(TAG, "systemSeekBar progress: " + progress);
             }
-
             public void onStartTrackingTouch(SeekBar seekBar) {}
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        findViewById(R.id.btnBack_LParametre).setOnClickListener(v -> finish());
+        // Bouton retour
+        findViewById(R.id.btnBack_LParametre).setOnClickListener(v -> {
+            Log.d(TAG, "Retour au menu précédent");
+            finish();
+        });
 
-        // Chargement des préférences
+        // Chargement des paramètres enregistrés
         loadSettings();
 
         // Bouton Sauvegarder
         findViewById(R.id.btnSauvegarder).setOnClickListener(v -> {
             saveSettings();
-            Toast.makeText(this, "Paramètres sauvegardés !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_saved), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Paramètres sauvegardés");
         });
 
         // Bouton Par défaut
         findViewById(R.id.btnDefault).setOnClickListener(v -> {
             resetToDefault();
-            Toast.makeText(this, "Paramètres réinitialisés !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_reset), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Paramètres réinitialisés par défaut");
         });
     }
 
+    // Enregistre les préférences utilisateur dans un fichier JSON
     private void saveSettings() {
         try {
             JSONObject settings = new JSONObject();
@@ -83,15 +92,21 @@ public class MenuParametre extends AppCompatActivity {
             FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
             fos.write(settings.toString().getBytes());
             fos.close();
+
+            Log.d(TAG, "Données enregistrées : " + settings);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Erreur lors de la sauvegarde des paramètres", e);
         }
     }
 
+    // Charge les préférences utilisateur depuis un fichier JSON
     private void loadSettings() {
         try {
             File file = new File(getFilesDir(), fileName);
-            if (!file.exists()) return;
+            if (!file.exists()) {
+                Log.d(TAG, "Aucun fichier de configuration trouvé.");
+                return;
+            }
 
             FileInputStream fis = openFileInput(fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
@@ -109,11 +124,13 @@ public class MenuParametre extends AppCompatActivity {
             divSwitch.setChecked(settings.getBoolean("div"));
             languageSpinner.setSelection(settings.getInt("language"));
 
+            Log.d(TAG, "Paramètres chargés : " + settings);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Erreur lors du chargement des paramètres", e);
         }
     }
 
+    // Réinitialise tous les paramètres à leurs valeurs par défaut
     private void resetToDefault() {
         audioSeekBar.setProgress(50);
         systemSeekBar.setProgress(50);
@@ -121,5 +138,6 @@ public class MenuParametre extends AppCompatActivity {
         bonusSwitch.setChecked(false);
         divSwitch.setChecked(false);
         languageSpinner.setSelection(0);
+        Log.d(TAG, "Paramètres remis par défaut");
     }
 }

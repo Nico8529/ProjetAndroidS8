@@ -9,6 +9,10 @@ public class SaveData {
         return saves;
     }
 
+    public void setSaves(List<Save> saves) {
+        this.saves = saves;
+    }
+
     public static class Save {
         private int slot;
         private String playerName;
@@ -23,7 +27,6 @@ public class SaveData {
         private boolean isJokerAudienceUsed;
 
         // Getters and Setters
-
         public int getSlot() {
             return slot;
         }

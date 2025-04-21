@@ -265,7 +265,7 @@ public class GameQuiz extends AppCompatActivity {
             Toast.makeText(this, "Bonne réponse!", Toast.LENGTH_SHORT).show();
             speak("Bonne réponse !");
             scoreText.setText("Score : " + score * 1000);
-            showPalier(score * 1000, currentQuestionIndex);
+            //showPalier(score * 1000, currentQuestionIndex);
         } else {
             speak("Mauvaise réponse !");
             scoreText.setText("Score : " + score * 1000);
@@ -330,6 +330,7 @@ public class GameQuiz extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("QuizPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        // Sauvegarder l'état du jeu
         editor.putInt("score", score);
         editor.putInt("currentQuestionIndex", currentQuestionIndex);
         editor.putInt("lives", lives);

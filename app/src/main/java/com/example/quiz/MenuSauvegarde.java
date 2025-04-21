@@ -1,5 +1,7 @@
 package com.example.quiz;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -8,11 +10,14 @@ import androidx.cardview.widget.CardView;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.json.JSONException;
+
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Scanner;
 
 public class MenuSauvegarde extends AppCompatActivity {
 
@@ -102,10 +107,61 @@ public class MenuSauvegarde extends AppCompatActivity {
             Toast.makeText(MenuSauvegarde.this, "Sauvegarde 2 sélectionnée", Toast.LENGTH_SHORT).show();
         });
 
-        // Clic sur le bouton "Charger" pour la sauvegarde 1
+        // Clic sur le bouton "Charger" pour la sauvegarde &
         btnLoad1.setOnClickListener(v -> {
-            // Implémenter la logique pour charger la sauvegarde 1
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+            try {
+                // Charger le fichier JSON
+                InputStream inputStream = getAssets().open("save_data.json");
+                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
+
+                // Utiliser Gson pour convertir le JSON en objet SaveData
+                Gson gson = new Gson();
+                SaveData saveData = gson.fromJson(json, SaveData.class);
+
+                // Trouver la sauvegarde du slot
+                SaveData.Save save = null;
+                for (SaveData.Save s : saveData.getSaves()) {
+                    if (s.getSlot() == 1) {
+                        save = s;
+                        break;
+                    }
+                }
+
+                // Vérifier si la sauvegarde existe
+                if (save != null) {
+                    // Extraire les données de la sauvegarde
+                    int quizId = save.getQuizId();
+                    String mode = save.getMode();
+                    String quizTitle = save.getQuizTitle();
+                    int currentQuestionIndex = save.getCurrentQuestionIndex();
+                    int score = save.getScore();
+                    int lives = save.getLives();
+                    boolean isJoker5050Used = save.isJoker5050Used();
+                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
+                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
+
+                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
+                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+                    intent.putExtra("quizId", quizId);
+                    intent.putExtra("mode", mode);
+                    intent.putExtra("quizTitle", quizTitle);
+                    intent.putExtra("score", score);
+                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
+                    intent.putExtra("lives", lives);
+                    intent.putExtra("isJoker5050Used", isJoker5050Used);
+                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
+                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
+
+                    // Démarrer l'activité GameQuiz
+                    startActivity(intent);
+                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // Clic sur le bouton "Supprimer" pour la sauvegarde 1
@@ -116,8 +172,59 @@ public class MenuSauvegarde extends AppCompatActivity {
 
         // Clic sur le bouton "Charger" pour la sauvegarde 2
         btnLoad2.setOnClickListener(v -> {
-            // Implémenter la logique pour charger la sauvegarde 2
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 2 chargée", Toast.LENGTH_SHORT).show();
+            try {
+                // Charger le fichier JSON
+                InputStream inputStream = getAssets().open("save_data.json");
+                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
+
+                // Utiliser Gson pour convertir le JSON en objet SaveData
+                Gson gson = new Gson();
+                SaveData saveData = gson.fromJson(json, SaveData.class);
+
+                // Trouver la sauvegarde du slot
+                SaveData.Save save = null;
+                for (SaveData.Save s : saveData.getSaves()) {
+                    if (s.getSlot() == 2) {
+                        save = s;
+                        break;
+                    }
+                }
+
+                // Vérifier si la sauvegarde existe
+                if (save != null) {
+                    // Extraire les données de la sauvegarde
+                    int quizId = save.getQuizId();
+                    String mode = save.getMode();
+                    String quizTitle = save.getQuizTitle();
+                    int currentQuestionIndex = save.getCurrentQuestionIndex();
+                    int score = save.getScore();
+                    int lives = save.getLives();
+                    boolean isJoker5050Used = save.isJoker5050Used();
+                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
+                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
+
+                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
+                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+                    intent.putExtra("quizId", quizId);
+                    intent.putExtra("mode", mode);
+                    intent.putExtra("quizTitle", quizTitle);
+                    intent.putExtra("score", score);
+                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
+                    intent.putExtra("lives", lives);
+                    intent.putExtra("isJoker5050Used", isJoker5050Used);
+                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
+                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
+
+                    // Démarrer l'activité GameQuiz
+                    startActivity(intent);
+                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // Clic sur le bouton "Supprimer" pour la sauvegarde 2
@@ -148,7 +255,59 @@ public class MenuSauvegarde extends AppCompatActivity {
 
         // Clic sur le bouton "Charger" pour la sauvegarde 3
         btnLoad3.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 3 chargée", Toast.LENGTH_SHORT).show();
+            try {
+                // Charger le fichier JSON
+                InputStream inputStream = getAssets().open("save_data.json");
+                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
+
+                // Utiliser Gson pour convertir le JSON en objet SaveData
+                Gson gson = new Gson();
+                SaveData saveData = gson.fromJson(json, SaveData.class);
+
+                // Trouver la sauvegarde du slot
+                SaveData.Save save = null;
+                for (SaveData.Save s : saveData.getSaves()) {
+                    if (s.getSlot() == 3) {
+                        save = s;
+                        break;
+                    }
+                }
+
+                // Vérifier si la sauvegarde existe
+                if (save != null) {
+                    // Extraire les données de la sauvegarde
+                    int quizId = save.getQuizId();
+                    String mode = save.getMode();
+                    String quizTitle = save.getQuizTitle();
+                    int currentQuestionIndex = save.getCurrentQuestionIndex();
+                    int score = save.getScore();
+                    int lives = save.getLives();
+                    boolean isJoker5050Used = save.isJoker5050Used();
+                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
+                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
+
+                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
+                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+                    intent.putExtra("quizId", quizId);
+                    intent.putExtra("mode", mode);
+                    intent.putExtra("quizTitle", quizTitle);
+                    intent.putExtra("score", score);
+                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
+                    intent.putExtra("lives", lives);
+                    intent.putExtra("isJoker5050Used", isJoker5050Used);
+                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
+                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
+
+                    // Démarrer l'activité GameQuiz
+                    startActivity(intent);
+                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // Clic sur le bouton "Supprimer" pour la sauvegarde 3
@@ -158,7 +317,59 @@ public class MenuSauvegarde extends AppCompatActivity {
 
         // Clic sur le bouton "Charger" pour la sauvegarde 4
         btnLoad4.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 4 chargée", Toast.LENGTH_SHORT).show();
+            try {
+                // Charger le fichier JSON
+                InputStream inputStream = getAssets().open("save_data.json");
+                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
+
+                // Utiliser Gson pour convertir le JSON en objet SaveData
+                Gson gson = new Gson();
+                SaveData saveData = gson.fromJson(json, SaveData.class);
+
+                // Trouver la sauvegarde du slot
+                SaveData.Save save = null;
+                for (SaveData.Save s : saveData.getSaves()) {
+                    if (s.getSlot() == 4) {
+                        save = s;
+                        break;
+                    }
+                }
+
+                // Vérifier si la sauvegarde existe
+                if (save != null) {
+                    // Extraire les données de la sauvegarde
+                    int quizId = save.getQuizId();
+                    String mode = save.getMode();
+                    String quizTitle = save.getQuizTitle();
+                    int currentQuestionIndex = save.getCurrentQuestionIndex();
+                    int score = save.getScore();
+                    int lives = save.getLives();
+                    boolean isJoker5050Used = save.isJoker5050Used();
+                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
+                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
+
+                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
+                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+                    intent.putExtra("quizId", quizId);
+                    intent.putExtra("mode", mode);
+                    intent.putExtra("quizTitle", quizTitle);
+                    intent.putExtra("score", score);
+                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
+                    intent.putExtra("lives", lives);
+                    intent.putExtra("isJoker5050Used", isJoker5050Used);
+                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
+                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
+
+                    // Démarrer l'activité GameQuiz
+                    startActivity(intent);
+                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // Clic sur le bouton "Supprimer" pour la sauvegarde 4
@@ -168,7 +379,59 @@ public class MenuSauvegarde extends AppCompatActivity {
 
         // Clic sur le bouton "Charger" pour la sauvegarde 5
         btnLoad5.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 5 chargée", Toast.LENGTH_SHORT).show();
+            try {
+                // Charger le fichier JSON
+                InputStream inputStream = getAssets().open("save_data.json");
+                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
+
+                // Utiliser Gson pour convertir le JSON en objet SaveData
+                Gson gson = new Gson();
+                SaveData saveData = gson.fromJson(json, SaveData.class);
+
+                // Trouver la sauvegarde du slot
+                SaveData.Save save = null;
+                for (SaveData.Save s : saveData.getSaves()) {
+                    if (s.getSlot() == 5) {
+                        save = s;
+                        break;
+                    }
+                }
+
+                // Vérifier si la sauvegarde existe
+                if (save != null) {
+                    // Extraire les données de la sauvegarde
+                    int quizId = save.getQuizId();
+                    String mode = save.getMode();
+                    String quizTitle = save.getQuizTitle();
+                    int currentQuestionIndex = save.getCurrentQuestionIndex();
+                    int score = save.getScore();
+                    int lives = save.getLives();
+                    boolean isJoker5050Used = save.isJoker5050Used();
+                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
+                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
+
+                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
+                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+                    intent.putExtra("quizId", quizId);
+                    intent.putExtra("mode", mode);
+                    intent.putExtra("quizTitle", quizTitle);
+                    intent.putExtra("score", score);
+                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
+                    intent.putExtra("lives", lives);
+                    intent.putExtra("isJoker5050Used", isJoker5050Used);
+                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
+                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
+
+                    // Démarrer l'activité GameQuiz
+                    startActivity(intent);
+                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // Clic sur le bouton "Supprimer" pour la sauvegarde 5
@@ -178,7 +441,59 @@ public class MenuSauvegarde extends AppCompatActivity {
 
         // Clic sur le bouton "Charger" pour la sauvegarde 6
         btnLoad6.setOnClickListener(v -> {
-            Toast.makeText(MenuSauvegarde.this, "Sauvegarde 6 chargée", Toast.LENGTH_SHORT).show();
+            try {
+                // Charger le fichier JSON
+                InputStream inputStream = getAssets().open("save_data.json");
+                String json = convertStreamToString(inputStream);  // Méthode pour convertir l'input stream en string
+
+                // Utiliser Gson pour convertir le JSON en objet SaveData
+                Gson gson = new Gson();
+                SaveData saveData = gson.fromJson(json, SaveData.class);
+
+                // Trouver la sauvegarde du slot
+                SaveData.Save save = null;
+                for (SaveData.Save s : saveData.getSaves()) {
+                    if (s.getSlot() == 6) {
+                        save = s;
+                        break;
+                    }
+                }
+
+                // Vérifier si la sauvegarde existe
+                if (save != null) {
+                    // Extraire les données de la sauvegarde
+                    int quizId = save.getQuizId();
+                    String mode = save.getMode();
+                    String quizTitle = save.getQuizTitle();
+                    int currentQuestionIndex = save.getCurrentQuestionIndex();
+                    int score = save.getScore();
+                    int lives = save.getLives();
+                    boolean isJoker5050Used = save.isJoker5050Used();
+                    boolean isJokerSkipUsed = save.isJokerSkipUsed();
+                    boolean isJokerAudienceUsed = save.isJokerAudienceUsed();
+
+                    // Créer une intention pour lancer l'activité GameQuiz avec les données chargées
+                    Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
+                    intent.putExtra("quizId", quizId);
+                    intent.putExtra("mode", mode);
+                    intent.putExtra("quizTitle", quizTitle);
+                    intent.putExtra("score", score);
+                    intent.putExtra("currentQuestionIndex", currentQuestionIndex);
+                    intent.putExtra("lives", lives);
+                    intent.putExtra("isJoker5050Used", isJoker5050Used);
+                    intent.putExtra("isJokerSkipUsed", isJokerSkipUsed);
+                    intent.putExtra("isJokerAudienceUsed", isJokerAudienceUsed);
+
+                    // Démarrer l'activité GameQuiz
+                    startActivity(intent);
+                    Toast.makeText(MenuSauvegarde.this, "Sauvegarde 1 chargée", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MenuSauvegarde.this, "Aucune sauvegarde trouvée pour ce slot", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(MenuSauvegarde.this, "Erreur de chargement de la sauvegarde", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // Clic sur le bouton "Supprimer" pour la sauvegarde 6
@@ -188,7 +503,16 @@ public class MenuSauvegarde extends AppCompatActivity {
 
 
     }
-
+    // Méthode pour convertir InputStream en String
+    private String convertStreamToString(InputStream is) {
+        Scanner scanner = new Scanner(is, "UTF-8");
+        StringBuilder stringBuilder = new StringBuilder();
+        while (scanner.hasNextLine()) {
+            stringBuilder.append(scanner.nextLine()).append("\n");
+        }
+        scanner.close();
+        return stringBuilder.toString();
+    }
     private void loadSaveData() {
         try {
             // Charger le fichier JSON

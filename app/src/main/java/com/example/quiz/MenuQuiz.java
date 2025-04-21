@@ -1,7 +1,6 @@
 package com.example.quiz;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,19 +47,12 @@ public class MenuQuiz extends AppCompatActivity {
         moneyText.setText("Argent gagné : " + money + " €");
         palierText.setText("Palier actuel : Niveau " + currentPalier);
 
-        // Récupérer le nom du joueur sauvegardé (s'il existe) et le mettre dans l'EditText
-        SharedPreferences prefs = getSharedPreferences("PLAYER_DATA", MODE_PRIVATE);
-        String savedName = prefs.getString("playerName", "");
-        playerNameEditText.setText(savedName);
-
         // Sauvegarder le nom du joueur
         saveNameButton.setOnClickListener(v -> {
             String playerName = playerNameEditText.getText().toString();
             if (!playerName.isEmpty()) {
-                // Sauvegarde du nom dans SharedPreferences
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("playerName", playerName);
-                editor.apply();
+                // Sauvegarder le nom (par exemple, dans SharedPreferences)
+                // Code à ajouter pour sauvegarder le nom dans un fichier ou base de données
                 Toast.makeText(MenuQuiz.this, "Nom sauvegardé : " + playerName, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(MenuQuiz.this, "Veuillez entrer un nom.", Toast.LENGTH_SHORT).show();
@@ -75,10 +67,8 @@ public class MenuQuiz extends AppCompatActivity {
         // Revenir au quiz
         startQuizButton.setOnClickListener(v -> {
             // Vous pouvez passer des données au GameQuiz via un Intent, par exemple le score actuel
-            String playerName = prefs.getString("playerName", "");
             Intent intent = new Intent(MenuQuiz.this, GameQuiz.class);
             intent.putExtra("score", score);
-            intent.putExtra("playerName", playerName); // Envoi du nom du joueur
             startActivity(intent);
         });
     }

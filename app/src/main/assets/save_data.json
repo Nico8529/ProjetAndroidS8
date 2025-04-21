@@ -4,27 +4,29 @@
       "slot": 1,
       "playerName": "Alice",
       "mode": "Solo",
-      "quizTitle": "Mathématiques",
-      "quizId": 2,
-      "currentQuestionIndex": 5,
-      "score": 10000,
+      "quizTitle": "Nature",
+      "quizId": 1,
+      "currentQuestionIndex": 2,
+      "score": 2000,
       "lives": 1,
       "isJoker5050Used": true,
       "isJokerSkipUsed": false,
-      "isJokerAudienceUsed": false
+      "isJokerAudienceUsed": false,
+      "timestamp": "2025-04-21T14:30:00Z"
     },
     {
       "slot": 2,
       "playerName": "Bob",
       "mode": "Multi LAN",
-      "quizTitle": "Nature",
-      "quizId": 1,
+      "quizTitle": "Culture Générale",
+      "quizId": 2,
       "currentQuestionIndex": 2,
-      "score": 1000,
-      "lives": 1,
+      "score": 2000,
+      "lives": 0,
       "isJoker5050Used": false,
       "isJokerSkipUsed": false,
-      "isJokerAudienceUsed": false
+      "isJokerAudienceUsed": false,
+      "timestamp": "2025-04-21T14:30:00Z"
     }
   ,
     {
@@ -34,11 +36,12 @@
       "quizTitle": "Nature",
       "quizId": 1,
       "currentQuestionIndex": 2,
-      "score": 1000,
+      "score": 2000,
       "lives": 1,
       "isJoker5050Used": false,
       "isJokerSkipUsed": false,
-      "isJokerAudienceUsed": false
+      "isJokerAudienceUsed": false,
+      "timestamp": "2025-04-21T14:30:00Z"
     }
   ,
     {
@@ -48,11 +51,12 @@
       "quizTitle": "Nature",
       "quizId": 1,
       "currentQuestionIndex": 2,
-      "score": 1000,
+      "score": 2000,
       "lives": 1,
       "isJoker5050Used": false,
       "isJokerSkipUsed": false,
-      "isJokerAudienceUsed": false
+      "isJokerAudienceUsed": false,
+      "timestamp": "2025-04-21T14:30:00Z"
     }
   ,
     {
@@ -62,11 +66,12 @@
       "quizTitle": "Nature",
       "quizId": 1,
       "currentQuestionIndex": 2,
-      "score": 1000,
+      "score": 2000,
       "lives": 1,
       "isJoker5050Used": false,
       "isJokerSkipUsed": false,
-      "isJokerAudienceUsed": false
+      "isJokerAudienceUsed": false,
+      "timestamp": "2025-04-21T14:30:00Z"
     }
   ,
     {
@@ -76,11 +81,12 @@
       "quizTitle": "Nature",
       "quizId": 1,
       "currentQuestionIndex": 2,
-      "score": 1000,
+      "score": 2000,
       "lives": 1,
       "isJoker5050Used": false,
       "isJokerSkipUsed": false,
-      "isJokerAudienceUsed": false
+      "isJokerAudienceUsed": false,
+      "timestamp": "2025-04-21T14:30:00Z"
     }
   ]
 }

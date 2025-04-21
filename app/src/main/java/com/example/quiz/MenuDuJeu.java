@@ -3,7 +3,9 @@ package com.example.quiz;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuDuJeu extends AppCompatActivity {
@@ -14,6 +16,15 @@ public class MenuDuJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_du_jeu);
+
+        // Récupérer le logo
+        ImageView logo = findViewById(R.id.logoImage);
+
+        // Charger l'animation de rotation
+        android.view.animation.Animation rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate_animation);
+
+        // Appliquer l'animation lorsque l'utilisateur clique sur le logo
+        logo.setOnClickListener(v -> logo.startAnimation(rotateAnimation));
 
         // Initialisation des boutons
         Button btnContinue = findViewById(R.id.btnContinue_LMenuDuJeu);

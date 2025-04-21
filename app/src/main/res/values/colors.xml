@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+        <!-- Couleurs principales -->
+        <color name="colorPrimary">#6200EE</color> <!-- Exemple de couleur principale -->
+        <color name="colorPrimaryDark">#3700B3</color> <!-- Couleur pour la barre de statut -->
+        <color name="colorAccent">#03DAC5</color> <!-- Couleur pour les accents -->
+        <!-- Couleurs supplémentaires -->
+        <color name="backgroundColor">#FFFFFF</color> <!-- Blanc -->
+        <color name="textColorPrimary">#000000</color> <!-- Noir pour le texte principal -->
+        <color name="textColorSecondary">#757575</color> <!-- Gris pour le texte secondaire -->
+        <color name="buttonBackground">#6200EE</color> <!-- Exemple pour le fond des boutons -->
+
 </resources>

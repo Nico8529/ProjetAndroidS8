@@ -22,6 +22,8 @@
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="12dp"
             android:contentDescription="@string/back_button" />
 
     <!-- Titre -->
@@ -39,176 +41,226 @@
             android:layout_marginTop="8dp" />
 
     <!-- Carte de sauvegarde 1 -->
-    <androidx.cardview.widget.CardView
-            android:id="@+id/cardSave1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            app:layout_constraintWidth_percent="0.8"
-            app:layout_constraintTop_toBottomOf="@id/title_LSauvegarde"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"
-            android:clickable="true"
-            android:focusable="true">
-
-        <LinearLayout
-                android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cardSave1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintWidth_percent="0.9"
+                app:layout_constraintTop_toBottomOf="@id/title_LSauvegarde"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:focusable="true">
 
-            <TextView
-                    android:id="@+id/playerName1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nom du joueur: Alice"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black" />
-
-            <TextView
-                    android:id="@+id/quizName1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Quiz: Mathématiques"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            <TextView
-                    android:id="@+id/gameMode1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mode: Solo"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            <TextView
-                    android:id="@+id/score1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Score: 3000"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            <!-- Boutons pour charger et supprimer la sauvegarde -->
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    android:paddingTop="8dp">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <!-- Bouton pour charger la sauvegarde -->
-                <ImageButton
-                        android:id="@+id/btnLoad1"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@android:drawable/ic_menu_upload"
-                        android:contentDescription="Charger"
-                        android:layout_marginEnd="8dp"/>
+                <!-- Infos joueur et quiz -->
+                <TextView
+                        android:id="@+id/playerName1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nom du joueur : Alice"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black" />
 
-                <!-- Bouton pour supprimer la sauvegarde -->
-                <ImageButton
-                        android:id="@+id/btnDelete1"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@android:drawable/ic_menu_delete"
-                        android:contentDescription="Supprimer" />
+                <TextView
+                        android:id="@+id/quizName1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz : Mathématiques"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/darker_gray" />
+
+                <TextView
+                        android:id="@+id/score1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Score : 3000"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/darker_gray" />
+
+                <!-- Ligne avec modes + boutons -->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                    <!-- Modes -->
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/gameMode1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode : Solo"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        <TextView
+                                android:id="@+id/gameMode2_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode2 : Normal"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <!-- Boutons -->
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginStart="8dp">
+
+                        <ImageButton
+                                android:id="@+id/btnLoad1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Charger"
+                                app:srcCompat="@android:drawable/ic_menu_upload"
+                                android:layout_marginEnd="8dp" />
+
+                        <ImageButton
+                                android:id="@+id/btnDelete1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Supprimer"
+                                app:srcCompat="@android:drawable/ic_menu_delete" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-    <!-- Carte de sauvegarde 2 -->
-    <androidx.cardview.widget.CardView
-            android:id="@+id/cardSave2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            app:layout_constraintWidth_percent="0.8"
-            app:layout_constraintTop_toBottomOf="@id/cardSave1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:focusable="true">
-
-        <LinearLayout
-                android:layout_width="match_parent"
+        <!-- Carte de sauvegarde 2 -->
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cardSave2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintWidth_percent="0.9"
+                app:layout_constraintTop_toBottomOf="@id/cardSave1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true">
 
-            <TextView
-                    android:id="@+id/playerName2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nom du joueur: Bob"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black" />
-
-            <TextView
-                    android:id="@+id/quizName2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Quiz: Nature"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            <TextView
-                    android:id="@+id/gameMode2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mode: Multi LAN"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            <TextView
-                    android:id="@+id/score2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Score: 1000"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            <!-- Boutons pour charger et supprimer la sauvegarde -->
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    android:paddingTop="8dp">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <!-- Bouton pour charger la sauvegarde -->
-                <ImageButton
-                        android:id="@+id/btnLoad2"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@android:drawable/ic_menu_upload"
-                        android:contentDescription="Charger"
-                        android:layout_marginEnd="8dp"/>
+                <TextView
+                        android:id="@+id/playerName2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nom du joueur : Bob"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black" />
 
-                <!-- Bouton pour supprimer la sauvegarde -->
-                <ImageButton
-                        android:id="@+id/btnDelete2"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@android:drawable/ic_menu_delete"
-                        android:contentDescription="Supprimer" />
+                <TextView
+                        android:id="@+id/quizName2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz : Histoire"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/darker_gray" />
+
+                <TextView
+                        android:id="@+id/score2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Score : 2700"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/darker_gray" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/gameMode2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode : Multi"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        <TextView
+                                android:id="@+id/gameMode2_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode2 : Classique"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginStart="8dp">
+
+                        <ImageButton
+                                android:id="@+id/btnLoad2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Charger"
+                                app:srcCompat="@android:drawable/ic_menu_upload"
+                                android:layout_marginEnd="8dp" />
+
+                        <ImageButton
+                                android:id="@+id/btnDelete2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Supprimer"
+                                app:srcCompat="@android:drawable/ic_menu_delete" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
         <!-- Carte de sauvegarde 3 -->
         <androidx.cardview.widget.CardView
                 android:id="@+id/cardSave3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:layout_constraintWidth_percent="0.8"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintWidth_percent="0.9"
                 app:layout_constraintTop_toBottomOf="@id/cardSave2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -226,23 +278,16 @@
                         android:id="@+id/playerName3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur: Claire"
+                        android:text="Nom du joueur : Clara"
                         android:textSize="16sp"
+                        android:textStyle="bold"
                         android:textColor="@android:color/black" />
 
                 <TextView
                         android:id="@+id/quizName3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz: Histoire"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                        android:id="@+id/gameMode3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mode: Solo"
+                        android:text="Quiz : Sciences"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -250,7 +295,7 @@
                         android:id="@+id/score3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score: 4200"
+                        android:text="Score : 3200"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -258,23 +303,56 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="end"
-                        android:paddingTop="8dp">
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
 
-                    <ImageButton
-                            android:id="@+id/btnLoad3"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_upload"
-                            android:contentDescription="Charger"
-                            android:layout_marginEnd="8dp"/>
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
-                    <ImageButton
-                            android:id="@+id/btnDelete3"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_delete"
-                            android:contentDescription="Supprimer" />
+                        <TextView
+                                android:id="@+id/gameMode3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode : Solo"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        <TextView
+                                android:id="@+id/gameMode2_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode2 : Classique"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginStart="8dp">
+
+                        <ImageButton
+                                android:id="@+id/btnLoad3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Charger"
+                                app:srcCompat="@android:drawable/ic_menu_upload"
+                                android:layout_marginEnd="8dp" />
+
+                        <ImageButton
+                                android:id="@+id/btnDelete3"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Supprimer"
+                                app:srcCompat="@android:drawable/ic_menu_delete" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -284,9 +362,9 @@
                 android:id="@+id/cardSave4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:layout_constraintWidth_percent="0.8"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintWidth_percent="0.9"
                 app:layout_constraintTop_toBottomOf="@id/cardSave3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -304,23 +382,16 @@
                         android:id="@+id/playerName4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur: David"
+                        android:text="Nom du joueur : David"
                         android:textSize="16sp"
+                        android:textStyle="bold"
                         android:textColor="@android:color/black" />
 
                 <TextView
                         android:id="@+id/quizName4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz: Informatique"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                        android:id="@+id/gameMode4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mode: Multi LAN"
+                        android:text="Quiz : Géographie"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -328,7 +399,7 @@
                         android:id="@+id/score4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score: 1500"
+                        android:text="Score : 2800"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -336,23 +407,56 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="end"
-                        android:paddingTop="8dp">
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
 
-                    <ImageButton
-                            android:id="@+id/btnLoad4"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_upload"
-                            android:contentDescription="Charger"
-                            android:layout_marginEnd="8dp"/>
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
-                    <ImageButton
-                            android:id="@+id/btnDelete4"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_delete"
-                            android:contentDescription="Supprimer" />
+                        <TextView
+                                android:id="@+id/gameMode4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode : Multi"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        <TextView
+                                android:id="@+id/gameMode2_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode2 : Classique"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginStart="8dp">
+
+                        <ImageButton
+                                android:id="@+id/btnLoad4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Charger"
+                                app:srcCompat="@android:drawable/ic_menu_upload"
+                                android:layout_marginEnd="8dp" />
+
+                        <ImageButton
+                                android:id="@+id/btnDelete4"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Supprimer"
+                                app:srcCompat="@android:drawable/ic_menu_delete" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -362,9 +466,9 @@
                 android:id="@+id/cardSave5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:layout_constraintWidth_percent="0.8"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintWidth_percent="0.9"
                 app:layout_constraintTop_toBottomOf="@id/cardSave4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -382,23 +486,16 @@
                         android:id="@+id/playerName5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur: Emma"
+                        android:text="Nom du joueur : Emma"
                         android:textSize="16sp"
+                        android:textStyle="bold"
                         android:textColor="@android:color/black" />
 
                 <TextView
                         android:id="@+id/quizName5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz: Géographie"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                        android:id="@+id/gameMode5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mode: Solo"
+                        android:text="Quiz : Culture Générale"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -406,7 +503,7 @@
                         android:id="@+id/score5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score: 2800"
+                        android:text="Score : 3100"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -414,23 +511,56 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="end"
-                        android:paddingTop="8dp">
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
 
-                    <ImageButton
-                            android:id="@+id/btnLoad5"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_upload"
-                            android:contentDescription="Charger"
-                            android:layout_marginEnd="8dp"/>
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
-                    <ImageButton
-                            android:id="@+id/btnDelete5"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_delete"
-                            android:contentDescription="Supprimer" />
+                        <TextView
+                                android:id="@+id/gameMode5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode : Solo"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        <TextView
+                                android:id="@+id/gameMode2_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode2 : Classique"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginStart="8dp">
+
+                        <ImageButton
+                                android:id="@+id/btnLoad5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Charger"
+                                app:srcCompat="@android:drawable/ic_menu_upload"
+                                android:layout_marginEnd="8dp" />
+
+                        <ImageButton
+                                android:id="@+id/btnDelete5"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Supprimer"
+                                app:srcCompat="@android:drawable/ic_menu_delete" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -440,14 +570,13 @@
                 android:id="@+id/cardSave6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:layout_constraintWidth_percent="0.8"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintWidth_percent="0.9"
                 app:layout_constraintTop_toBottomOf="@id/cardSave5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="64dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -461,23 +590,16 @@
                         android:id="@+id/playerName6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur: Félix"
+                        android:text="Nom du joueur : Félix"
                         android:textSize="16sp"
+                        android:textStyle="bold"
                         android:textColor="@android:color/black" />
 
                 <TextView
                         android:id="@+id/quizName6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz: Culture Générale"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                        android:id="@+id/gameMode6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mode: Multi LAN"
+                        android:text="Quiz : Informatique"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -485,7 +607,7 @@
                         android:id="@+id/score6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score: 5000"
+                        android:text="Score : 2950"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -493,26 +615,60 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="end"
-                        android:paddingTop="8dp">
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
 
-                    <ImageButton
-                            android:id="@+id/btnLoad6"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_upload"
-                            android:contentDescription="Charger"
-                            android:layout_marginEnd="8dp"/>
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
-                    <ImageButton
-                            android:id="@+id/btnDelete6"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:srcCompat="@android:drawable/ic_menu_delete"
-                            android:contentDescription="Supprimer" />
+                        <TextView
+                                android:id="@+id/gameMode6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode : Multi"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        <TextView
+                                android:id="@+id/gameMode2_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mode2 : Classique"
+                                android:textSize="14sp"
+                                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginStart="8dp">
+
+                        <ImageButton
+                                android:id="@+id/btnLoad6"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Charger"
+                                app:srcCompat="@android:drawable/ic_menu_upload"
+                                android:layout_marginEnd="8dp" />
+
+                        <ImageButton
+                                android:id="@+id/btnDelete6"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Supprimer"
+                                app:srcCompat="@android:drawable/ic_menu_delete" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
 
     <!-- Footer avec version de l'application -->
     <TextView

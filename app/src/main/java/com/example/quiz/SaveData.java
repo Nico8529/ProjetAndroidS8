@@ -17,6 +17,7 @@ public class SaveData {
         private int slot;
         private String playerName;
         private String mode;
+        private String mode2;
         private String quizTitle;
         private int quizId;
         private int currentQuestionIndex;
@@ -31,6 +32,7 @@ public class SaveData {
         public void reset() {
             this.playerName = "Sauvegarde Libre";
             this.mode = "";
+            this.mode2 = "";
             this.quizTitle = "";
             this.quizId = 0;
             this.currentQuestionIndex = 0;
@@ -62,9 +64,15 @@ public class SaveData {
         public String getMode() {
             return mode;
         }
+        public String getMode2() {
+            return mode2;
+        }
 
         public void setMode(String mode) {
             this.mode = mode;
+        }
+        public void setMode2(String mode2) {
+            this.mode2 = mode2;
         }
 
         public String getQuizTitle() {

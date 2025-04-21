@@ -21,6 +21,7 @@ public class MenuSauvegarde extends AppCompatActivity {
     TextView playerName1, playerName2, playerName3, playerName4, playerName5, playerName6;
     TextView quizName1, quizName2, quizName3, quizName4, quizName5, quizName6;
     TextView gameMode1, gameMode2, gameMode3, gameMode4, gameMode5, gameMode6;
+    TextView gameMode2_1, gameMode2_2, gameMode2_3, gameMode2_4, gameMode2_5, gameMode2_6;
     TextView score1, score2, score3, score4, score5, score6;
 
     @Override
@@ -28,6 +29,7 @@ public class MenuSauvegarde extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_sauvegarde);
         findViewById(R.id.btnBack_LSauvegarde).setOnClickListener(v -> finish());
+
         // Initialiser les vues
         initializeViews();
 
@@ -72,6 +74,13 @@ public class MenuSauvegarde extends AppCompatActivity {
         gameMode5 = findViewById(R.id.gameMode5);
         gameMode6 = findViewById(R.id.gameMode6);
 
+        gameMode2_1 = findViewById(R.id.gameMode2_1);
+        gameMode2_2 = findViewById(R.id.gameMode2_2);
+        gameMode2_3 = findViewById(R.id.gameMode2_3);
+        gameMode2_4 = findViewById(R.id.gameMode2_4);
+        gameMode2_5 = findViewById(R.id.gameMode2_5);
+        gameMode2_6 = findViewById(R.id.gameMode2_6);
+
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
         score3 = findViewById(R.id.score3);
@@ -110,22 +119,29 @@ public class MenuSauvegarde extends AppCompatActivity {
         TextView playerName = findViewById(getResources().getIdentifier("playerName" + slot, "id", getPackageName()));
         TextView quizName = findViewById(getResources().getIdentifier("quizName" + slot, "id", getPackageName()));
         TextView gameMode = findViewById(getResources().getIdentifier("gameMode" + slot, "id", getPackageName()));
+        TextView gameMode2 = findViewById(getResources().getIdentifier("gameMode2" + slot, "id", getPackageName()));
         TextView score = findViewById(getResources().getIdentifier("score" + slot, "id", getPackageName()));
 
-        playerName.setText(save.getPlayerName());
-        quizName.setText(save.getQuizTitle());
-        gameMode.setText(save.getMode());
-        score.setText("Score: " + save.getScore());
+        // Vérification que les vues ne sont pas nulles avant d'appeler setText
+        if (playerName != null) playerName.setText(save.getPlayerName());
+        if (quizName != null) quizName.setText(save.getQuizTitle());
+        if (gameMode != null) gameMode.setText(save.getMode());
+        if (gameMode2 != null) gameMode2.setText(save.getMode2());
+        if (score != null) score.setText("Score: " + save.getScore());
     }
 
     private void setLoadButtonAction(int slot, SaveData.Save save) {
         ImageButton btnLoad = findViewById(getResources().getIdentifier("btnLoad" + slot, "id", getPackageName()));
-        btnLoad.setOnClickListener(v -> loadSave(slot, save));
+        if (btnLoad != null) {
+            btnLoad.setOnClickListener(v -> loadSave(slot, save));
+        }
     }
 
     private void setDeleteButtonAction(int slot, SaveData.Save save) {
         ImageButton btnDelete = findViewById(getResources().getIdentifier("btnDelete" + slot, "id", getPackageName()));
-        btnDelete.setOnClickListener(v -> deleteSave(slot, save));
+        if (btnDelete != null) {
+            btnDelete.setOnClickListener(v -> deleteSave(slot, save));
+        }
     }
 
     private void loadSave(int slot, SaveData.Save save) {
@@ -136,6 +152,7 @@ public class MenuSauvegarde extends AppCompatActivity {
             Intent intent = new Intent(MenuSauvegarde.this, GameQuiz.class);
             intent.putExtra("quizId", save.getQuizId());
             intent.putExtra("mode", save.getMode());
+            intent.putExtra("mode2", save.getMode2());
             intent.putExtra("quizTitle", save.getQuizTitle());
             intent.putExtra("score", save.getScore());
             intent.putExtra("currentQuestionIndex", save.getCurrentQuestionIndex());

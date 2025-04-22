@@ -54,7 +54,7 @@ public class MenuDuJeu extends AppCompatActivity {
         Log.d("MenuDuJeu", "Musique de fond prête, en boucle.");
 
         // Lancer la musique immédiatement (optionnel selon ton choix)
-        //mediaPlayer.start();
+        mediaPlayer.start();
         //PS ne pas lancer si tu tiens à tes oreilles mdr
         // Log : Musique de fond lancée
         //Log.d("MenuDuJeu", "Musique de fond lancée.") ;

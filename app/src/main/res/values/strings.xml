@@ -60,5 +60,11 @@
     <string name="back_button">bof</string>
     <string name="temps">temps :</string>
     <string name="chargement_des_assets">"Chargement des assets "</string>
+    <string name="logo_du_jeu">"Logo du jeu "</string>
+    <string name="quiz_master">"🎮 QUIZ MASTER "</string>
+    <string name="prenom">"Prénom "</string>
+    <string name="code_4_chiffres">"Code à 4 chiffres "</string>
+    <string name="connexion">"Connexion "</string>
+    <string name="creer_un_compte">"Créer un compte "</string>
 
 </resources>

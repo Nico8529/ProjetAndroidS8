@@ -1,5 +1,6 @@
 package com.example.quiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +19,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        inputUsername = findViewById(R.id.inputUsername);
-        inputCode = findViewById(R.id.inputCode);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
+        // Association des éléments avec leurs IDs dans le layout
+        inputUsername = findViewById(R.id.inputUsername_LLogin);
+        inputCode = findViewById(R.id.inputCode_LLogin);
+        btnLogin = findViewById(R.id.btnLogin_LLogin);
+        btnRegister = findViewById(R.id.btnRegister_LLogin);
 
+        // Boutons
         btnLogin.setOnClickListener(v -> loginUser());
         btnRegister.setOnClickListener(v -> registerUser());
     }
@@ -42,6 +45,7 @@ public class Login extends AppCompatActivity {
                 JSONObject user = users.getJSONObject(i);
                 if (user.getString("name").equals(username) && user.getString("code").equals(code)) {
                     toast("Connexion réussie ! ID: " + user.getString("id"));
+                    navigateToMenu(username, user.getString("id"));
                     return;
                 }
             }
@@ -80,6 +84,7 @@ public class Login extends AppCompatActivity {
             writeUsers(users);
 
             toast("Compte créé ! Bienvenue " + username);
+            navigateToMenu(username, newUser.getString("id")); // pour register
         } catch (Exception e) {
             e.printStackTrace();
             toast("Erreur lors de l'enregistrement");
@@ -123,6 +128,14 @@ public class Login extends AppCompatActivity {
         } while (exists);
 
         return id;
+    }
+
+    private void navigateToMenu(String username, String id) {
+        Intent intent = new Intent(Login.this, MenuDuJeu.class);
+        intent.putExtra("username", username);
+        intent.putExtra("user_id", id);
+        startActivity(intent);
+        finish();
     }
 
     private void toast(String msg) {

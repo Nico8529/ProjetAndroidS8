@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
@@ -97,6 +98,19 @@ public class MenuDuJeu extends AppCompatActivity {
             mediaPlayer.release();  // Libérer les ressources du MediaPlayer
             finishAffinity();  // Fermer l'application
             Log.d("MenuDuJeu", "Musique arrêtée, application fermée.");
+        });
+
+        // Récupère les données envoyées depuis Login.java
+        String username = getIntent().getStringExtra("username");
+        String userId = getIntent().getStringExtra("user_id");
+
+        // Référence à l’icône de profil
+        ImageView profileIcon = findViewById(R.id.profileIcon);
+
+        profileIcon.setOnClickListener(v -> {
+            // Affiche une bulle avec les infos
+            String message = "👤 " + username + " (ID: " + userId + ")";
+            Toast.makeText(MenuDuJeu.this, message, Toast.LENGTH_LONG).show();
         });
     }
 

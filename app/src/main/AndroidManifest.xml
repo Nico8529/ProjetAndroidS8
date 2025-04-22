@@ -33,6 +33,7 @@
         <activity android:name=".GameQuiz" />
         <activity android:name=".PalierActivity" />
         <activity android:name=".MenuQuiz" />
+        <activity android:name=".CreationQuiz" />
 
 
 

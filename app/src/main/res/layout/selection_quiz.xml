@@ -24,7 +24,7 @@
             android:id="@+id/title_LSelection_Quiz"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Selection du quiz"
+            android:text="@string/selection_du_quiz"
             android:textSize="24sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,13 +37,15 @@
             android:id="@+id/searchBarre_LSelection_Quiz"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Rechercher un quiz"
+            android:autofillHints="Arbre ou Science"
+            android:hint="@string/rechercher_un_quiz"
             android:padding="10dp"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/title_LSelection_Quiz"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:drawableStart="@android:drawable/ic_menu_search" />
+            android:drawableStart="@android:drawable/ic_menu_search" tools:ignore="VisualLintTextFieldSize"
+            android:textColorHint="#78909C"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_SelectionQuiz"
@@ -62,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

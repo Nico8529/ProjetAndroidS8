@@ -121,5 +121,7 @@
     <string name="mode_le_plus_rapide">Mode Le plus rapide</string>
     <string name="mode_r_partition_r_gressive">Mode Répartition régressive</string>
     <string name="mode_contre_la_montre">Mode Contre la montre</string>
+    <string name="selection_du_quiz">Selection du quiz</string>
+    <string name="rechercher_un_quiz">Rechercher un quiz</string>
 
 </resources>

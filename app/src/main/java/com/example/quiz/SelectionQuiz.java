@@ -159,3 +159,4 @@ public class SelectionQuiz extends AppCompatActivity {
         Log.d(TAG, "Filtrage effectué, " + filteredList.size() + " quizzes trouvés.");
     }
 }
+

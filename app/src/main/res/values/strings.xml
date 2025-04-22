@@ -84,5 +84,29 @@
     <string name="langue">"Langue "</string>
     <string name="sauvegarder">"Sauvegarder "</string>
     <string name="par_defaut">"Par défaut "</string>
+    <string name="quiz_mathematiques">"Quiz : Mathématiques "</string>
+    <string name="nom_du_joueur_alice">"Nom du joueur : Alice "</string>
+    <string name="score_3000">"Score : 3000 "</string>
+    <string name="mode_solo">"Mode : Solo "</string>
+    <string name="mode2_normal">"Mode2 : Normal "</string>
+    <string name="charger">"Charger "</string>
+    <string name="supprimer">"Supprimer "</string>
+    <string name="nom_du_joueur_bob">"Nom du joueur : Bob "</string>
+    <string name="quiz_histoire">"Quiz : Histoire "</string>
+    <string name="score_2700">"Score : 2700 "</string>
+    <string name="mode_multi">"Mode : Multi "</string>
+    <string name="mode2_classique">"Mode2 : Classique "</string>
+    <string name="nom_du_joueur_clara">"Nom du joueur : Clara "</string>
+    <string name="quiz_sciences">"Quiz : Sciences "</string>
+    <string name="score_3200">"Score : 3200 "</string>
+    <string name="nom_du_joueur_david">"Nom du joueur : David "</string>
+    <string name="quiz_geographie">"Quiz : Géographie "</string>
+    <string name="score_2800">"Score : 2800 "</string>
+    <string name="nom_du_joueur_emma">Nom du joueur : Emma</string>
+    <string name="quiz_culture_generale">Quiz : Culture Générale</string>
+    <string name="score_3100">Score : 3100</string>
+    <string name="nom_du_joueur_felix">Nom du joueur : Félix</string>
+    <string name="quiz_informatique">Quiz : Informatique</string>
+    <string name="score_2950">Score : 2950</string>
 
 </resources>

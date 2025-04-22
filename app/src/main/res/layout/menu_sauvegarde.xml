@@ -31,7 +31,7 @@
             android:id="@+id/title_LSauvegarde"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Sauvegarde"
+            android:text="@string/sauvegarde"
             android:textSize="24sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
                         android:id="@+id/playerName1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur : Alice"
+                        android:text="@string/nom_du_joueur_alice"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -75,7 +75,7 @@
                         android:id="@+id/quizName1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz : Mathématiques"
+                        android:text="@string/quiz_mathematiques"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -83,7 +83,7 @@
                         android:id="@+id/score1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score : 3000"
+                        android:text="@string/score_3000"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -91,7 +91,7 @@
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:baselineAligned="false" android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:layout_marginTop="8dp">
 
@@ -106,7 +106,7 @@
                                 android:id="@+id/gameMode1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode : Solo"
+                                android:text="@string/mode_solo"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -114,7 +114,7 @@
                                 android:id="@+id/gameMode2_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode2 : Normal"
+                                android:text="@string/mode2_normal"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -132,7 +132,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Charger"
+                                android:contentDescription="@string/charger"
                                 app:srcCompat="@android:drawable/ic_menu_upload"
                                 android:layout_marginEnd="8dp" />
 
@@ -141,7 +141,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Supprimer"
+                                android:contentDescription="@string/supprimer"
                                 app:srcCompat="@android:drawable/ic_menu_delete" />
                     </LinearLayout>
                 </LinearLayout>
@@ -174,7 +174,7 @@
                         android:id="@+id/playerName2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur : Bob"
+                        android:text="@string/nom_du_joueur_bob"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -183,7 +183,7 @@
                         android:id="@+id/quizName2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz : Histoire"
+                        android:text="@string/quiz_histoire"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -191,7 +191,7 @@
                         android:id="@+id/score2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score : 2700"
+                        android:text="@string/score_2700"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -212,7 +212,7 @@
                                 android:id="@+id/gameMode2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode : Multi"
+                                android:text="@string/mode_multi"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -220,7 +220,7 @@
                                 android:id="@+id/gameMode2_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode2 : Classique"
+                                android:text="@string/mode2_classique"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -237,7 +237,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Charger"
+                                android:contentDescription="@string/charger"
                                 app:srcCompat="@android:drawable/ic_menu_upload"
                                 android:layout_marginEnd="8dp" />
 
@@ -246,7 +246,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Supprimer"
+                                android:contentDescription="@string/supprimer"
                                 app:srcCompat="@android:drawable/ic_menu_delete" />
                     </LinearLayout>
                 </LinearLayout>
@@ -278,7 +278,7 @@
                         android:id="@+id/playerName3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur : Clara"
+                        android:text="@string/nom_du_joueur_clara"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -287,7 +287,7 @@
                         android:id="@+id/quizName3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz : Sciences"
+                        android:text="@string/quiz_sciences"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -295,7 +295,7 @@
                         android:id="@+id/score3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score : 3200"
+                        android:text="@string/score_3200"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -316,7 +316,7 @@
                                 android:id="@+id/gameMode3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode : Solo"
+                                android:text="@string/mode_solo"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -324,7 +324,7 @@
                                 android:id="@+id/gameMode2_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode2 : Classique"
+                                android:text="@string/mode2_classique"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -341,7 +341,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Charger"
+                                android:contentDescription="@string/charger"
                                 app:srcCompat="@android:drawable/ic_menu_upload"
                                 android:layout_marginEnd="8dp" />
 
@@ -350,7 +350,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Supprimer"
+                                android:contentDescription="@string/supprimer"
                                 app:srcCompat="@android:drawable/ic_menu_delete" />
                     </LinearLayout>
                 </LinearLayout>
@@ -382,7 +382,7 @@
                         android:id="@+id/playerName4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur : David"
+                        android:text="@string/nom_du_joueur_david"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -391,7 +391,7 @@
                         android:id="@+id/quizName4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz : Géographie"
+                        android:text="@string/quiz_geographie"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -399,7 +399,7 @@
                         android:id="@+id/score4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score : 2800"
+                        android:text="@string/score_2800"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -420,7 +420,7 @@
                                 android:id="@+id/gameMode4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode : Multi"
+                                android:text="@string/mode_Multi"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -428,7 +428,7 @@
                                 android:id="@+id/gameMode2_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode2 : Classique"
+                                android:text="@string/mode2_classique"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -445,7 +445,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Charger"
+                                android:contentDescription="@string/charger"
                                 app:srcCompat="@android:drawable/ic_menu_upload"
                                 android:layout_marginEnd="8dp" />
 
@@ -454,7 +454,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Supprimer"
+                                android:contentDescription="@string/supprimer"
                                 app:srcCompat="@android:drawable/ic_menu_delete" />
                     </LinearLayout>
                 </LinearLayout>
@@ -486,7 +486,7 @@
                         android:id="@+id/playerName5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur : Emma"
+                        android:text="@string/nom_du_joueur_emma"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -495,7 +495,7 @@
                         android:id="@+id/quizName5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz : Culture Générale"
+                        android:text="@string/quiz_culture_generale"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -503,7 +503,7 @@
                         android:id="@+id/score5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score : 3100"
+                        android:text="@string/score_3100"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -524,7 +524,7 @@
                                 android:id="@+id/gameMode5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode : Solo"
+                                android:text="@string/mode_solo"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -532,7 +532,7 @@
                                 android:id="@+id/gameMode2_5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode2 : Classique"
+                                android:text="@string/mode2_classique"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -549,7 +549,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Charger"
+                                android:contentDescription="@string/charger"
                                 app:srcCompat="@android:drawable/ic_menu_upload"
                                 android:layout_marginEnd="8dp" />
 
@@ -558,7 +558,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Supprimer"
+                                android:contentDescription="@string/supprimer"
                                 app:srcCompat="@android:drawable/ic_menu_delete" />
                     </LinearLayout>
                 </LinearLayout>
@@ -590,7 +590,7 @@
                         android:id="@+id/playerName6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nom du joueur : Félix"
+                        android:text="@string/nom_du_joueur_felix"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -599,7 +599,7 @@
                         android:id="@+id/quizName6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quiz : Informatique"
+                        android:text="@string/quiz_informatique"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -607,7 +607,7 @@
                         android:id="@+id/score6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Score : 2950"
+                        android:text="@string/score_2950"
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
 
@@ -628,7 +628,7 @@
                                 android:id="@+id/gameMode6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode : Multi"
+                                android:text="@string/mode_Multi"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -636,7 +636,7 @@
                                 android:id="@+id/gameMode2_6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Mode2 : Classique"
+                                android:text="@string/mode2_classique"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -653,7 +653,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Charger"
+                                android:contentDescription="@string/charger"
                                 app:srcCompat="@android:drawable/ic_menu_upload"
                                 android:layout_marginEnd="8dp" />
 
@@ -662,7 +662,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Supprimer"
+                                android:contentDescription="@string/supprimer"
                                 app:srcCompat="@android:drawable/ic_menu_delete" />
                     </LinearLayout>
                 </LinearLayout>

@@ -108,5 +108,12 @@
     <string name="nom_du_joueur_felix">Nom du joueur : Félix</string>
     <string name="quiz_informatique">Quiz : Informatique</string>
     <string name="score_2950">Score : 2950</string>
+    <string name="selection_du_mode_de_jeu">Selection du mode de jeu</string>
+    <string name="multijoueur_local">Multijoueur Local</string>
+    <string name="j1">J1</string>
+    <string name="j2">J2</string>
+    <string name="j3">J3</string>
+    <string name="j4">J4</string>
+    <string name="multijoueur_en_ligne">Multijoueur en Ligne</string>
 
 </resources>

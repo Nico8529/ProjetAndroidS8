@@ -113,7 +113,6 @@ public class MenuDuJeu extends AppCompatActivity {
             Toast.makeText(MenuDuJeu.this, message, Toast.LENGTH_LONG).show();
         });
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

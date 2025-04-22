@@ -19,7 +19,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="6dp"
             android:maxLines="1"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
     <!-- Description du quiz -->
     <TextView
@@ -31,7 +31,7 @@
             android:textColor="#777777"
             android:layout_marginBottom="8dp"
             android:maxLines="2"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
     <!-- Nombre de questions -->
     <TextView
@@ -41,7 +41,7 @@
             android:text="Questions: 0"
             android:textSize="14sp"
             android:textColor="#555555"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
     <!-- Score Max -->
     <TextView
@@ -51,15 +51,41 @@
             android:text="Score Max: 0"
             android:textSize="14sp"
             android:textColor="#555555"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
-    <!-- Icône Premium (visible seulement si applicable) -->
-    <ImageView
-            android:id="@+id/premiumicon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_premium"
-            android:visibility="gone"
-            android:layout_gravity="end"/>
+    <!-- Boutons et icône alignés horizontalement -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="8dp">
+
+        <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Édition"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#FFBB33"
+                android:textColor="#FFFFFF" />
+
+        <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Supprimer"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#FF4444"
+                android:textColor="#FFFFFF" />
+
+        <ImageView
+                android:id="@+id/premiumicon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_premium"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical" />
+    </LinearLayout>
 
 </LinearLayout>

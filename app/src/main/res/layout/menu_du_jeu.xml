@@ -18,7 +18,7 @@
             android:src="@drawable/ic_baseline_groups_24"
             android:background="@drawable/circle_background"
             android:padding="8dp"
-            android:contentDescription="Profil"
+            android:contentDescription="@string/profil"
             android:elevation="6dp"
             android:scaleType="centerInside"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
             android:layout_height="140dp"
             android:layout_marginTop="32dp"
             app:srcCompat="@drawable/logo"
-            android:contentDescription="Logo du jeu"
+            android:contentDescription="@string/logo_du_jeu"
             app:layout_constraintTop_toBottomOf="@id/profileIcon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -41,7 +41,7 @@
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🎮 QUIZ MASTER"
+            android:text="@string/quiz_master"
             android:textSize="26sp"
             android:textColor="#000000"
             android:textStyle="bold"
@@ -67,36 +67,36 @@
         <Button
                 android:id="@+id/btnContinue_LMenuDuJeu"
                 style="@style/Widget.Button.Modern"
-                android:text="Création de Quiz"/>
+                android:text="@string/creation_de_quiz"/>
 
         <Button
                 android:id="@+id/btnNewGame_LMenuDuJeu"
                 style="@style/Widget.Button.Modern"
-                android:text="Nouvelle Partie"
+                android:text="@string/nouvelle_partie"
                 android:layout_marginTop="12dp"/>
 
         <Button
                 android:id="@+id/btnStat_LMenuDuJeu"
                 style="@style/Widget.Button.Modern"
-                android:text="Statistiques"
+                android:text="@string/statistiques"
                 android:layout_marginTop="12dp"/>
 
         <Button
                 android:id="@+id/btnSave_LMenuDuJeu"
                 style="@style/Widget.Button.Modern"
-                android:text="Sauvegarde"
+                android:text="@string/sauvegarde"
                 android:layout_marginTop="12dp"/>
 
         <Button
                 android:id="@+id/btnParam_LMenuDuJeu"
                 style="@style/Widget.Button.Modern"
-                android:text="Paramètres"
+                android:text="@string/param_tres"
                 android:layout_marginTop="12dp"/>
 
         <Button
                 android:id="@+id/btnExit_LMenuDuJeu"
                 style="@style/Widget.Button.Modern"
-                android:text="Quitter"
+                android:text="@string/quitter"
                 android:layout_marginTop="12dp"/>
     </LinearLayout>
 
@@ -105,9 +105,9 @@
             android:id="@+id/versionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Version 1.0"
+            android:text="@string/version_app"
             android:textSize="12sp"
-            android:textColor="#AAAAAA"
+            android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

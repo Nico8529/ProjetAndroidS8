@@ -66,5 +66,12 @@
     <string name="code_4_chiffres">"Code à 4 chiffres "</string>
     <string name="connexion">"Connexion "</string>
     <string name="creer_un_compte">"Créer un compte "</string>
+    <string name="profil">"Profil "</string>
+    <string name="creation_de_quiz">"Création de Quiz "</string>
+    <string name="nouvelle_partie">"Nouvelle Partie "</string>
+    <string name="statistiques">"Statistiques "</string>
+    <string name="sauvegarde">"Sauvegarde "</string>
+    <string name="param_tres">"Paramètres "</string>
+    <string name="quitter">"Quitter "</string>
 
 </resources>

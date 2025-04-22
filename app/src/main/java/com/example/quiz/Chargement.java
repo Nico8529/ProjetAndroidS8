@@ -116,7 +116,7 @@ public class Chargement extends AppCompatActivity {
     // Méthode pour passer à l'activité suivante après le chargement
     void navigateToNextActivity() {
         Log.d("Chargement", "Navigation vers Login.java");
-        Intent intent = new Intent(Chargement.this, Login.class); // <- Changer ici
+        Intent intent = new Intent(Chargement.this, Login.class);
         startActivity(intent);
         finish(); // Fermer l'activité de chargement
     }

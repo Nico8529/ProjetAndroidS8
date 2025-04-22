@@ -2,15 +2,26 @@ package com.example.quiz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectionMode extends AppCompatActivity {
+
+    // Tag pour les logs
+    private static final String TAG = "SelectionMode";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_mode);
-        findViewById(R.id.btnBack_Lselection_mode).setOnClickListener(v -> finish());
+
+        // Bouton retour
+        findViewById(R.id.btnBack_Lselection_mode).setOnClickListener(v -> {
+            // Log lorsque l'utilisateur clique sur le bouton retour
+            Log.d(TAG, "onCreate: Bouton retour cliqué, fermeture de l'activité.");
+            finish();
+        });
 
         // Initialisation des boutons
         Button btnSolo = findViewById(R.id.btnSolo_LSelectMode);
@@ -23,22 +34,24 @@ public class SelectionMode extends AppCompatActivity {
         Button btnMultiOnlineJ3 = findViewById(R.id.btnMultiOnlineJ3_LSelectMode);
         Button btnMultiOnlineJ4 = findViewById(R.id.btnMultiOnlineJ4_LSelectMode);
 
-        // Configuration des écouteurs pour les boutons
-        btnSolo.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiLocalJ1.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiLocalJ2.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiLocalJ3.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiLocalJ4.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiOnlineJ1.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiOnlineJ2.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiOnlineJ3.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-        btnMultiOnlineJ4.setOnClickListener(v -> startActivity(new Intent(SelectionMode.this, SelectionQuiz.class)));
-
+        // Configuration des écouteurs pour les boutons avec la méthode générique
+        setButtonClickListener(btnSolo);
+        setButtonClickListener(btnMultiLocalJ1);
+        setButtonClickListener(btnMultiLocalJ2);
+        setButtonClickListener(btnMultiLocalJ3);
+        setButtonClickListener(btnMultiLocalJ4);
+        setButtonClickListener(btnMultiOnlineJ1);
+        setButtonClickListener(btnMultiOnlineJ2);
+        setButtonClickListener(btnMultiOnlineJ3);
+        setButtonClickListener(btnMultiOnlineJ4);
     }
 
-    private void navigateToSelectionQuiz() {
-        // Utiliser un Intent pour démarrer l'activité SelectionQuiz
-        Intent intent = new Intent(SelectionMode.this, SelectionQuiz.class);
-        startActivity(intent);
+    // Méthode générique pour associer un clic au démarrage de l'activité SelectionQuiz
+    private void setButtonClickListener(Button button) {
+        button.setOnClickListener(v -> {
+            // Log pour chaque bouton cliqué
+            Log.d(TAG, "onClick: Bouton cliqué, lancement de SelectionQuiz.");
+            startActivity(new Intent(SelectionMode.this, SelectionQuiz.class));
+        });
     }
 }

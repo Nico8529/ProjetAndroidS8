@@ -15,6 +15,11 @@
     <string name="toast_saved">Paramètres sauvegardés !</string>
     <string name="toast_reset">Paramètres réinitialisés !</string>
     <string name="score_placeholder">Score: %1$d</string>
+    <!-- Chaîne pour le nombre de questions -->
+    <string name="questions_text">Questions : %1$d</string>
+
+    <!-- Chaîne pour le score max -->
+    <string name="score_max_text">Score Max : %1$d</string>
 
     <string name="statJ1">1150</string>
     <string name="statJ2">1023</string>
@@ -33,6 +38,11 @@
     <string name="nameSauv3">Libre</string>
     <string name="nameSauv4">Libre</string>
     <string name="nameSauv5">Libre</string>
+
+    <string name="game_mode_for">Mode de jeu pour : %1$s</string>
+    <string name="quiz_title">Titre du quiz : %1$s</string>
+    <string name="score">Score : %1$d</string>
+    <string name="no_score">Score : Aucun score disponible.</string>
 
     <string name="textQ1_menu">Les écureuils</string>
     <string name="textQ2_menu">Les loup de mer</string>

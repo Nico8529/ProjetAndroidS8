@@ -13,7 +13,7 @@ public class SelectionMode2 extends AppCompatActivity {
 
     private int quizId;
     private String quizTitle;
-    private boolean isPremium;
+    private String premium;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +28,21 @@ public class SelectionMode2 extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("QUIZ_DATA", MODE_PRIVATE);
         quizId = prefs.getInt("selectedQuizId", -1);
         quizTitle = prefs.getString("selectedQuizTitle", "Quiz inconnu");
-        isPremium = prefs.getBoolean("isPremium", false);
+        premium = prefs.getString("premium", "no");
         int score = prefs.getInt("selectedQuizScore", -1);
 
         // 🖋 Affichage du titre et score du quiz
         TextView titleText = findViewById(R.id.title_Lselection_mode2);
-        titleText.setText("Mode de jeu pour : " + quizTitle);
+        titleText.setText(getString(R.string.game_mode_for, quizTitle));
 
         TextView quizTitleText = findViewById(R.id.selectedQuizTitleText);
-        quizTitleText.setText("Titre du quiz : " + quizTitle);
+        quizTitleText.setText(getString(R.string.quiz_title, quizTitle));
 
         TextView quizScoreText = findViewById(R.id.selectedQuizScoreText);
         if (score != -1) {
-            quizScoreText.setText("Score : " + score);
+            quizScoreText.setText(getString(R.string.score, score));
         } else {
-            quizScoreText.setText("Score : Aucun score disponible.");
+            quizScoreText.setText(getString(R.string.no_score));
         }
 
         // 🕹 Boutons de mode
@@ -65,6 +65,7 @@ public class SelectionMode2 extends AppCompatActivity {
         intent.putExtra("quizId", quizId);
         intent.putExtra("mode", modeName);
         intent.putExtra("quizTitle", quizTitle);
+        intent.putExtra("premium", premium);
         startActivity(intent);
     }
 }

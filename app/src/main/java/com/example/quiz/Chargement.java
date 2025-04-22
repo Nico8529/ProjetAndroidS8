@@ -114,7 +114,7 @@ public class Chargement extends AppCompatActivity {
     }
 
     // Méthode pour passer à l'activité suivante après le chargement
-    private void navigateToNextActivity() {
+    void navigateToNextActivity() {
         Log.d("Chargement", "Navigation vers l'activité suivante.");
         // Créer une nouvelle Intent pour démarrer l'activité MenuDuJeu
         Intent intent = new Intent(Chargement.this, MenuDuJeu.class);

@@ -115,5 +115,11 @@
     <string name="j3">J3</string>
     <string name="j4">J4</string>
     <string name="multijoueur_en_ligne">Multijoueur en Ligne</string>
+    <string name="titre_du_quiz">Titre du quiz :</string>
+    <string name="mode_normal">Mode Normal</string>
+    <string name="mode_3_meilleurs_sur_4">Mode 3 meilleurs sur 4</string>
+    <string name="mode_le_plus_rapide">Mode Le plus rapide</string>
+    <string name="mode_r_partition_r_gressive">Mode Répartition régressive</string>
+    <string name="mode_contre_la_montre">Mode Contre la montre</string>
 
 </resources>

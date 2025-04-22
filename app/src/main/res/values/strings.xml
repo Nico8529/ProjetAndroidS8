@@ -73,5 +73,16 @@
     <string name="sauvegarde">"Sauvegarde "</string>
     <string name="param_tres">"Paramètres "</string>
     <string name="quitter">"Quitter "</string>
+    <string name="parametres">"Paramètres "</string>
+    <string name="audio">"Audio "</string>
+    <string name="systeme">"Système "</string>
+    <string name="musique">"Musique "</string>
+    <string name="video">"Vidéo "</string>
+    <string name="sauvegarde_auto">"Sauvegarde Auto "</string>
+    <string name="bonus">"Bonus "</string>
+    <string name="div">"Div "</string>
+    <string name="langue">"Langue "</string>
+    <string name="sauvegarder">"Sauvegarder "</string>
+    <string name="par_defaut">"Par défaut "</string>
 
 </resources>

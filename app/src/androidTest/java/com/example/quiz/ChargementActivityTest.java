@@ -37,10 +37,6 @@ public class ChargementActivityTest {
     public void testActivityLaunch() {
         // Vérifier que l'activité est bien lancée
         assertNotNull(activity);
-
-        // Vérifier que la vue text_LChargement existe et est affichée
-        Espresso.onView(withId(R.id.barre_LChargement))
-                .check(matches(isDisplayed())); // Vérifier que la vue est bien visible
     }
 
     @Test

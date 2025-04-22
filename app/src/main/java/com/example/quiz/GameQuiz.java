@@ -3,6 +3,7 @@ package com.example.quiz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,10 @@ public class GameQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_quiz);
+        if ("Contre la montre".equals(mode)) {
+            startTimer();
+        }
+
 
         quizId = getIntent().getIntExtra("quizId", -1);
         mode = getIntent().getStringExtra("mode");
@@ -102,6 +107,21 @@ public class GameQuiz extends AppCompatActivity {
             Intent intent = new Intent(GameQuiz.this, MenuQuiz.class);
             startActivity(intent);
         });
+    }
+    private CountDownTimer countDownTimer;
+
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                TextView timerText = findViewById(R.id.timerText);
+                timerText.setText("Temps : " + millisUntilFinished / 1000 + "s");
+            }
+
+            public void onFinish() {
+                Toast.makeText(GameQuiz.this, "Temps écoulé !", Toast.LENGTH_SHORT).show();
+                showGameOverDialog(score * 1000);
+            }
+        }.start();
     }
 
     private void speak(String text) {
@@ -365,6 +385,8 @@ public class GameQuiz extends AppCompatActivity {
             tts.stop();
             tts.shutdown();
         }
+        if (countDownTimer != null) countDownTimer.cancel();
         super.onDestroy();
+
     }
 }

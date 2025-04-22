@@ -28,9 +28,6 @@
       <SelectionState runConfigName="Chargement">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testLogoAnimationOnClick()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="testLoadingTextUpdate()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -38,6 +35,9 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="testActivityLaunch()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testNavigateToNextActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

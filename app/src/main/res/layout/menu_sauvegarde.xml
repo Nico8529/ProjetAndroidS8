@@ -420,7 +420,7 @@
                                 android:id="@+id/gameMode4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/mode_Multi"
+                                android:text="@string/mode_multi"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 
@@ -628,7 +628,7 @@
                                 android:id="@+id/gameMode6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/mode_Multi"
+                                android:text="@string/mode_multi"
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray" />
 

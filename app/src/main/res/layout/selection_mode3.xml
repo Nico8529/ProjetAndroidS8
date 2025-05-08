@@ -9,8 +9,9 @@
         tools:context=".MainActivity"
         android:padding="16dp">
 
+    <!-- Bouton Retour -->
     <ImageButton
-            android:id="@+id/btnBack_Lselection_mode"
+            android:id="@+id/btnBack_LSelectMode3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
@@ -20,6 +21,7 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:padding="12dp" />
 
+    <!-- Titre -->
     <TextView
             android:id="@+id/title_Lselection_mode"
             android:layout_width="0dp"
@@ -28,16 +30,18 @@
             android:textSize="24sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnBack_Lselection_mode"
+            app:layout_constraintStart_toEndOf="@id/btnBack_LSelectMode3"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp" />
 
+    <!-- Boutons de sélection de mode -->
     <Button
-            android:id="@+id/btnSolo_LSelectMode"
+            android:id="@+id/btnSolo_LSelectMode3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Jouer en solo"
+            android:text="@string/jouer_en_solo"
+            android:textAlignment="center"
             app:layout_constraintTop_toBottomOf="@id/title_Lselection_mode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,20 +51,137 @@
             android:background="@drawable/button_background"
             android:textColor="@android:color/white" />
 
-    <TextView
-            android:id="@+id/text1_LSelectMode"
+    <Button
+            android:id="@+id/btnMulti_LSelectMode3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="multijoueur en ligne"
+            android:text="@string/creer_une_partie_multijoueur"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toBottomOf="@id/btnSolo_LSelectMode"
+            app:layout_constraintTop_toBottomOf="@id/btnSolo_LSelectMode3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="16dp"
             android:padding="16dp"
-            android:background="@drawable/textview_background" />
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"/>
 
+    <Button
+            android:id="@+id/btnMulti2_LSelectMode3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rejoindre_une_partie_multijoueur"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/btnMulti_LSelectMode3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="16dp"
+            android:padding="16dp"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"/>
+
+    <LinearLayout
+            android:id="@+id/statisticsContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btnMulti2_LSelectMode3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="16dp">
+
+        <TextView
+                android:id="@+id/connectedPlayersTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joueurs Connectés"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/textConnectedPlayers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/connected_players"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/statistics_bubble"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/gamesInProgressTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jeux en Cours"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/textGamesInProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/games_in_progress"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/statistics_bubble"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/onlineGamesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jeux en Ligne"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/textOnlineGames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/online_games"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/statistics_bubble"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/topScorersTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meilleurs Scores"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/textTopScorers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/top_scorers_today"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/statistics_bubble"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Version de l'application -->
     <TextView
             android:id="@+id/version_LSelectMode"
             android:layout_width="wrap_content"
@@ -73,4 +194,5 @@
             android:layout_marginBottom="16dp"
             android:text="@string/version_app"
             android:gravity="center" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

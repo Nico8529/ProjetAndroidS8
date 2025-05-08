@@ -123,5 +123,14 @@
     <string name="mode_contre_la_montre">Mode Contre la montre</string>
     <string name="selection_du_quiz">Selection du quiz</string>
     <string name="rechercher_un_quiz">Rechercher un quiz</string>
+    <string name="rejoindre_uen_partie_multijoueur">Rejoindre uen partie multijoueur</string>
+    <string name="creer_une_partie_multijoueur">Créer une partie Multijoueur</string>
+    <string name="jouer_en_solo">Jouer en solo</string>
+    <string name="rejoindre_une_partie_multijoueur">Rejoindre une partie multijoueur</string>
+    <string name="connected_players">10</string>
+    <string name="games_in_progress">10</string>
+    <string name="online_games">10</string>
+    <string name="top_scorers_today">10</string>
+    <string name="lobby_list">Lobby</string>
 
 </resources>

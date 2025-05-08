@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mainScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Hub"
+            android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <!-- Bouton retour -->
+        <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="Retour"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Titre -->
+        <TextView
+                android:id="@+id/titleHub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Salle d'attente"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toEndOf="@id/btnBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
+
+        <!-- Liste des joueurs -->
+        <LinearLayout
+                android:id="@+id/playersList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@id/titleHub"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Exemple de bulle joueur -->
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/player_bubble"
+                    android:padding="8dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                <TextView
+                        android:id="@+id/playerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nom Joueur"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black" />
+
+                <!-- Supprimer joueur -->
+                <ImageButton
+                        android:id="@+id/btnRemovePlayer"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@android:drawable/ic_menu_delete"
+                        android:contentDescription="Supprimer"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:layout_marginStart="16dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Bouton lancer la partie -->
+        <Button
+                android:id="@+id/btnStartGame"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Lancer la Partie"
+                app:layout_constraintTop_toBottomOf="@id/playersList"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp" />
+
+        <!-- Bouton pour modifier les paramètres -->
+        <Button
+                android:id="@+id/btnEditSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Modifier les Paramètres"
+                app:layout_constraintTop_toBottomOf="@id/btnStartGame"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp" />
+
+        <!-- Bouton pour supprimer le hub -->
+        <Button
+                android:id="@+id/btnDeleteHub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Supprimer le Hub"
+                app:layout_constraintTop_toBottomOf="@id/btnEditSettings"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

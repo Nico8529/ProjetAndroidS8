@@ -70,7 +70,7 @@ public class MenuDuJeu extends AppCompatActivity {
         btnNewGame.setOnClickListener(v -> {
             // Log : L'utilisateur a cliqué sur le bouton Nouveau jeu
             Log.d("MenuDuJeu", "Bouton 'Nouveau Jeu' cliqué.");
-            startActivity(new Intent(MenuDuJeu.this, SelectionMode.class));  // Lancer l'activité de sélection du mode de jeu
+            startActivity(new Intent(MenuDuJeu.this, SelectionMode3.class));  // Lancer l'activité de sélection du mode de jeu
         });
 
         btnStat.setOnClickListener(v -> {

@@ -28,6 +28,12 @@
         <activity android:name=".MenuParametre" />
 
         <activity android:name=".SelectionMode" />
+        <activity android:name=".SelectionMode3" />
+
+        <activity android:name=".ConfigHub" />
+        <activity android:name=".Hub" />
+        <activity android:name=".Lobby" />
+
         <activity android:name=".SelectionQuiz" />
         <activity android:name=".SelectionMode2" />
 

@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#E0E0E0" /> <!-- Couleur de fond grise claire -->
+    <corners android:radius="12dp" /> <!-- Coins arrondis -->
+    <padding
+            android:left="12dp"
+            android:top="8dp"
+            android:right="12dp"
+            android:bottom="8dp" /> <!-- Espacement à l'intérieur de la bulle -->
+    <stroke
+            android:color="#B0B0B0"
+            android:width="1dp" /> <!-- Bordure grise claire -->
+</shape>

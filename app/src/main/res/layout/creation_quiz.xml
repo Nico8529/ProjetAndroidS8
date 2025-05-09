@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--  pour toi Nico ^^-->
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:padding="16dp"
         tools:context=".MainActivity">
 
     <ImageButton
@@ -33,7 +31,21 @@
             app:layout_constraintStart_toEndOf="@id/btnBack_LCreation_Quiz"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.54"/>
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.54"/>
+
+    <!-- ViewPager2 pour la navigation entre les fragments -->
+    <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/title_LCreation_Quiz"
+            app:layout_constraintBottom_toTopOf="@id/version_LCreation_Quiz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"/>
+
     <TextView
             android:id="@+id/version_LCreation_Quiz"
             android:layout_width="0dp"
@@ -46,15 +58,5 @@
             android:layout_marginBottom="16dp"
             android:text="@string/version_app"
             android:gravity="center" />
-    <LinearLayout
-            android:id="@+id/buttonLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toTopOf="@id/version_LCreation_Quiz"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

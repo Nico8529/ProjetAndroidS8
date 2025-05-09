@@ -19,6 +19,13 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import android.widget.Toast;
+import java.io.FileWriter;
 
 public class SelectionQuiz extends AppCompatActivity {
 
@@ -51,6 +58,9 @@ public class SelectionQuiz extends AppCompatActivity {
         recyclerView.setAdapter(quizAdapter);
         Log.d(TAG, "Adapter assigné au RecyclerView !");
 
+        // Ajouter après la configuration de l'adapter :
+        setupSwipeToDelete();
+
         // 🔍 Barre de recherche
         EditText searchBar = findViewById(R.id.searchBarre_LSelection_Quiz);
         searchBar.addTextChangedListener(new TextWatcher() {
@@ -65,6 +75,82 @@ public class SelectionQuiz extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
+    }
+
+    private void setupSwipeToDelete() {
+        ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                Quiz quizToDelete = quizList.get(position);
+                
+                // Ne pas permettre la suppression des 10 premiers quiz (prédéfinis)
+                if (quizToDelete.getId() <= 10) {
+                    Toast.makeText(SelectionQuiz.this, "Impossible de supprimer un quiz prédéfini", Toast.LENGTH_SHORT).show();
+                    quizAdapter.notifyItemChanged(position);
+                    return;
+                }
+
+                // Demander confirmation
+                new AlertDialog.Builder(SelectionQuiz.this)
+                    .setTitle("Supprimer le quiz")
+                    .setMessage("Voulez-vous vraiment supprimer le quiz \"" + quizToDelete.getTitle() + "\" ?")
+                    .setPositiveButton("Oui", (dialog, which) -> {
+                        deleteQuiz(position, quizToDelete);
+                    })
+                    .setNegativeButton("Non", (dialog, which) -> {
+                        // Annuler la suppression
+                        quizAdapter.notifyItemChanged(position);
+                    })
+                    .show();
+            }
+        };
+
+        new ItemTouchHelper(swipeCallback).attachToRecyclerView(recyclerView);
+    }
+
+    private void deleteQuiz(int position, Quiz quiz) {
+        try {
+            // Lire le fichier JSON actuel
+            String jsonStr = loadJSONFromAsset();
+            JSONObject jsonObject = new JSONObject(jsonStr);
+            JSONArray quizzes = jsonObject.getJSONArray("quizzes");
+
+            // Créer un nouveau JSONArray sans le quiz à supprimer
+            JSONArray newQuizzes = new JSONArray();
+            for (int i = 0; i < quizzes.length(); i++) {
+                JSONObject currentQuiz = quizzes.getJSONObject(i);
+                if (currentQuiz.getInt("id") != quiz.getId()) {
+                    newQuizzes.put(currentQuiz);
+                }
+            }
+
+            // Mettre à jour le fichier JSON
+            jsonObject.put("quizzes", newQuizzes);
+            
+            // Sauvegarder dans le stockage interne
+            File file = new File(getFilesDir(), "quiz_data.json");
+            FileWriter writer = new FileWriter(file);
+            writer.write(jsonObject.toString(4));
+            writer.flush();
+            writer.close();
+
+            // Mettre à jour la liste et l'interface
+            quizList.remove(position);
+            quizAdapter.notifyItemRemoved(position);
+            
+            Toast.makeText(this, "Quiz supprimé avec succès", Toast.LENGTH_SHORT).show();
+            
+        } catch (Exception e) {
+            Log.e(TAG, "Erreur lors de la suppression du quiz : " + e.getMessage());
+            Toast.makeText(this, "Erreur lors de la suppression du quiz", Toast.LENGTH_SHORT).show();
+            quizAdapter.notifyItemChanged(position);
+        }
     }
 
     // Méthode pour charger les données JSON
@@ -102,23 +188,29 @@ public class SelectionQuiz extends AppCompatActivity {
         }
     }
 
-    // Méthode pour charger le fichier JSON depuis les assets
     private String loadJSONFromAsset() {
         String json = null;
         try {
-            InputStream is = getAssets().open("quiz_data.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-
-            // Lire les octets depuis l'InputStream
-            int bytesRead = is.read(buffer);
-
-            if (bytesRead != size) {
-                Log.w(TAG, "Nombre d'octets lus ne correspond pas à la taille du fichier.");
+            // D'abord essayer de lire depuis le stockage interne
+            File file = new File(getFilesDir(), "quiz_data.json");
+            if (file.exists()) {
+                FileInputStream fis = new FileInputStream(file);
+                int size = fis.available();
+                byte[] buffer = new byte[size];
+                fis.read(buffer);
+                fis.close();
+                json = new String(buffer, StandardCharsets.UTF_8);
+                Log.d(TAG, "Fichier JSON lu depuis le stockage interne");
+            } else {
+                // Si non trouvé, lire depuis les assets
+                InputStream is = getAssets().open("quiz_data.json");
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                json = new String(buffer, StandardCharsets.UTF_8);
+                Log.d(TAG, "Fichier JSON lu depuis les assets");
             }
-
-            is.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException ex) {
             Log.e(TAG, "Erreur de lecture du fichier JSON : " + ex.getMessage(), ex);
         }

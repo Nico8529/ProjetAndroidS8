@@ -1,6 +1,23 @@
 # Compiled class file
 *.class
+# Gradle
+.gradle/
+build/
+.gradle/**
+build/**
 
+# Local configuration
+local.properties
+
+# IntelliJ IDEA
+.idea/
+*.iml
+.idea/**
+
+# Android Studio
+captures/
+.externalNativeBuild/
+.cxx/
 # Log file
 *.log
 

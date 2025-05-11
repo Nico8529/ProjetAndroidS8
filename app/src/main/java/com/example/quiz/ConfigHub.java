@@ -3,15 +3,14 @@ package com.example.quiz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.*;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class ConfigHub extends AppCompatActivity {
     private static final String TAG = "ConfigHub";
@@ -20,6 +19,8 @@ public class ConfigHub extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.config_hub);
+
+        Log.d(TAG, "ConfigHub Activity créée");
 
         // Références UI
         EditText editPartyName = findViewById(R.id.editPartyName);
@@ -53,17 +54,23 @@ public class ConfigHub extends AppCompatActivity {
         regionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerServerRegion.setAdapter(regionAdapter);
 
-        // Retour à la page précédente
-        btnBack.setOnClickListener(v -> finish());
+        // Bouton retour
+        btnBack.setOnClickListener(v -> {
+            Log.d(TAG, "Bouton retour cliqué");
+            finish();
+        });
 
         // Création de la partie
         btnCreateGame.setOnClickListener(v -> {
+            Log.d(TAG, "Tentative de création de partie");
+
             String partyName = editPartyName.getText().toString().trim();
             String maxPlayersStr = editMaxPlayers.getText().toString().trim();
-            boolean isPrivate = !switchPrivacy.isChecked();
+            boolean isPrivate = !switchPrivacy.isChecked(); // true = privé
 
             if (partyName.isEmpty() || maxPlayersStr.isEmpty()) {
                 Toast.makeText(this, "Veuillez remplir les champs obligatoires.", Toast.LENGTH_SHORT).show();
+                Log.w(TAG, "Champs obligatoires manquants");
                 return;
             }
 
@@ -72,13 +79,15 @@ public class ConfigHub extends AppCompatActivity {
                 maxPlayers = Integer.parseInt(maxPlayersStr);
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "Nombre de joueurs invalide.", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Format de nombre invalide pour maxPlayers", e);
                 return;
             }
 
             try {
-                // Créer un nouvel objet de partie
+                // Création de l'objet JSON pour la nouvelle partie
                 JSONObject newParty = new JSONObject();
-                newParty.put("partyId", "party" + System.currentTimeMillis()); // Utilise l'horodatage pour générer un ID unique
+                String partyId = "party" + System.currentTimeMillis();
+                newParty.put("partyId", partyId);
                 newParty.put("partyName", partyName);
                 newParty.put("quiz", spinnerQuiz.getSelectedItem().toString());
                 newParty.put("gameMode", spinnerGameMode.getSelectedItem().toString());
@@ -89,37 +98,41 @@ public class ConfigHub extends AppCompatActivity {
                 newParty.put("textChat", checkboxTextChat.isChecked());
                 newParty.put("voiceChat", checkboxVoiceChat.isChecked());
                 newParty.put("isPrivate", isPrivate);
-                newParty.put("creatorId", "admin001"); // simulé
-                newParty.put("players", new org.json.JSONArray().put("admin001")); // Ajoute le créateur
+                newParty.put("creatorId", "admin001"); // Simulé pour l'instant
+                newParty.put("players", new JSONArray().put("admin001"));
 
-                // Charger les parties existantes ou en créer un nouveau fichier si nécessaire
+                Log.i(TAG, "Nouvelle partie créée : " + partyId);
+
+                // Charger ou créer le fichier JSON multi_data.json
                 JSONObject allParties;
-                try {
-                    FileInputStream fis = openFileInput("multi_data.json");
+                try (FileInputStream fis = openFileInput("multi_data.json")) {
                     byte[] data = new byte[fis.available()];
-                    fis.read(data);
-                    fis.close();
+                    int bytesRead = fis.read(data); // ✅ Correction du warning
+                    Log.d(TAG, "Chargement de " + bytesRead + " octets depuis multi_data.json");
                     String jsonString = new String(data);
                     allParties = new JSONObject(jsonString);
                 } catch (Exception e) {
+                    Log.w(TAG, "Fichier multi_data.json introuvable, création d’un nouveau.");
                     allParties = new JSONObject();
-                    allParties.put("parties", new org.json.JSONArray());
+                    allParties.put("parties", new JSONArray());
                 }
 
-                // Ajouter la nouvelle partie
+                // Ajout de la nouvelle partie
                 allParties.getJSONArray("parties").put(newParty);
+                Log.i(TAG, "Partie ajoutée au fichier JSON");
 
-                // Sauvegarder les parties mises à jour dans le fichier
-                FileOutputStream fos = openFileOutput("multi_data.json", MODE_PRIVATE);
-                fos.write(allParties.toString().getBytes());
-                fos.close();
+                // Sauvegarde du fichier
+                try (FileOutputStream fos = openFileOutput("multi_data.json", MODE_PRIVATE)) {
+                    fos.write(allParties.toString().getBytes());
+                    Log.d(TAG, "multi_data.json mis à jour");
+                }
 
                 Toast.makeText(this, "Partie créée !", Toast.LENGTH_SHORT).show();
-
+                Log.i(TAG, "Redirection vers Hub.java");
                 startActivity(new Intent(ConfigHub.this, Hub.class));
 
             } catch (Exception e) {
-                Log.e(TAG, "Erreur JSON", e);
+                Log.e(TAG, "Erreur lors de la création de la partie", e);
                 Toast.makeText(this, "Erreur de création de partie.", Toast.LENGTH_SHORT).show();
             }
         });

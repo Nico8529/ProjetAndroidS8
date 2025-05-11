@@ -1,5 +1,6 @@
 package com.example.quiz;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,6 +15,7 @@ public class MenuQuiz extends AppCompatActivity {
 
     private int score;  // Le score actuel du joueur
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

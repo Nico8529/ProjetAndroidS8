@@ -47,17 +47,17 @@ public class SelectionMode2 extends AppCompatActivity {
 
         // 🕹 Boutons de mode
         Button btnNormal = findViewById(R.id.btnNormal_LSelection_mode2);
-        Button btnMontre = findViewById(R.id.btnMontre_LSelection_mode2);
-        Button btnFast = findViewById(R.id.btnFast_LSelection_mode2);
-        Button btn3Best = findViewById(R.id.btn3Best_LSelection_mode2);
-        Button btnDiffPoint = findViewById(R.id.btnDiffPoint_LSelection_mode2);
+//        Button btnMontre = findViewById(R.id.btnMontre_LSelection_mode2);
+//        Button btnFast = findViewById(R.id.btnFast_LSelection_mode2);
+//        Button btn3Best = findViewById(R.id.btn3Best_LSelection_mode2);
+//        Button btnDiffPoint = findViewById(R.id.btnDiffPoint_LSelection_mode2);
 
         // 🧪 Actions des boutons
         btnNormal.setOnClickListener(v -> launchMode("Normal"));
-        btnMontre.setOnClickListener(v -> launchMode("Contre la montre"));
-        btnFast.setOnClickListener(v -> launchMode("Le plus rapide"));
-        btn3Best.setOnClickListener(v -> launchMode("3 meilleurs sur 4"));
-        btnDiffPoint.setOnClickListener(v -> launchMode("Répartition régressive"));
+//        btnMontre.setOnClickListener(v -> launchMode("Contre la montre"));
+//        btnFast.setOnClickListener(v -> launchMode("Le plus rapide"));
+//        btn3Best.setOnClickListener(v -> launchMode("3 meilleurs sur 4"));
+//        btnDiffPoint.setOnClickListener(v -> launchMode("Répartition régressive"));
     }
 
     private void launchMode(String modeName) {

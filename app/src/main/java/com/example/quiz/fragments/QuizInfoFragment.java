@@ -17,29 +17,29 @@ import com.example.quiz.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class QuizInfoFragment extends Fragment {
-    
+
     private QuizCreationViewModel viewModel;
     private TextInputEditText quizTitleInput;
     private Button nextButton;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, 
-                           ViewGroup container,
-                           Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_quiz_info, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
+
         // Initialiser le ViewModel
         viewModel = new ViewModelProvider(requireActivity()).get(QuizCreationViewModel.class);
-        
+
         // Trouver les vues
         quizTitleInput = view.findViewById(R.id.quizTitleInput);
         nextButton = view.findViewById(R.id.nextButton);
-        
+
         // Configurer le bouton suivant
         nextButton.setOnClickListener(v -> {
             String title = quizTitleInput.getText().toString().trim();
@@ -49,9 +49,9 @@ public class QuizInfoFragment extends Fragment {
                     ((CreationQuiz) getActivity()).navigateToNextPage();
                 }
             } else {
-                Toast.makeText(getContext(), 
-                    "Veuillez entrer un titre pour le quiz", 
-                    Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),
+                        "Veuillez entrer un titre pour le quiz",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -88,7 +88,7 @@ public class SelectionQuiz extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 Quiz quizToDelete = quizList.get(position);
-                
+
                 // Ne pas permettre la suppression des 10 premiers quiz (prédéfinis)
                 if (quizToDelete.getId() <= 10) {
                     Toast.makeText(SelectionQuiz.this, "Impossible de supprimer un quiz prédéfini", Toast.LENGTH_SHORT).show();
@@ -98,16 +98,16 @@ public class SelectionQuiz extends AppCompatActivity {
 
                 // Demander confirmation
                 new AlertDialog.Builder(SelectionQuiz.this)
-                    .setTitle("Supprimer le quiz")
-                    .setMessage("Voulez-vous vraiment supprimer le quiz \"" + quizToDelete.getTitle() + "\" ?")
-                    .setPositiveButton("Oui", (dialog, which) -> {
-                        deleteQuiz(position, quizToDelete);
-                    })
-                    .setNegativeButton("Non", (dialog, which) -> {
-                        // Annuler la suppression
-                        quizAdapter.notifyItemChanged(position);
-                    })
-                    .show();
+                        .setTitle("Supprimer le quiz")
+                        .setMessage("Voulez-vous vraiment supprimer le quiz \"" + quizToDelete.getTitle() + "\" ?")
+                        .setPositiveButton("Oui", (dialog, which) -> {
+                            deleteQuiz(position, quizToDelete);
+                        })
+                        .setNegativeButton("Non", (dialog, which) -> {
+                            // Annuler la suppression
+                            quizAdapter.notifyItemChanged(position);
+                        })
+                        .show();
             }
         };
 
@@ -132,7 +132,7 @@ public class SelectionQuiz extends AppCompatActivity {
 
             // Mettre à jour le fichier JSON
             jsonObject.put("quizzes", newQuizzes);
-            
+
             // Sauvegarder dans le stockage interne
             File file = new File(getFilesDir(), "quiz_data.json");
             FileWriter writer = new FileWriter(file);
@@ -143,9 +143,9 @@ public class SelectionQuiz extends AppCompatActivity {
             // Mettre à jour la liste et l'interface
             quizList.remove(position);
             quizAdapter.notifyItemRemoved(position);
-            
+
             Toast.makeText(this, "Quiz supprimé avec succès", Toast.LENGTH_SHORT).show();
-            
+
         } catch (Exception e) {
             Log.e(TAG, "Erreur lors de la suppression du quiz : " + e.getMessage());
             Toast.makeText(this, "Erreur lors de la suppression du quiz", Toast.LENGTH_SHORT).show();

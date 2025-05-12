@@ -77,53 +77,53 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="32dp" />
 
-    <Button
-            android:id="@+id/btn3Best_LSelection_mode2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/mode_3_meilleurs_sur_4"
-            android:drawableStart="@drawable/ic_baseline_groups_24"
-            android:padding="12dp"
-            app:layout_constraintTop_toBottomOf="@id/btnNormal_LSelection_mode2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+<!--    <Button-->
+<!--            android:id="@+id/btn3Best_LSelection_mode2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/mode_3_meilleurs_sur_4"-->
+<!--            android:drawableStart="@drawable/ic_baseline_groups_24"-->
+<!--            android:padding="12dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/btnNormal_LSelection_mode2"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
 
-    <Button
-            android:id="@+id/btnFast_LSelection_mode2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/mode_le_plus_rapide"
-            android:drawableStart="@drawable/ic_baseline_flash_on_24"
-            android:padding="12dp"
-            app:layout_constraintTop_toBottomOf="@id/btn3Best_LSelection_mode2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+<!--    <Button-->
+<!--            android:id="@+id/btnFast_LSelection_mode2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/mode_le_plus_rapide"-->
+<!--            android:drawableStart="@drawable/ic_baseline_flash_on_24"-->
+<!--            android:padding="12dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/btn3Best_LSelection_mode2"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
 
-    <Button
-            android:id="@+id/btnDiffPoint_LSelection_mode2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/mode_r_partition_r_gressive"
-            android:drawableStart="@drawable/ic_baseline_leaderboard_24"
-            android:padding="12dp"
-            app:layout_constraintTop_toBottomOf="@id/btnFast_LSelection_mode2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+<!--    <Button-->
+<!--            android:id="@+id/btnDiffPoint_LSelection_mode2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/mode_r_partition_r_gressive"-->
+<!--            android:drawableStart="@drawable/ic_baseline_leaderboard_24"-->
+<!--            android:padding="12dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/btnFast_LSelection_mode2"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
 
-    <Button
-            android:id="@+id/btnMontre_LSelection_mode2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/mode_contre_la_montre"
-            android:drawableStart="@drawable/ic_baseline_timer_24"
-            android:padding="12dp"
-            app:layout_constraintTop_toBottomOf="@id/btnDiffPoint_LSelection_mode2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+<!--    <Button-->
+<!--            android:id="@+id/btnMontre_LSelection_mode2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/mode_contre_la_montre"-->
+<!--            android:drawableStart="@drawable/ic_baseline_timer_24"-->
+<!--            android:padding="12dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/btnDiffPoint_LSelection_mode2"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginTop="16dp" />-->
 
     <!-- Version -->
     <TextView

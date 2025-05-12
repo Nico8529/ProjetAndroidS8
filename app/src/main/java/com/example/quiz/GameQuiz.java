@@ -95,8 +95,35 @@ public class GameQuiz extends AppCompatActivity {
         answerButtons[3] = findViewById(R.id.answerD);
 
         setupJokers();
-        findViewById(R.id.btnMenu_LGame_quiz).setOnClickListener(v -> startActivity(new Intent(this, MenuQuiz.class)));
+        // Modifier cette ligne
+        findViewById(R.id.btnMenu_LGame_quiz).setOnClickListener(v -> confirmerQuitterQuiz());
         Log.d(TAG, "UI initialized");
+    }
+
+    private void confirmerQuitterQuiz() {
+        new android.app.AlertDialog.Builder(this)
+            .setTitle("Quitter le Quiz")
+            .setMessage("Voulez-vous vraiment quitter le quiz ? Votre progression sera perdue.")
+            .setPositiveButton("Oui", (dialog, which) -> {
+                if (tts != null) {
+                    tts.stop();
+                    tts.shutdown();
+                }
+                if (countDownTimer != null) {
+                    countDownTimer.cancel();
+                }
+                super.onBackPressed(); // Appel de la méthode parent ici
+            })
+            .setNegativeButton("Non", null)
+            .show();
+    }
+
+    // Ajouter aussi la gestion du bouton retour
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        confirmerQuitterQuiz();
+      
     }
 
     private void initializeTTS() {

@@ -61,10 +61,7 @@ public class MenuQuiz extends AppCompatActivity {
 
         // Revenir au quiz
         startQuizButton.setOnClickListener(v -> {
-            // Vous pouvez passer des données au GameQuiz via un Intent, par exemple le score actuel
-            Intent intent = new Intent(MenuQuiz.this, GameQuiz.class);
-            intent.putExtra("score", score);
-            startActivity(intent);
+            finish();  // Ferme l'activité actuelle et retourne au menu principal ou ferme l'application
         });
     }
 }

@@ -2,38 +2,41 @@
   "parties": [
     {
       "partyId": "party001",
-      "partyName": "Nom de la partie 1",
-      "quiz": "Nom du quiz 1",
-      "gameMode": "Mode de jeu 1",
+      "partyName": "Partie Test 1",
+      "quiz": "Quiz Culture",
+      "gameMode": "Course contre la montre",
       "jokers": true,
       "maxPlayers": 10,
-      "password": "mot_de_passe_1",
-      "serverRegion": "Région du serveur 1",
+      "presencePlayers": 2,
+      "password": "1234",
+      "serverRegion": "EMEA",
       "textChat": true,
       "voiceChat": false,
       "isPrivate": true,
-      "creatorId": "admin001",
+      "creatorId": "Zac",
       "players": [
-        "admin001"
+        "Zac",
+        "Theo"
       ]
     },
     {
       "partyId": "party002",
-      "partyName": "Nom de la partie 2",
+      "partyName": "Partie Test 2",
       "quiz": "Nom du quiz 2",
       "gameMode": "Mode de jeu 2",
       "jokers": false,
       "maxPlayers": 6,
+      "presencePlayers": 3,
       "password": "mot_de_passe_2",
       "serverRegion": "Région du serveur 2",
       "textChat": true,
       "voiceChat": true,
       "isPrivate": false,
-      "creatorId": "admin002",
+      "creatorId": "Leo",
       "players": [
-        "admin002",
-        "player1",
-        "player2"
+        "Leo",
+        "Lucie",
+        "Lola"
       ]
     }
   ]

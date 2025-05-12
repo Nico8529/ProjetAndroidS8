@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -26,6 +27,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+
 dependencies {
 
     implementation(libs.appcompat)
@@ -47,4 +49,8 @@ dependencies {
 
 
 
+    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
 }

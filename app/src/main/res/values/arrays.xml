@@ -13,12 +13,34 @@
             <item>Préparation de l\'interface</item>
             <item>Connexion au serveur</item>
             <item>Finalisation du chargement</item>
-        </string-array>
+    </string-array>
+
     <string-array name="motivational_quotes">
         <item>« La réussite appartient à ceux qui se lèvent tôt. »</item>
         <item>« Ne rêve pas ta vie, vis tes rêves. »</item>
         <item>« Chaque clic te rapproche de la victoire. »</item>
         <item>« Rien n\'est impossible pour un esprit motivé. »</item>
+    </string-array>
+
+    <string-array name="game_modes">
+        <item>Selection du mode de jeu</item>
+        <item>Classique</item>
+        <item>Contre-la-montre</item>
+        <item>Survie</item>
+    </string-array>
+
+    <string-array name="server_regions">
+        <item>Selection de la region</item>
+        <item>lie firebase a serveur</item>
+        <item>Amérique du Nord</item>
+        <item>Asie</item>
+    </string-array>
+
+    <string-array name="quiz_list">
+        <item>Selection du quiz</item>
+        <item>Lie firebase a quiz</item>
+        <item>Amérique du Nord</item>
+        <item>Asie</item>
     </string-array>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.example.quiz;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Chargement extends AppCompatActivity {
 
@@ -42,6 +46,23 @@ public class Chargement extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> question = new HashMap<>();
+        question.put("texte", "Combien font 2 + 2 ?");
+        question.put("reponse", "4");
+
+        db.collection("questions")
+                .add(question)
+                .addOnSuccessListener(documentReference ->
+                        Log.d("FIREBASE_TEST", "Ajout réussi, ID: " + documentReference.getId()))
+                .addOnFailureListener(e ->
+                        Log.e("FIREBASE_TEST", "Erreur d'ajout", e));
+        // --- Fin test Firestore ---
+
+        setContentView(R.layout.chargement);
+
         setContentView(R.layout.chargement);
 
         // Initialisation du logo et application de l'animation de rotation
@@ -115,12 +136,12 @@ public class Chargement extends AppCompatActivity {
 
     // Méthode pour passer à l'activité suivante après le chargement
     void navigateToNextActivity() {
-        Log.d("Chargement", "Navigation vers l'activité suivante.");
-        // Créer une nouvelle Intent pour démarrer l'activité MenuDuJeu
-        Intent intent = new Intent(Chargement.this, MenuDuJeu.class);
+        Log.d("Chargement", "Navigation vers Login.java");
+        Intent intent = new Intent(Chargement.this, Login.class);
         startActivity(intent);
         finish(); // Fermer l'activité de chargement
     }
+
 
     @Override
     protected void onDestroy() {

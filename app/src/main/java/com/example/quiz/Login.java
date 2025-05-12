@@ -16,6 +16,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 public class Login extends AppCompatActivity {
 
     // Constantes
@@ -53,30 +57,34 @@ public class Login extends AppCompatActivity {
         String username = inputUsername.getText().toString().trim();
         String code = inputCode.getText().toString().trim();
 
-        // Vérification des champs
         if (username.isEmpty() || code.length() != 4) {
             toast("Entrer un prénom et un code à 4 chiffres");
             return;
         }
 
-        try {
-            JSONArray users = readUsers();
-            for (int i = 0; i < Objects.requireNonNull(users).length(); i++) {
-                JSONObject user = users.getJSONObject(i);
-                if (user.getString("name").equals(username) && user.getString("code").equals(code)) {
-                    String id = user.getString("id");
-                    toast("Connexion réussie !");
-                    Log.d(TAG, "Connexion utilisateur réussie : " + username + ", ID: " + id);
-                    navigateToMenu(username, id);
-                    return;
-                }
-            }
-            toast("Utilisateur non trouvé.");
-            Log.d(TAG, "Échec connexion : Utilisateur non trouvé (" + username + ")");
-        } catch (Exception e) {
-            Log.e(TAG, "Erreur lors de la lecture du fichier JSON", e);
-            toast("Erreur lors de la lecture du fichier");
-        }
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference usersRef = db.collection("users");
+
+        usersRef
+                .whereEqualTo("name", username)
+                .whereEqualTo("code", code)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                            String id = doc.getString("id");
+                            toast("Connexion réussie !");
+                            navigateToMenu(username, id);
+                            return;
+                        }
+                    } else {
+                        toast("Utilisateur non trouvé.");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Erreur lors de la recherche Firebase", e);
+                    toast("Erreur lors de la connexion");
+                });
     }
 
     /**
@@ -86,111 +94,41 @@ public class Login extends AppCompatActivity {
         String username = inputUsername.getText().toString().trim();
         String code = inputCode.getText().toString().trim();
 
-        // Vérification des champs
         if (username.isEmpty() || code.length() != 4) {
             toast("Entrer un prénom et un code à 4 chiffres");
             return;
         }
 
-        try {
-            JSONArray users = readUsers();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference usersRef = db.collection("users");
 
-            // Vérifie si l'utilisateur existe déjà
-            for (int i = 0; i < Objects.requireNonNull(users).length(); i++) {
-                if (users.getJSONObject(i).getString("name").equals(username)) {
-                    toast("Ce nom est déjà utilisé !");
-                    Log.d(TAG, "Échec enregistrement : nom déjà utilisé (" + username + ")");
-                    return;
-                }
-            }
+        usersRef.whereEqualTo("name", username).get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        toast("Ce nom est déjà utilisé !");
+                    } else {
+                        String id = String.format(Locale.getDefault(), "%05d", new Random().nextInt(100000));
 
-            // Création du nouvel utilisateur
-            String id = generateUniqueID(users);
-            JSONObject newUser = new JSONObject();
-            newUser.put("name", username);
-            newUser.put("code", code);
-            newUser.put("id", id);
+                        Map<String, Object> newUser = new HashMap<>();
+                        newUser.put("name", username);
+                        newUser.put("code", code);
+                        newUser.put("id", id);
 
-            users.put(newUser);
-            writeUsers(users);
-
-            toast("Compte créé ! Bienvenue " + username);
-            Log.d(TAG, "Utilisateur enregistré : " + username + ", ID: " + id);
-            navigateToMenu(username, id);
-        } catch (Exception e) {
-            Log.e(TAG, "Erreur lors de l'enregistrement", e);
-            toast("Erreur lors de l'enregistrement");
-        }
-    }
-
-    /**
-     * Lecture du fichier JSON des utilisateurs
-     */
-    private JSONArray readUsers() throws IOException, JSONException {
-        Path filePath = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            filePath = Paths.get(getFilesDir().toString(), FILENAME);
-        }
-
-        // Vérification si le fichier existe
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (!Files.exists(filePath)) {
-                Log.d(TAG, "Fichier utilisateur inexistant, création d'une nouvelle liste.");
-                return new JSONArray(); // Retourne une nouvelle liste si le fichier n'existe pas
-            }
-        }
-
-        // Utilisation de Files.newBufferedReader() pour lire le fichier de manière moderne
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            try (BufferedReader reader = Files.newBufferedReader(filePath)) {
-                StringBuilder builder = new StringBuilder();
-                String line;
-
-                // Lecture lignes par ligne du fichier et concaténation
-                while ((line = reader.readLine()) != null) {
-                    builder.append(line);
-                }
-
-                // Retourner le contenu du fichier sous forme de JSONArray
-                return new JSONArray(builder.toString());
-            }
-        }
-        return null;
-    }
-
-
-
-    /**
-     * Écriture dans le fichier JSON des utilisateurs
-     */
-    private void writeUsers(JSONArray users) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(new File(getFilesDir(), FILENAME))) {
-            fos.write(users.toString().getBytes());
-            Log.d(TAG, "Utilisateurs sauvegardés dans " + FILENAME);
-        }
-    }
-
-    /**
-     * Génère un ID unique à 5 chiffres
-     */
-    private String generateUniqueID(JSONArray users) throws JSONException {
-        Random rand = new Random();
-        String id;
-        boolean exists;
-
-        do {
-            // Utilisation de String avec une locale explicite
-            id = String.format(Locale.getDefault(), "%05d", rand.nextInt(100000)); // Ajout de Locale pour éviter l'usage par défaut
-            exists = false;
-            for (int i = 0; i < users.length(); i++) {
-                if (users.getJSONObject(i).getString("id").equals(id)) {
-                    exists = true;
-                    break;
-                }
-            }
-        } while (exists);
-
-        return id;
+                        usersRef.add(newUser)
+                                .addOnSuccessListener(documentReference -> {
+                                    toast("Compte créé ! Bienvenue " + username);
+                                    navigateToMenu(username, id);
+                                })
+                                .addOnFailureListener(e -> {
+                                    Log.e(TAG, "Erreur lors de l'ajout Firebase", e);
+                                    toast("Erreur lors de l'enregistrement");
+                                });
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Erreur lors de la vérification de l'existence", e);
+                    toast("Erreur lors de l'enregistrement");
+                });
     }
 
     /**

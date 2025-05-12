@@ -52,9 +52,7 @@ public class Lobby extends AppCompatActivity {
         recyclerViewLobbies.setAdapter(lobbyAdapter);
     }
 
-    /**
-     * Méthode pour charger les parties depuis un fichier JSON stocké dans les assets.
-     */
+
     private List<Party> loadPartiesFromJson() {
         Log.d(TAG, "Chargement des parties depuis multi_data.json...");
         try (InputStreamReader reader = new InputStreamReader(getAssets().open("multi_data.json"))) {

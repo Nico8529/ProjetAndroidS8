@@ -1,27 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="horizontal"
-              android:background="@drawable/circle_background"
-              android:padding="8dp"
-              android:gravity="center_vertical"
-              android:layout_marginBottom="8dp">
-
-    <TextView
-            android:id="@+id/playerName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nom Joueur"
-            android:textSize="16sp"
-            android:textColor="@android:color/black" />
-
-    <ImageButton
-            android:id="@+id/btnRemovePlayer"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:srcCompat="@android:drawable/ic_menu_delete"
-            android:contentDescription="Supprimer"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:layout_marginStart="16dp"/>
-</LinearLayout>
+<!-- res/drawable/player_bubble.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <solid android:color="#E0E0E0" />
+    <corners android:radius="16dp" />
+    <padding android:left="8dp" android:top="8dp" android:right="8dp" android:bottom="8dp" />
+</shape>

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -40,5 +41,14 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.mockito)
     implementation(libs.gson)
-
+    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.fragment:fragment:1.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.6.2")
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }

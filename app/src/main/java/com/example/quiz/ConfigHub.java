@@ -129,7 +129,10 @@ public class ConfigHub extends AppCompatActivity {
 
                 Toast.makeText(this, "Partie créée !", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "Redirection vers Hub.java");
-                startActivity(new Intent(ConfigHub.this, Hub.class));
+                Intent intent = new Intent(ConfigHub.this, Hub.class);
+                intent.putExtra("justCreated", true); // Pour que Lobby affiche un message ou recharge les données
+                startActivity(intent);
+
 
             } catch (Exception e) {
                 Log.e(TAG, "Erreur lors de la création de la partie", e);

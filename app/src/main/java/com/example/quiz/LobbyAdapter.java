@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,16 +43,25 @@ public class LobbyAdapter extends RecyclerView.Adapter<LobbyAdapter.LobbyViewHol
     @Override
     public void onBindViewHolder(@NonNull LobbyViewHolder holder, int position) {
         Party party = partyList.get(position);
-        Log.d(TAG, "onBindViewHolder called for position " + position + " with party: " + party.getPartyName());
 
         holder.lobbyName.setText(party.getPartyName());
+        holder.quizAndMode.setText("Quiz: " + party.getQuiz() + " | Mode: " + party.getGameMode());
+        holder.playerCount.setText("[" + party.getPlayers().size() + " / " + party.getMaxPlayers() + "]");
+        holder.adminName.setText("Créateur: " + party.getCreatorId());
 
-        // Gérer le clic sur un lobby
-        holder.itemView.setOnClickListener(v -> {
-            Log.d(TAG, "Lobby clicked: " + party.getPartyName() + " (ID: " + party.getPartyId() + ")");
-            listener.onLobbyClick(party);
-        });
+        // Afficher cadenas si la partie a un mot de passe
+        if (party.getPassword() != null && !party.getPassword().isEmpty()) {
+            holder.lockIcon.setVisibility(View.VISIBLE);
+        } else {
+            holder.lockIcon.setVisibility(View.GONE);
+        }
+
+        // Public ou privé
+        holder.privacyStatus.setText(party.isPrivate() ? "Privé" : "Public");
+
+        holder.itemView.setOnClickListener(v -> listener.onLobbyClick(party));
     }
+
 
     // Retourne le nombre total d'éléments dans la liste
     @Override
@@ -68,13 +78,22 @@ public class LobbyAdapter extends RecyclerView.Adapter<LobbyAdapter.LobbyViewHol
     // Classe interne représentant une cellule de RecyclerView
     public static class LobbyViewHolder extends RecyclerView.ViewHolder {
 
-        // Référence au TextView qui affichera le nom du lobby
         final TextView lobbyName;
+        final TextView quizAndMode;
+        final TextView playerCount;
+        final TextView adminName;
+        final ImageView lockIcon;
+        final TextView privacyStatus;
 
         public LobbyViewHolder(@NonNull View itemView) {
             super(itemView);
             lobbyName = itemView.findViewById(R.id.lobbyName);
-            Log.d(TAG, "LobbyViewHolder initialized");
+            quizAndMode = itemView.findViewById(R.id.quizAndMode);
+            playerCount = itemView.findViewById(R.id.playerCount);
+            adminName = itemView.findViewById(R.id.adminName);
+            lockIcon = itemView.findViewById(R.id.lockIcon);
+            privacyStatus = itemView.findViewById(R.id.privacyStatus);
         }
     }
+
 }

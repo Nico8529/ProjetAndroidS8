@@ -1,14 +1,19 @@
 package com.example.quiz;
-import android.annotation.SuppressLint;
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
-
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.List;
 
 public class Hub extends AppCompatActivity {
 
@@ -16,64 +21,94 @@ public class Hub extends AppCompatActivity {
     private Button btnStartGame, btnEditSettings, btnDeleteHub;
     private ImageButton btnBack;
 
+    private Party currentParty;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hub);
 
-        // Initialisation des éléments de l'interface
+        // Initialisation des composants
         playersList = findViewById(R.id.playersList);
         btnStartGame = findViewById(R.id.btnStartGame);
         btnEditSettings = findViewById(R.id.btnEditSettings);
         btnDeleteHub = findViewById(R.id.btnDeleteHub);
         btnBack = findViewById(R.id.btnBack);
 
-        // Ajouter des joueurs à la liste
-        addPlayerToHub("Joueur1", "id1");
-        addPlayerToHub("Joueur2", "id2");
-
-        // Fonction pour retourner à la page précédente
+        // Retour arrière
         btnBack.setOnClickListener(v -> onBackPressed());
 
-        // Fonction pour lancer la partie
+        // Lancement de la partie
         btnStartGame.setOnClickListener(v -> {
             if (playersList.getChildCount() >= 2) {
-                // Logique pour lancer la partie
-                // Peut-être une redirection vers une autre activité ou un message
+                // TODO : Lancer la partie ici
             }
         });
 
-        // Fonction pour modifier les paramètres
         btnEditSettings.setOnClickListener(v -> {
-            // Logique pour modifier les paramètres du quiz
-            // Par exemple, ouvrir une nouvelle activité pour modifier les paramètres
+            // TODO : Rediriger vers les paramètres
         });
 
-        // Fonction pour supprimer le hub
         btnDeleteHub.setOnClickListener(v -> {
-            // Logique pour supprimer le hub
-            // Cela peut être un prompt de confirmation ou directement une suppression
+            // TODO : Supprimer la partie
         });
+
+        loadPartyData();
+        if (currentParty != null) {
+            updatePlayersList();
+        }
     }
 
-    // Méthode pour ajouter un joueur à la liste
-    private void addPlayerToHub(String playerName, String playerId) {
-        @SuppressLint("ResourceType") View playerView = getLayoutInflater().inflate(R.drawable.player_bubble, null);
+    private void loadPartyData() {
+        String json = loadJSONFromAsset("multi_data.json");
+        if (json != null) {
+            Gson gson = new Gson();
+            PartyList partyList = gson.fromJson(json, PartyList.class);
+            String targetPartyId = "party001"; // À adapter dynamiquement
 
-        // Initialisation des vues pour chaque joueur
-        TextView playerNameTextView = playerView.findViewById(R.id.playerName);
-        ImageButton btnRemovePlayer = playerView.findViewById(R.id.btnRemovePlayer);
+            for (Party party : partyList.parties) {
+                if (party.partyId.equals(targetPartyId)) {
+                    currentParty = party;
+                    break;
+                }
+            }
+        }
+    }
 
-        // Affecter le nom du joueur à la vue
-        playerNameTextView.setText(playerName);
+    private void updatePlayersList() {
+        playersList.removeAllViews();
 
-        // Logique pour supprimer un joueur
-        btnRemovePlayer.setOnClickListener(v -> {
-            playersList.removeView(playerView);
-            // Optionnel : On peut également gérer la suppression dans une liste de joueurs ou en base de données
-        });
+        Iterator<String> iterator = currentParty.players.iterator();
+        while (iterator.hasNext()) {
+            String playerName = iterator.next();
+            View playerView = LayoutInflater.from(this).inflate(R.layout.item_player, playersList, false);
 
-        // Ajouter la vue de joueur à la liste
-        playersList.addView(playerView);
+            TextView txtName = playerView.findViewById(R.id.txtPlayerName);
+            ImageButton btnEject = playerView.findViewById(R.id.btnEject);
+
+            txtName.setText(playerName);
+
+            btnEject.setOnClickListener(v -> {
+                iterator.remove(); // Retirer de la liste
+                updatePlayersList(); // Mise à jour affichage
+                // TODO : Sauvegarder modif si connecté à Firebase ou fichier
+            });
+
+            playersList.addView(playerView);
+        }
+    }
+
+    private String loadJSONFromAsset(String fileName) {
+        try {
+            InputStream is = getAssets().open(fileName);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            return new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 }

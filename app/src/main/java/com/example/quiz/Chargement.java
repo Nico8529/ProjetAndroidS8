@@ -1,7 +1,5 @@
 package com.example.quiz;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Chargement extends AppCompatActivity {
 
@@ -46,23 +42,6 @@ public class Chargement extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> question = new HashMap<>();
-        question.put("texte", "Combien font 2 + 2 ?");
-        question.put("réponse", "4");
-
-        db.collection("questions")
-                .add(question)
-                .addOnSuccessListener(documentReference ->
-                        Log.d("Chargement", "BDD Ajout réussi, ID: " + documentReference.getId()))
-                .addOnFailureListener(e ->
-                        Log.e("Chargement", "BDD Erreur d'ajout", e));
-        // --- Fin test Firestore ---
-
-        setContentView(R.layout.chargement);
-
         setContentView(R.layout.chargement);
 
         // Initialisation du logo et application de l'animation de rotation

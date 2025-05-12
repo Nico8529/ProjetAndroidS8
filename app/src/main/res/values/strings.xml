@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">Quiz Master</string>
+
+    <!-- 🌐 Infos générales de l'application -->
+    <string name="app_name">Quiztopia</string>
     <string name="app_logo">Logo de l\'application</string>
     <string name="version_app">v1.0.0</string>
 
+    <!-- 👤 Noms des meilleurs joueurs -->
     <string name="bestJ1">Marie</string>
     <string name="bestJ2">Hugo</string>
     <string name="bestJ3">Ange</string>
@@ -10,17 +13,7 @@
     <string name="bestJ5">Timon</string>
     <string name="bestJ6">Eloise</string>
 
-    <string name="audio_progress">Audio : %1$d</string>
-    <string name="system_progress">Système : %1$d</string>
-    <string name="toast_saved">Paramètres sauvegardés !</string>
-    <string name="toast_reset">Paramètres réinitialisés !</string>
-    <string name="score_placeholder">Score: %1$d</string>
-    <!-- Chaîne pour le nombre de questions -->
-    <string name="questions_text">Questions : %1$d</string>
-
-    <!-- Chaîne pour le score max -->
-    <string name="score_max_text">Score Max : %1$d</string>
-
+    <!-- 📊 Statistiques des joueurs -->
     <string name="statJ1">1150</string>
     <string name="statJ2">1023</string>
     <string name="statJ3">1000</string>
@@ -28,33 +21,116 @@
     <string name="statJ5">587</string>
     <string name="statJ6">325</string>
 
-    <string name="nbrPartieTotal">10</string>
-    <string name="nbrPartieTotalLose">4</string>
-    <string name="nbrPartieTotalWin">6</string>
-    <string name="nbrPartieTotalMulti">2</string>
+    <!-- 🧮 Scores et questions -->
+    <string name="score">Score : %1$d</string>
+    <string name="score_placeholder">Score: %1$d</string>
+    <string name="no_score">Score : Aucun score disponible.</string>
+    <string name="score_max_text">Score Max : %1$d</string>
+    <string name="questions_text">Questions : %1$d</string>
 
+    <!-- 🔊 Audio et système -->
+    <string name="audio_progress">Audio : %1$d</string>
+    <string name="system_progress">Système : %1$d</string>
+
+    <!-- 🧪 Infos du quiz -->
+    <string name="quiz_title">Titre du quiz : %1$s</string>
+    <string name="quiz_title2">Quiz : %1$s</string>
+    <string name="game_mode_for">Mode de jeu pour : %1$s</string>
+    <string name="game_mode">Mode de jeu : %1$s</string>
+
+    <!-- 💾 Sauvegardes -->
     <string name="nameSauv1">Quiz_02/02/24_Alexas</string>
     <string name="nameSauv2">Quiz_10/07/25_Nico</string>
     <string name="nameSauv3">Libre</string>
     <string name="nameSauv4">Libre</string>
     <string name="nameSauv5">Libre</string>
 
-    <string name="game_mode_for">Mode de jeu pour : %1$s</string>
-    <string name="quiz_title">Titre du quiz : %1$s</string>
-    <string name="score">Score : %1$d</string>
-    <string name="no_score">Score : Aucun score disponible.</string>
+    <!-- 🏁 Stats générales -->
+    <string name="nbrPartieTotal">10</string>
+    <string name="nbrPartieTotalLose">4</string>
+    <string name="nbrPartieTotalWin">6</string>
+    <string name="nbrPartieTotalMulti">2</string>
 
-    <string name="textQ1_menu">Les écureuils</string>
-    <string name="textQ2_menu">Les loup de mer</string>
-    <string name="textQ3_menu">les tortues</string>
-    <string name="scoreQ1_menu">1250</string>
-    <string name="scoreQ2_menu">1453</string>
-    <string name="scoreQ3_menu">234</string>
+    <!-- 📜 Toasts -->
+    <string name="toast_saved">Paramètres sauvegardés !</string>
+    <string name="toast_reset">Paramètres réinitialisés !</string>
 
-    <string name="score_menu">100</string>
-    <string name="title_Palier">Palier 1</string>
 
+    <!-- 🔙 Divers -->
     <string name="back_button">bof</string>
-
+    <string name="temps">temps :</string>
+    <string name="chargement_des_assets">"Chargement des assets "</string>
+    <string name="logo_du_jeu">"Logo du jeu "</string>
+    <string name="quiz_master">"Quiztopia"</string>
+    <string name="prenom">"Prénom "</string>
+    <string name="code_4_chiffres">"Code à 4 chiffres "</string>
+    <string name="connexion">"Connexion "</string>
+    <string name="creer_un_compte">"Créer un compte "</string>
+    <string name="profil">"Profil "</string>
+    <string name="creation_de_quiz">"Création de Quiz "</string>
+    <string name="nouvelle_partie">"Nouvelle Partie "</string>
+    <string name="statistiques">"Statistiques "</string>
+    <string name="sauvegarde">"Sauvegarde "</string>
+    <string name="param_tres">"Paramètres "</string>
+    <string name="quitter">"Quitter "</string>
+    <string name="parametres">"Paramètres "</string>
+    <string name="audio">"Audio "</string>
+    <string name="systeme">"Système "</string>
+    <string name="musique">"Musique "</string>
+    <string name="video">"Vidéo "</string>
+    <string name="sauvegarde_auto">"Sauvegarde Auto "</string>
+    <string name="bonus">"Bonus "</string>
+    <string name="div">"Div "</string>
+    <string name="langue">"Langue "</string>
+    <string name="sauvegarder">"Sauvegarder "</string>
+    <string name="par_defaut">"Par défaut "</string>
+    <string name="quiz_mathematiques">"Quiz : Mathématiques "</string>
+    <string name="nom_du_joueur_alice">"Nom du joueur : Alice "</string>
+    <string name="score_3000">"Score : 3000 "</string>
+    <string name="mode_solo">"Mode : Solo "</string>
+    <string name="mode2_normal">"Mode2 : Normal "</string>
+    <string name="charger">"Charger "</string>
+    <string name="supprimer">"Supprimer "</string>
+    <string name="nom_du_joueur_bob">"Nom du joueur : Bob "</string>
+    <string name="quiz_histoire">"Quiz : Histoire "</string>
+    <string name="score_2700">"Score : 2700 "</string>
+    <string name="mode_multi">"Mode : Multi "</string>
+    <string name="mode2_classique">"Mode2 : Classique "</string>
+    <string name="nom_du_joueur_clara">"Nom du joueur : Clara "</string>
+    <string name="quiz_sciences">"Quiz : Sciences "</string>
+    <string name="score_3200">"Score : 3200 "</string>
+    <string name="nom_du_joueur_david">"Nom du joueur : David "</string>
+    <string name="quiz_geographie">"Quiz : Géographie "</string>
+    <string name="score_2800">"Score : 2800 "</string>
+    <string name="nom_du_joueur_emma">Nom du joueur : Emma</string>
+    <string name="quiz_culture_generale">Quiz : Culture Générale</string>
+    <string name="score_3100">Score : 3100</string>
+    <string name="nom_du_joueur_felix">Nom du joueur : Félix</string>
+    <string name="quiz_informatique">Quiz : Informatique</string>
+    <string name="score_2950">Score : 2950</string>
+    <string name="selection_du_mode_de_jeu">Selection du mode de jeu</string>
+    <string name="multijoueur_local">Multijoueur Local</string>
+    <string name="j1">J1</string>
+    <string name="j2">J2</string>
+    <string name="j3">J3</string>
+    <string name="j4">J4</string>
+    <string name="multijoueur_en_ligne">Multijoueur en Ligne</string>
+    <string name="titre_du_quiz">Titre du quiz :</string>
+    <string name="mode_normal">Mode Normal</string>
+    <string name="mode_3_meilleurs_sur_4">Mode 3 meilleurs sur 4</string>
+    <string name="mode_le_plus_rapide">Mode Le plus rapide</string>
+    <string name="mode_r_partition_r_gressive">Mode Répartition régressive</string>
+    <string name="mode_contre_la_montre">Mode Contre la montre</string>
+    <string name="selection_du_quiz">Selection du quiz</string>
+    <string name="rechercher_un_quiz">Rechercher un quiz</string>
+    <string name="rejoindre_uen_partie_multijoueur">Rejoindre uen partie multijoueur</string>
+    <string name="creer_une_partie_multijoueur">Créer une partie Multijoueur</string>
+    <string name="jouer_en_solo">Jouer en solo</string>
+    <string name="rejoindre_une_partie_multijoueur">Rejoindre une partie multijoueur</string>
+    <string name="connected_players">10</string>
+    <string name="games_in_progress">10</string>
+    <string name="online_games">10</string>
+    <string name="top_scorers_today">10</string>
+    <string name="lobby_list">Lobby</string>
 
 </resources>

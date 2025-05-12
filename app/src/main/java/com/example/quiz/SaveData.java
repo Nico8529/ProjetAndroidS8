@@ -48,9 +48,6 @@ public class SaveData {
         public String getMode2() {
             return mode2;
         }
-        public void setMode(String mode) {
-            this.mode = mode;
-        }
         public String getQuizTitle() {
             return quizTitle;
         }

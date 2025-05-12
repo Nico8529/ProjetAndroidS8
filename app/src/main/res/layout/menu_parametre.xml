@@ -14,6 +14,7 @@
             android:id="@+id/btnBack_LParametre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
             android:id="@+id/title_LParametre"
             android:layout_width="154dp"
             android:layout_height="26dp"
-            android:text="Paramètres"
+            android:text="@string/parametres"
             android:textSize="24sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +38,7 @@
             android:id="@+id/text1_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Audio"
+            android:text="@string/audio"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/title_LParametre"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,7 @@
             android:id="@+id/text2_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Système"
+            android:text="@string/systeme"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/audio1_LParametre"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +78,7 @@
             android:id="@+id/text3_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Musique"
+            android:text="@string/musique"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/audio2_LParametre"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +89,7 @@
             android:id="@+id/text4_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Vidéo"
+            android:text="@string/video"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/text3_LParametre"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +108,7 @@
             android:id="@+id/text5_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Sauvegarde Auto"
+            android:text="@string/sauvegarde_auto"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/text4_LParametre"
             app:layout_constraintStart_toEndOf="@id/sauvegardeAuto_LParametre"
@@ -127,7 +128,7 @@
             android:id="@+id/text6_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Bonus"
+            android:text="@string/bonus"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/text5_LParametre"
             app:layout_constraintStart_toEndOf="@id/bonus_LParametre"
@@ -147,7 +148,7 @@
             android:id="@+id/text8_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Div"
+            android:text="@string/div"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/text6_LParametre"
             app:layout_constraintStart_toEndOf="@id/div_LParametre"
@@ -159,7 +160,7 @@
             android:id="@+id/text7_LParametre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Langue"
+            android:text="@string/langue"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/text8_LParametre"
             app:layout_constraintStart_toStartOf="parent"
@@ -190,7 +191,7 @@
             android:gravity="center" />
     <LinearLayout
             android:id="@+id/buttonLayout"
-            android:layout_width="match_parent"
+            style="?android:attr/buttonBarStyle" android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
@@ -201,16 +202,16 @@
 
         <Button
                 android:id="@+id/btnSauvegarder"
-                android:layout_width="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sauvegarder"
-                android:layout_marginEnd="16dp"/>
+                android:text="@string/sauvegarder"
+                android:layout_marginEnd="16dp" tools:ignore="ButtonStyle"/>
 
         <Button
                 android:id="@+id/btnDefault"
-                android:layout_width="wrap_content"
+                style="?android:attr/buttonBarButtonStyle" android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Par défaut"/>
+                android:text="@string/par_defaut"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

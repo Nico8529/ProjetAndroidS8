@@ -69,3 +69,4 @@ public class SelectionMode2 extends AppCompatActivity {
         startActivity(intent);
     }
 }
+

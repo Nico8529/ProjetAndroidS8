@@ -175,6 +175,7 @@ public class MenuSauvegarde extends AppCompatActivity {
             intent.putExtra("isJokerSkipUsed", save.isJokerSkipUsed());
             intent.putExtra("isJokerAudienceUsed", save.isJokerAudienceUsed());
 
+
             startActivity(intent);
             Toast.makeText(this, "Sauvegarde " + slot + " chargée", Toast.LENGTH_SHORT).show();
         }

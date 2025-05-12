@@ -70,6 +70,7 @@ public class MenuParametre extends AppCompatActivity {
             Log.d(TAG, "Paramètres sauvegardés");
         });
 
+        
         // Bouton Par défaut
         findViewById(R.id.btnDefault).setOnClickListener(v -> {
             resetToDefault();

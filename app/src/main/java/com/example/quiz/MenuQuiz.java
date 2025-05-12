@@ -1,8 +1,8 @@
 package com.example.quiz;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,17 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MenuQuiz extends AppCompatActivity {
 
     private EditText playerNameEditText;
-    private Button saveNameButton;
-    private Button quitButton;
-    private Button startQuizButton;
-    private TextView scoreText;
-    private TextView moneyText;
-    private TextView palierText;
 
     private int score;  // Le score actuel du joueur
-    private int money;  // L'argent gagné
-    private int currentPalier;  // Le palier actuel
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,20 +23,22 @@ public class MenuQuiz extends AppCompatActivity {
 
         // Initialisation des éléments de l'interface
         playerNameEditText = findViewById(R.id.playerNameEditText);
-        saveNameButton = findViewById(R.id.saveNameButton);
-        quitButton = findViewById(R.id.quitButton);
-        startQuizButton = findViewById(R.id.startQuizButton);
-        scoreText = findViewById(R.id.scoreText);
-        moneyText = findViewById(R.id.moneyText);
-        palierText = findViewById(R.id.palierText);
+        Button saveNameButton = findViewById(R.id.saveNameButton);
+        Button quitButton = findViewById(R.id.quitButton);
+        Button startQuizButton = findViewById(R.id.startQuizButton);
+        TextView scoreText = findViewById(R.id.scoreText);
+        TextView moneyText = findViewById(R.id.moneyText);
+        TextView palierText = findViewById(R.id.palierText);
 
         // Initialiser avec des données fictives ou passer des valeurs depuis l'activité précédente
         score = 0;  // Exemple de score
-        money = 0;   // Exemple d'argent gagné
-        currentPalier = 0;  // Exemple de palier actuel
+        // L'argent gagné
+        int money = 0;   // Exemple d'argent gagné
+        // Le palier actuel
+        int currentPalier = 0;  // Exemple de palier actuel
 
         // Mettre à jour les vues avec les données actuelles
-        scoreText.setText("Score : " + score);
+        scoreText.setText(getString(R.string.score, score));
         moneyText.setText("Argent gagné : " + money + " €");
         palierText.setText("Palier actuel : Niveau " + currentPalier);
 
@@ -66,10 +61,7 @@ public class MenuQuiz extends AppCompatActivity {
 
         // Revenir au quiz
         startQuizButton.setOnClickListener(v -> {
-            // Vous pouvez passer des données au GameQuiz via un Intent, par exemple le score actuel
-            Intent intent = new Intent(MenuQuiz.this, GameQuiz.class);
-            intent.putExtra("score", score);
-            startActivity(intent);
+            finish();  // Ferme l'activité actuelle et retourne au menu principal ou ferme l'application
         });
     }
 }
